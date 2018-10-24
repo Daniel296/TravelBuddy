@@ -16,4 +16,4 @@ Herdes Andrei: Activity diagrams, Components diagram
 Joldescu Catalin-Petronel: Activity diagrams (trip planning, interests)
 Stolnicu Simona-Tereza: Object recommandation diagram, People recommandation diagram
 Chilaboc Ecaterina-Mihaela: Matching people diagram, Scheduler diagram
-Daniel Oana, Podaru Rares: Database/Class diagrams
+Daniel Oana, Podaru Rares: Database/Class diagrams, Database linkage diagrams

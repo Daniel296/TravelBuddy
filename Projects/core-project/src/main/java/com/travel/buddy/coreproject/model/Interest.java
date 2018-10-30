@@ -26,11 +26,51 @@ public class Interest implements Serializable {
     @Column(name = "INTEREST_ID", unique = true, nullable = false)
     private long interestId;
 
+
+    //activities
+    @Column(name = "CAN_SWIM")
+    private boolean canSwim;
+    @Column(name = "CAN_CYCLE")
+    private boolean canCycle;
+    @Column(name = "CAN_DRIVE")
+    private boolean canDrive;
+    @Column(name = "CAN_FISHING")
+    private boolean canFishing;
+    @Column(name = "CAN_CAMPING")
+    private booleadn canCamping;
+
+
+
+
+    //environment
     @Column(name = "IS_MOUNTAIN")
     private boolean isMountain;
-
     @Column(name = "IS_SEA")
     private boolean isSea;
+    @Column(name = "IS_OCEAN")
+    private boolean isOcean;
+    @Column(name="IS_JUNGLE");
+    private boolean isJungle;
+
+
+    //weather
+    @Column(name = "IS_COLD")
+    private boolean isCold;
+    @Column(name = "IS_HOT")
+    private boolean isHot;
+    @Column(name = "IS_RAINING")
+    private boolean isRaining;
+
+
+    //building types
+    @Column(name = "ARE_CHURCHES")
+    boolean areChurches;
+    @Column(name = "ARE_CASTLES")
+    boolean areCastles;
+    @Column(name = "ARE_WATERFALLS")
+    boolean areWaterfalls;
+    @Column(name = "ARE_CAVES")
+    boolean areCaves;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_LOGIN_ID", referencedColumnName = "auditor_id", insertable=true, updatable=true)

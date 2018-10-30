@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,8 +39,8 @@ public class UserLogin implements Serializable {
     @Column(name = "GOOGLE_TOKEN", nullable = false)
     private String googleToken;
 
-    @Column(name ="INTERESTS")
-    @OneToMany(mappedBy = "userLogin")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "USER_LOGIN_ID")
     private List<Interest> interests;
 
     @OneToOne(mappedBy = "userLogin", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)

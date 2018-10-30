@@ -2,6 +2,8 @@ package com.travel.buddy.coreproject.model;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,16 +44,16 @@ public class UserProfile implements Serializable {
     @Column(name = "GENDER_INTEREST")
     private String genderInterest;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_LOGIN_ID")
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "USER_LOGIN_ID", nullable = false)
     private UserLogin userLogin;
 
-    @ManyToOne
-    @JoinColumn(name = "CITY_ID", nullable = false)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "CITY_ID", referencedColumnName = "CITY_ID", insertable=true, updatable=true)
     private City city;
 
-    @Column(name = "ACTIVITIES")
-    @OneToMany(mappedBy = "userProfile")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "USER_PROFILE_ID")
     private List<Activity> activities;
 
     public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,

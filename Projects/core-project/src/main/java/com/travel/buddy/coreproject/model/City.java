@@ -2,12 +2,17 @@ package com.travel.buddy.coreproject.model;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,9 +32,12 @@ public class City implements Serializable {
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
 
-    @Column(name ="USERS")
-    @OneToMany(mappedBy = "city")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "CITY_ID")
     private List<UserProfile> users;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "city")
+    private Attraction attraction;
 
     public City() { super(); }
 

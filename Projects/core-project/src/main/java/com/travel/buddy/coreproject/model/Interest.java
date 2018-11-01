@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "INTERESTS")
+@Table(name = "INTEREST")
 public class Interest implements Serializable {
     /**
      *
@@ -33,6 +33,6 @@ public class Interest implements Serializable {
     private boolean isSea;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_LOGIN_ID", referencedColumnName = "auditor_id", insertable=true, updatable=true)
+	@JoinColumn(name = "USER_LOGIN_ID", referencedColumnName = "USER_LOGIN_ID", insertable=true, updatable=true)
     private UserLogin userLogin;
 }

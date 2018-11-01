@@ -34,7 +34,7 @@ public class City implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "CITY_ID")
-    private List<UserProfile> users;
+    private List<UserProfile> userProfiles;
     
     @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "city")
     private Attraction attraction;
@@ -45,13 +45,13 @@ public class City implements Serializable {
         super();
         this.cityId = cityId;
         this.name = name;
-        this.users = users;
+        this.userProfiles = users;
     }
 
     public City(String name, List<UserProfile> users) {
         super();
         this.name = name;
-        this.users = users;
+        this.userProfiles = users;
     }
 
     public void setName(String name) {
@@ -59,7 +59,7 @@ public class City implements Serializable {
     }
 
     public void setUsers(List<UserProfile> users) {
-        this.users = users;
+        this.userProfiles = users;
     }
 
     public String getName() {
@@ -67,6 +67,6 @@ public class City implements Serializable {
     }
 
     public List<UserProfile> getUsers() {
-        return users;
+        return userProfiles;
     }
 }

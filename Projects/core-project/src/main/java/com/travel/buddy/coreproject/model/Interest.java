@@ -37,7 +37,7 @@ public class Interest implements Serializable {
     @Column(name = "CAN_FISHING")
     private boolean canFishing;
     @Column(name = "CAN_CAMPING")
-    private booleadn canCamping;
+    private boolean canCamping;
 
 
 
@@ -49,7 +49,7 @@ public class Interest implements Serializable {
     private boolean isSea;
     @Column(name = "IS_OCEAN")
     private boolean isOcean;
-    @Column(name="IS_JUNGLE");
+    @Column(name="IS_JUNGLE")
     private boolean isJungle;
 
 

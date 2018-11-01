@@ -1,13 +1,28 @@
 package com.travel.buddy.coreproject;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
-public class CoreProjectApplication {
+import com.travel.buddy.coreproject.configuration.WebConfig;
 
-	public static void main(String[] args) {
-		SpringApplication.run(CoreProjectApplication.class, args);
+@SpringBootApplication
+public class CoreProjectApplication extends AbstractAnnotationConfigDispatcherServletInitializer {	
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return new Class[] { WebConfig.class };
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+	    return null;
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] { "/" };
 	}
 }
+

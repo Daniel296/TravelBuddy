@@ -23,18 +23,23 @@ public class Country implements Serializable {
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
+    
+    @Column(name = "COUNTRY_CODE", unique = true, nullable = false)
+    private String countryCode;
 
     public Country() { super(); }
 
-    public Country(long countryId, String name) {
+    public Country(long countryId, String name, String countryCode) {
         super();
         this.countryId = countryId;
         this.name = name;
+        this.countryCode = countryCode;
     }
 
-    public Country(String name) {
+    public Country(String name, String countryCode) {
         super();
         this.name = name;
+        this.countryCode = countryCode;
     }
 
     public void setName(String name) {
@@ -44,4 +49,20 @@ public class Country implements Serializable {
     public String getName() {
         return name;
     }
+
+	public long getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(long countryId) {
+		this.countryId = countryId;
+	}
+
+	public String getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(String countryCode) {
+		this.countryCode = countryCode;
+	}
 }

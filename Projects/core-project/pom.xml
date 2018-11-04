@@ -15,8 +15,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
-		<relativePath />
+		<version>2.0.0.RELEASE</version>
 	</parent>
 
 	<properties>
@@ -125,7 +124,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<warName>spring-app</warName>
+					<warName>core-project</warName>
 				</configuration>
 			</plugin>
 		</plugins>

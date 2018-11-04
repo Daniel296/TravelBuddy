@@ -29,7 +29,7 @@ public class DatabaseConfig {
 
 	@Autowired
 	private Environment env;
-
+	
 	@Autowired
 	private DataSourceConfiguration dsConfig;
 
@@ -49,20 +49,18 @@ public class DatabaseConfig {
 		lcemfb.setJpaProperties(jpaProperties());
 		return lcemfb;
 	}
-
 	@Bean(name="transactionManager")
 	public PlatformTransactionManager txManager() {
 		JpaTransactionManager jpaTransactionManager = new JpaTransactionManager(
 				getEntityManagerFactory().getObject());
 		return jpaTransactionManager;
 	}
-
+	
 	private Properties jpaProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 		properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
 		properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
-		properties.put("spring.jpa.hibernate.ddl-auto", "update");
 		//properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.default_schema", "travel_buddy_database");
 		return properties;

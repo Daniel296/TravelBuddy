@@ -13,7 +13,7 @@ public class AttractionRecomandationUnifier implements AttractionRecomandationHe
     private List<AttractionRecomandationHelper> recomandationHelperList;
     public AttractionRecomandationUnifier(UserProfile _userProfile){
         userProfile = _userProfile;
-
+        attractions = new ArrayList<>();
         recomandationHelperList = new ArrayList<>();
         recomandationHelperList.add(new AttractionRecomandationByOldActivitiesHelperImpl(userProfile));
         recomandationHelperList.add(new AttractionRecomandationByUserFriendsHelperImpl(userProfile));
@@ -21,6 +21,9 @@ public class AttractionRecomandationUnifier implements AttractionRecomandationHe
     }
 
     private void unify(){
+        for(AttractionRecomandationHelper helper : recomandationHelperList){
+            attractions.addAll(helper.getAttractions());
+        }
         //merge attractions
     }
 

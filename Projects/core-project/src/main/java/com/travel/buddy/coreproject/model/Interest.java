@@ -79,4 +79,100 @@ public class Interest implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ATTRACTION_ID", referencedColumnName = "ATTRACTION_ID", insertable=true, updatable=true)
     private Attraction attraction;
+
+    public boolean isCanSwim() {
+        return canSwim;
+    }
+
+    public void setCanSwim(boolean canSwim) {
+        this.canSwim = canSwim;
+    }
+
+    public boolean isCanCycle() {
+        return canCycle;
+    }
+
+    public void setCanCycle(boolean canCycle) {
+        this.canCycle = canCycle;
+    }
+
+    public boolean isCanDrive() {
+        return canDrive;
+    }
+
+    public void setCanDrive(boolean canDrive) {
+        this.canDrive = canDrive;
+    }
+
+    public boolean isCanFishing() {
+        return canFishing;
+    }
+
+    public void setCanFishing(boolean canFishing) {
+        this.canFishing = canFishing;
+    }
+
+    public boolean isCanCamping() {
+        return canCamping;
+    }
+
+    public void setCanCamping(boolean canCamping) {
+        this.canCamping = canCamping;
+    }
+
+    public boolean isMountain() {
+        return isMountain;
+    }
+
+    public void setMountain(boolean mountain) {
+        isMountain = mountain;
+    }
+
+    public boolean isSea() {
+        return isSea;
+    }
+
+    public void setSea(boolean sea) {
+        isSea = sea;
+    }
+
+    public boolean isOcean() {
+        return isOcean;
+    }
+
+    public void setOcean(boolean ocean) {
+        isOcean = ocean;
+    }
+
+    public boolean isJungle() {
+        return isJungle;
+    }
+
+    public void setJungle(boolean jungle) {
+        isJungle = jungle;
+    }
+
+    public boolean isCold() {
+        return isCold;
+    }
+
+    public void setCold(boolean cold) {
+        isCold = cold;
+    }
+
+    public boolean isHot() {
+        return isHot;
+    }
+
+    public void setHot(boolean hot) {
+        isHot = hot;
+    }
+
+    public boolean isRaining() {
+        return isRaining;
+    }
+
+    public void setRaining(boolean raining) {
+        isRaining = raining;
+    }
 }

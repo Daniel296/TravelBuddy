@@ -6,7 +6,7 @@ import com.travel.buddy.coreproject.model.UserProfile;
 import java.util.List;
 
 public class AttractionRecomandationService{
-    List<Attraction> getAttractions(UserProfile userProfile){
+    public List<Attraction> getAttractions(UserProfile userProfile){
         AttractionRecomandationUnifier unifier = new AttractionRecomandationUnifier(userProfile);
         return unifier.getAttractions();
     }

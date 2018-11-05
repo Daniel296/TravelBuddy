@@ -21,7 +21,6 @@ public class Test_AttractionRecomandationByUserPreferences {
         Interest userInterest = new Interest();
         userInterest.setCanCamping(true);
         userInterest.setCanCycle(true);
-        userInterests.add(userInterest)
 
         //set attraction 1 interest
         Interest attractionInterest1 = new Interest();

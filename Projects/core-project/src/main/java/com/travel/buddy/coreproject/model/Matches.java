@@ -2,11 +2,15 @@ package com.travel.buddy.coreproject.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,12 +27,6 @@ public class Matches implements Serializable{
 	@Column(name = "MATCH_ID", unique = true, nullable = false)
 	private long matchId;
 	
-	@Column(name = "FIRST_USER_ID", unique = false, nullable = false)
-	private long firstUserId;
-	
-	@Column(name = "SECOND_USER_ID", unique = false, nullable = false)
-	private long secondUserId;
-	
 	@Column(name = "COMPATIBILITY_SCORE", unique = false, nullable = false)
 	private String compatibilityScore;
 	
@@ -41,31 +39,39 @@ public class Matches implements Serializable{
 	@Column(name = "MATCH_ACCEPTED_BY_SECOND_USER", unique = false, nullable = false)
 	private boolean matchAcceptedBySecondUser;
 	
+	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL)
+	@JoinColumn(name = "USER_PROFILE_ID1")
+	private UserProfile userProfile1;
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL)
+	@JoinColumn(name = "USER_PROFILE_ID2")
+	private UserProfile userProfile2;
+	
 	public Matches() {
 		super();
 	}
 
-	public Matches(long matchId, long firstUserId, long secondUserId, String compatibilityScore, String timestamp,
-			boolean matchAcceptedByFirstUser, boolean matchAcceptedBySecondUser) {
+	public Matches(long matchId, String compatibilityScore, String timestamp, boolean matchAcceptedByFirstUser,
+			boolean matchAcceptedBySecondUser, UserProfile userProfile1, UserProfile userProfile2) {
 		super();
 		this.matchId = matchId;
-		this.firstUserId = firstUserId;
-		this.secondUserId = secondUserId;
 		this.compatibilityScore = compatibilityScore;
 		this.timestamp = timestamp;
 		this.matchAcceptedByFirstUser = matchAcceptedByFirstUser;
 		this.matchAcceptedBySecondUser = matchAcceptedBySecondUser;
+		this.userProfile1 = userProfile1;
+		this.userProfile2 = userProfile2;
 	}
 
-	public Matches(long firstUserId, long secondUserId, String compatibilityScore, String timestamp,
-			boolean matchAcceptedByFirstUser, boolean matchAcceptedBySecondUser) {
+	public Matches(String compatibilityScore, String timestamp, boolean matchAcceptedByFirstUser,
+			boolean matchAcceptedBySecondUser, UserProfile userProfile1, UserProfile userProfile2) {
 		super();
-		this.firstUserId = firstUserId;
-		this.secondUserId = secondUserId;
 		this.compatibilityScore = compatibilityScore;
 		this.timestamp = timestamp;
 		this.matchAcceptedByFirstUser = matchAcceptedByFirstUser;
 		this.matchAcceptedBySecondUser = matchAcceptedBySecondUser;
+		this.userProfile1 = userProfile1;
+		this.userProfile2 = userProfile2;
 	}
 
 	public long getMatchId() {
@@ -74,22 +80,6 @@ public class Matches implements Serializable{
 
 	public void setMatchId(long matchId) {
 		this.matchId = matchId;
-	}
-
-	public long getFirstUserId() {
-		return firstUserId;
-	}
-
-	public void setFirstUserId(long firstUserId) {
-		this.firstUserId = firstUserId;
-	}
-
-	public long getSecondUserId() {
-		return secondUserId;
-	}
-
-	public void setSecondUserId(long secondUserId) {
-		this.secondUserId = secondUserId;
 	}
 
 	public String getCompatibilityScore() {
@@ -122,5 +112,21 @@ public class Matches implements Serializable{
 
 	public void setMatchAcceptedBySecondUser(boolean matchAcceptedBySecondUser) {
 		this.matchAcceptedBySecondUser = matchAcceptedBySecondUser;
+	}
+
+	public UserProfile getUserProfile1() {
+		return userProfile1;
+	}
+
+	public void setUserProfile1(UserProfile userProfile1) {
+		this.userProfile1 = userProfile1;
+	}
+
+	public UserProfile getUserProfile2() {
+		return userProfile2;
+	}
+
+	public void setUserProfile2(UserProfile userProfile2) {
+		this.userProfile2 = userProfile2;
 	}
 }

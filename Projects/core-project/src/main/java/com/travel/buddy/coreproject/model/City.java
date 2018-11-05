@@ -11,8 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,37 +36,58 @@ public class City implements Serializable {
 	@JoinColumn(name = "CITY_ID")
     private List<UserProfile> userProfiles;
     
-    @OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL, mappedBy = "city")
-    private Attraction attraction;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "COUNTRY_ID", insertable=true, updatable=true)
+    private Country country;
 
-    public City() { super(); }
-
-    public City(long cityId, String name, List<UserProfile> users) {
-        super();
-        this.cityId = cityId;
-        this.name = name;
-        this.userProfiles = users;
+    public City() {
+    	super();
     }
 
-    public City(String name, List<UserProfile> users) {
-        super();
-        this.name = name;
-        this.userProfiles = users;
-    }
+	public City(long cityId, String name, List<UserProfile> userProfiles, Country country) {
+		super();
+		this.cityId = cityId;
+		this.name = name;
+		this.userProfiles = userProfiles;
+		this.country = country;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public City(String name, List<UserProfile> userProfiles, Country country) {
+		super();
+		this.name = name;
+		this.userProfiles = userProfiles;
+		this.country = country;
+	}
 
-    public void setUsers(List<UserProfile> users) {
-        this.userProfiles = users;
-    }
+	public long getCityId() {
+		return cityId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCityId(long cityId) {
+		this.cityId = cityId;
+	}
 
-    public List<UserProfile> getUsers() {
-        return userProfiles;
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<UserProfile> getUserProfiles() {
+		return userProfiles;
+	}
+
+	public void setUserProfiles(List<UserProfile> userProfiles) {
+		this.userProfiles = userProfiles;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 }

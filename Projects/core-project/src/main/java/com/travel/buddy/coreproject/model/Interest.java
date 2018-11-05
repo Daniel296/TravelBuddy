@@ -71,8 +71,12 @@ public class Interest implements Serializable {
     boolean areWaterfalls;
     @Column(name = "ARE_CAVES")
     boolean areCaves;
-
+    
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_LOGIN_ID", referencedColumnName = "USER_LOGIN_ID", insertable=true, updatable=true)
-    private UserLogin userLogin;
+	@JoinColumn(name = "USER_PROFILE_ID", referencedColumnName = "USER_PROFILE_ID", insertable=true, updatable=true)
+    private UserProfile userProfile;
+    
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ATTRACTION_ID", referencedColumnName = "ATTRACTION_ID", insertable=true, updatable=true)
+    private Attraction attraction;
 }

@@ -55,95 +55,143 @@ public class UserProfile implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "USER_PROFILE_ID")
     private List<Activity> activities;
-
-    public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
-        UserLogin userLogin, City city, List<Activity> activities) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.genderInterest = genderInterest;
-        this.userLogin = userLogin;
-        this.city = city;
-        this.activities = activities;
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "USER_PROFILE_ID")
+    private List<Interest> interests;
+    
+    public UserProfile() {
+    	super();
     }
 
-    public UserProfile(long userProfileId, String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
-        UserLogin userLogin, City city, List<Activity> activities) {
-        super();
-        this.userProfileId = userProfileId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.genderInterest = genderInterest;
-        this.userLogin = userLogin;
-        this.city = city;
-        this.activities = activities;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public UserProfile(long userProfileId, String firstName, String lastName, String phoneNumber, String gender,
+			String genderInterest, UserLogin userLogin, City city, List<Activity> activities, List<Interest> interests) {
+		super();
+		this.userProfileId = userProfileId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.genderInterest = genderInterest;
+		this.userLogin = userLogin;
+		this.city = city;
+		this.activities = activities;
+		this.interests = interests;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
+			UserLogin userLogin, City city, List<Activity> activities, List<Interest> interests) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.gender = gender;
+		this.genderInterest = genderInterest;
+		this.userLogin = userLogin;
+		this.city = city;
+		this.activities = activities;
+		this.interests = interests;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
-    public void setGenderInterest(String genderInterest) {
-        this.genderInterest = genderInterest;
-    }
+	public long getUserProfileId() {
+		return userProfileId;
+	}
 
-    public void setUserLogin(UserLogin userLogin) {
-        this.userLogin = userLogin;
-    }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
+	public void setUserProfileId(long userProfileId) {
+		this.userProfileId = userProfileId;
+	}
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getGender() {
-        return gender;
-    }
 
-    public String getGenderInterest() {
-        return genderInterest;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public UserLogin getUserLogin() {
-        return userLogin;
-    }
 
-    public City getCity() {
-        return city;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public List<Activity> getActivities() {
-        return activities;
-    }
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+	public String getGenderInterest() {
+		return genderInterest;
+	}
+
+
+	public void setGenderInterest(String genderInterest) {
+		this.genderInterest = genderInterest;
+	}
+
+
+	public UserLogin getUserLogin() {
+		return userLogin;
+	}
+
+
+	public void setUserLogin(UserLogin userLogin) {
+		this.userLogin = userLogin;
+	}
+
+
+	public City getCity() {
+		return city;
+	}
+
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
+
+
+	public List<Interest> getInterests() {
+		return interests;
+	}
+
+
+	public void setInterests(List<Interest> interests) {
+		this.interests = interests;
+	}
 }

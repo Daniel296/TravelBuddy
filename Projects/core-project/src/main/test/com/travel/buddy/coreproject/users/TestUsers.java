@@ -1,4 +1,4 @@
-package com.travel.buddy.coreproject.test.users;
+package com.travel.buddy.coreproject.users;
 
 
 import com.travel.buddy.coreproject.model.UserProfile;
@@ -9,7 +9,7 @@ public class TestUsers {
     @Test
     public void TestUser(){
         String fName = "Petrisor";
-        UserProfile userProfile = new UserProfile(fName, "", "", "", "", null, null, null);
+        UserProfile userProfile = new UserProfile("Petrisor", "", "", "", "", null, null, null, null);
         Assert.assertEquals(userProfile.getFirstName(), fName);
     }
 }

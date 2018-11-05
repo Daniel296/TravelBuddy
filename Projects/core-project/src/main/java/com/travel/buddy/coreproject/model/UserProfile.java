@@ -56,9 +56,9 @@ public class UserProfile implements Serializable {
     @JoinColumn(name = "USER_PROFILE_ID")
     private List<Activity> activities;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "USER_PROFILE_ID")
-    private List<Interest> interests;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "INTEREST_ID", nullable = false)
+    private Interest interest;
     
     public UserProfile() {
     	super();
@@ -66,7 +66,7 @@ public class UserProfile implements Serializable {
 
 
 	public UserProfile(long userProfileId, String firstName, String lastName, String phoneNumber, String gender,
-			String genderInterest, UserLogin userLogin, City city, List<Activity> activities, List<Interest> interests) {
+			String genderInterest, UserLogin userLogin, City city, List<Activity> activities, Interest interest) {
 		super();
 		this.userProfileId = userProfileId;
 		this.firstName = firstName;
@@ -77,12 +77,12 @@ public class UserProfile implements Serializable {
 		this.userLogin = userLogin;
 		this.city = city;
 		this.activities = activities;
-		this.interests = interests;
+		this.interest = interest;
 	}
 
 
 	public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
-			UserLogin userLogin, City city, List<Activity> activities, List<Interest> interests) {
+			UserLogin userLogin, City city, List<Activity> activities, Interest interest) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -92,7 +92,7 @@ public class UserProfile implements Serializable {
 		this.userLogin = userLogin;
 		this.city = city;
 		this.activities = activities;
-		this.interests = interests;
+		this.interest = interest;
 	}
 
 
@@ -186,12 +186,12 @@ public class UserProfile implements Serializable {
 	}
 
 
-	public List<Interest> getInterests() {
-		return interests;
+	public Interest getInterest() {
+		return interest;
 	}
 
 
-	public void setInterests(List<Interest> interests) {
-		this.interests = interests;
+	public void setInterest(Interest interest) {
+		this.interest = interest;
 	}
 }

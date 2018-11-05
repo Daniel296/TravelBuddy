@@ -47,16 +47,16 @@ public class Attraction implements Serializable {
 	@JoinColumn(name = "ACTIVITY_ID", referencedColumnName = "ACTIVITY_ID", insertable = true, updatable = true)
 	private Activity activity;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "ATTRACTION_ID")
-	private List<Interest> interests;
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "INTEREST_ID", nullable = false)
+	private Interest interest;
 
 	public Attraction() {
 		super();
 	}
 
 	public Attraction(long attractionId, String attractionName, double coordinateLatitude, double coordinateLongitude,
-			City city, Activity activity, List<Interest> interests) {
+			City city, Activity activity, Interest interest) {
 		super();
 		this.attractionId = attractionId;
 		this.attractionName = attractionName;
@@ -64,18 +64,18 @@ public class Attraction implements Serializable {
 		this.coordinateLongitude = coordinateLongitude;
 		this.city = city;
 		this.activity = activity;
-		this.interests = interests;
+		this.interest = interest;
 	}
 
 	public Attraction(String attractionName, double coordinateLatitude, double coordinateLongitude, City city,
-			Activity activity, List<Interest> interests) {
+			Activity activity, Interest interest) {
 		super();
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;
 		this.coordinateLongitude = coordinateLongitude;
 		this.city = city;
 		this.activity = activity;
-		this.interests = interests;
+		this.interest = interest;
 	}
 
 	public long getAttractionId() {
@@ -126,11 +126,11 @@ public class Attraction implements Serializable {
 		this.activity = activity;
 	}
 
-	public List<Interest> getInterests() {
-		return interests;
+	public Interest getInterest() {
+		return interest;
 	}
 
-	public void setInterests(List<Interest> interests) {
-		this.interests = interests;
+	public void setInterest(Interest interest) {
+		this.interest = interest;
 	}
 }

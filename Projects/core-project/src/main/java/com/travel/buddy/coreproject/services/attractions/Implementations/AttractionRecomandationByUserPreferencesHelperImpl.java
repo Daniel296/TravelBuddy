@@ -25,9 +25,9 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
         List<Attraction> attractions = new ArrayList<>();
         InterestsScoreComputer scoreComputer  = new InterestScoreComputerImpl();
         //allAttractions = attractionRepository.findAll();
-        Interest userInterests = userProfile.getInterests().get(0);
+        Interest userInterests = userProfile.getInterest();
         for(Attraction a : allAttractions){
-            Interest attractionInterests =  a.getInterests().get(0);
+            Interest attractionInterests =  a.getInterest();
             double score = scoreComputer.getScore(attractionInterests, userInterests);
             if(score>0){ // this shouldn't be hardcoded
                 attractions.add(a);

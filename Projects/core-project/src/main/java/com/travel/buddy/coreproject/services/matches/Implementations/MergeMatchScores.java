@@ -7,9 +7,11 @@ import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
 
 public class MergeMatchScores {
+
     private static MergeMatchScores instance = null;
     private List<MatchScoreComputer> scoreComputers;
-    private MergeMatchScores(){
+
+    private MergeMatchScores() {
         scoreComputers = new ArrayList<>();
         scoreComputers.add(new MatchesFutureTripsComputerImpl());
         scoreComputers.add(new MatchesInterestScoreComputerImpl());

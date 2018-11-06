@@ -11,14 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttractionRecomandationByOldActivitiesHelperImpl implements AttractionRecomandationHelper {
+
     @Autowired
     public AttractionRepository attractionRepository;
+
     private List<Activity> allUserActivities;
     UserProfile userProfile;
 
-    public AttractionRecomandationByOldActivitiesHelperImpl(UserProfile _userProfile){
-
-        userProfile = _userProfile;
+    public AttractionRecomandationByOldActivitiesHelperImpl(UserProfile userProfile){
+        this.userProfile = userProfile;
     }
 
     public List<Attraction> getAttractions(){

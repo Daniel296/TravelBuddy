@@ -11,7 +11,7 @@ public class MatchesRecomandationsService {
     @Autowired
     UserProfileRepository userProfileRepository;
 
-    public MatchesRecomandationsService(UserProfile userProfile){
+    public MatchesRecomandationsService(UserProfile userProfile) {
         List<UserProfile> userProfiles = userProfileRepository.findAll();
         MergeMatchScores mergeScore =  MergeMatchScores.getInstance();
         for(UserProfile user : userProfiles){

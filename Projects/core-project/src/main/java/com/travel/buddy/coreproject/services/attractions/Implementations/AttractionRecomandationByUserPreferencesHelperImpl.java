@@ -13,12 +13,15 @@ import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRe
 import com.travel.buddy.coreproject.services.attractions.Interfaces.InterestsScoreComputer;
 
 public class AttractionRecomandationByUserPreferencesHelperImpl implements AttractionRecomandationHelper {
+
     @Autowired
     public AttractionRepository attractionRepository;
+
     private List<Attraction> allAttractions;
-    UserProfile userProfile;
-    public AttractionRecomandationByUserPreferencesHelperImpl(UserProfile _userProfile){
-        userProfile = _userProfile;
+    private UserProfile userProfile;
+
+    public AttractionRecomandationByUserPreferencesHelperImpl(UserProfile userProfile){
+        this.userProfile = userProfile;
     }
 
     public List<Attraction> getAttractions(){

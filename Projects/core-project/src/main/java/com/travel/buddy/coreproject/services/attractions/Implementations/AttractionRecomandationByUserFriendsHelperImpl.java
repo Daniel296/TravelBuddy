@@ -11,12 +11,13 @@ import com.travel.buddy.coreproject.repository.MatchesRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 
 public class AttractionRecomandationByUserFriendsHelperImpl implements AttractionRecomandationHelper {
+
     private UserProfile userProfile;
     private MatchesRepository matchesRepository;
     private List<Matches> allMatches;
 
-    public AttractionRecomandationByUserFriendsHelperImpl(UserProfile _userProfile){
-        userProfile = _userProfile;
+    public AttractionRecomandationByUserFriendsHelperImpl(UserProfile userProfile){
+        this.userProfile = userProfile;
     }
 
     public List<Attraction> getAttractions(){

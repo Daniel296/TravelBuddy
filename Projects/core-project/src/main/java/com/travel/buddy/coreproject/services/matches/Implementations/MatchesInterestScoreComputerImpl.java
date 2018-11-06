@@ -1,9 +1,9 @@
-package com.travel.buddy.coreproject.services.matches.Interfaces.Implementations.Implementations;
+package com.travel.buddy.coreproject.services.matches.Implementations;
 
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.attractions.Implementations.InterestScoreComputerImpl;
-import com.travel.buddy.coreproject.services.matches.Interfaces.Implementations.Interfaces.MatchScoreComputer;
+import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
 
 public class MatchesInterestScoreComputerImpl implements MatchScoreComputer {
     @Override

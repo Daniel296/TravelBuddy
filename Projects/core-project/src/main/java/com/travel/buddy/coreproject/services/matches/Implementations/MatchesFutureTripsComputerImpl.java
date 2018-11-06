@@ -1,9 +1,10 @@
-package com.travel.buddy.coreproject.services.matches.Interfaces.Implementations.Implementations;
+package com.travel.buddy.coreproject.services.matches.Implementations;
 
 import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.services.matches.Interfaces.Implementations.Interfaces.MatchScoreComputer;
+import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
 
 public class MatchesFutureTripsComputerImpl implements MatchScoreComputer {
+
     @Override
     public double getScore(UserProfile user1, UserProfile user2){
         //user1.getActivities().get(i).getAttractions()  <= something like this

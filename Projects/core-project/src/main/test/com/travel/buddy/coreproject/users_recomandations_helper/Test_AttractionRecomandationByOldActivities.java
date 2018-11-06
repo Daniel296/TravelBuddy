@@ -1,6 +1,7 @@
 package com.travel.buddy.coreproject.users_recomandations_helper;
 
 import com.github.javafaker.Faker;
+import com.travel.buddy.coreproject.model.Activity;
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.UserProfile;
@@ -27,12 +28,12 @@ public class Test_AttractionRecomandationByOldActivities {
         attractionInterest2.setCanCycle(true);
 
         //set attraction 3 interest
-        Interest attractionInterest1 = new Interest();
+        Interest attractionInterest3 = new Interest();
         attractionInterest1.setCanFishing(true);
         attractionInterest1.setCanSwim(true);
 
         //set attraction 4 interest
-        Interest attractionInterest2 = new Interest();
+        Interest attractionInterest4 = new Interest();
         attractionInterest2.setRaining(true);
         attractionInterest2.setCanDrive(true);
 
@@ -81,7 +82,7 @@ public class Test_AttractionRecomandationByOldActivities {
         //our user
         String fName = faker.name().firstName();
         UserProfile userProfile = new UserProfile(fName, null, null, null, null, null, null, null, null);
-        userProfile.setInterest(userInterest);
+        //userProfile.setInterest(userInterest);
 
         AttractionRecomandationByOldActivitiesHelperImpl helper = new AttractionRecomandationByOldActivitiesHelperImpl(userProfile);
         helper.setAllUserActivities(allUserActivities);

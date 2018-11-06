@@ -1,4 +1,4 @@
-package com.travel.buddy.coreproject.services.matches.Interfaces.Implementations.Interfaces;
+package com.travel.buddy.coreproject.services.matches.Interfaces;
 
 import com.travel.buddy.coreproject.model.UserProfile;
 

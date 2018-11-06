@@ -1,10 +1,10 @@
-package com.travel.buddy.coreproject.services.matches.Interfaces.Implementations.Implementations;
+package com.travel.buddy.coreproject.services.matches.Implementations;
 
-public class LatLng {
+public class Point {
     private double latitude;
     private double longitude;
 
-    public LatLng(double latitude, double longitude) {
+    public Point(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

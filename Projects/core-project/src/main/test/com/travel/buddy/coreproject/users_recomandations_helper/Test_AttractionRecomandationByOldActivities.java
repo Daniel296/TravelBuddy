@@ -29,13 +29,13 @@ public class Test_AttractionRecomandationByOldActivities {
 
         //set attraction 3 interest
         Interest attractionInterest3 = new Interest();
-        attractionInterest1.setCanFishing(true);
-        attractionInterest1.setCanSwim(true);
+        attractionInterest3.setCanFishing(true);
+        attractionInterest3.setCanSwim(true);
 
         //set attraction 4 interest
         Interest attractionInterest4 = new Interest();
-        attractionInterest2.setRaining(true);
-        attractionInterest2.setCanDrive(true);
+        attractionInterest4.setRaining(true);
+        attractionInterest4.setCanDrive(true);
 
         List<Attraction> attractions = new ArrayList<>();
         List<Attraction> attractions2 = new ArrayList<>();
@@ -44,18 +44,17 @@ public class Test_AttractionRecomandationByOldActivities {
         Attraction attraction1 = new Attraction();
         attraction1.setInterest(attractionInterest1);
 
-
         //attraction2
         Attraction attraction2 = new Attraction();
         attraction2.setInterest(attractionInterest2);
 
         //attraction3
         Attraction attraction3 = new Attraction();
-        attraction2.setInterest(attractionInterest3);
+        attraction3.setInterest(attractionInterest3);
 
         //attraction4
         Attraction attraction4 = new Attraction();
-        attraction2.setInterest(attractionInterest4);
+        attraction4.setInterest(attractionInterest4);
 
 
         // attraction list1
@@ -82,12 +81,12 @@ public class Test_AttractionRecomandationByOldActivities {
         //our user
         String fName = faker.name().firstName();
         UserProfile userProfile = new UserProfile(fName, null, null, null, null, null, null, null, null);
-        //userProfile.setInterest(userInterest);
+        // userProfile.setInterest(userInterest);
 
         AttractionRecomandationByOldActivitiesHelperImpl helper = new AttractionRecomandationByOldActivitiesHelperImpl(userProfile);
         helper.setAllUserActivities(allUserActivities);
         List<Attraction> recomandedAttractions = helper.getAttractions();
 
-        Assert.assertEquals(recomandedAttractions.size(), 2);
+        Assert.assertEquals(4, recomandedAttractions.size());
     }
 }

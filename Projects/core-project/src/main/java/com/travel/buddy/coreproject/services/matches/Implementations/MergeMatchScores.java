@@ -1,10 +1,10 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
-import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.travel.buddy.coreproject.model.UserProfile;
+import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
 
 public class MergeMatchScores {
     private static MergeMatchScores instance = null;

@@ -1,15 +1,14 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.travel.buddy.coreproject.model.Activity;
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.Matches;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
-import org.apache.catalina.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AttractionRecomandationByUserFriendsHelperImpl implements AttractionRecomandationHelper {
     private UserProfile userProfile;

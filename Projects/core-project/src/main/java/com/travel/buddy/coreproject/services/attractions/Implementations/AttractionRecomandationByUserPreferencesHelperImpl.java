@@ -1,16 +1,16 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
-import com.travel.buddy.coreproject.repository.CityRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.InterestsScoreComputer;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AttractionRecomandationByUserPreferencesHelperImpl implements AttractionRecomandationHelper {
     @Autowired

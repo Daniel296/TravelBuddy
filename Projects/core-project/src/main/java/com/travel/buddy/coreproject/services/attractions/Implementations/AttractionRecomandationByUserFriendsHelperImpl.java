@@ -6,6 +6,7 @@ import java.util.List;
 import com.travel.buddy.coreproject.model.Activity;
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.Matches;
+import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
@@ -20,9 +21,9 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
         this.userProfile = userProfile;
     }
 
-    public List<Attraction> getAttractions(){
+    public List<TravelPlanItem> getTravelPlanItems(){
         List<UserProfile> matchedUsers = new ArrayList<>();
-        List<Attraction> attractions = new ArrayList<>();
+        List<TravelPlanItem> travelPlanItems = new ArrayList<>();
         List<Activity> activities = new ArrayList<>();
 
         allMatches = matchesRepository.findAll(); //iau toate match-urile user-ului
@@ -38,8 +39,13 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
             activities.addAll(profile.getActivities()); // iau toate activitatile de la persoanele match-uite
 
         for(Activity a : activities)
-            attractions.addAll(a.getAttractions()); 
+            travelPlanItems.addAll(a.getTravelPlanItems()); 
 
-        return attractions;
+        return travelPlanItems;
     }
+
+	@Override
+	public List<Attraction> getAttractions() {
+		return null;
+	}
 }

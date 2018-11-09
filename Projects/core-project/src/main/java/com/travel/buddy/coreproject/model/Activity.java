@@ -41,28 +41,28 @@ public class Activity implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "ACTIVITY_ID")
-	private List<Attraction> attractions;
+	private List<TravelPlanItem> travelPlanItems;
 	
 	public Activity() {
 		super();
 	}
 
 	public Activity(long activityId, String startDate, String endDate, UserProfile userProfile,
-			List<Attraction> attractions) {
+			List<TravelPlanItem> travelPlanItems) {
 		super();
 		this.activityId = activityId;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.userProfile = userProfile;
-		this.attractions = attractions;
+		this.travelPlanItems = travelPlanItems;
 	}
 
-	public Activity(String startDate, String endDate, UserProfile userProfile, List<Attraction> attractions) {
+	public Activity(String startDate, String endDate, UserProfile userProfile, List<TravelPlanItem> travelPlanItems) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.userProfile = userProfile;
-		this.attractions = attractions;
+		this.travelPlanItems = travelPlanItems;
 	}
 
 	public long getActivityId() {
@@ -97,11 +97,11 @@ public class Activity implements Serializable{
 		this.userProfile = userProfile;
 	}
 
-	public List<Attraction> getAttractions() {
-		return attractions;
+	public List<TravelPlanItem> getTravelPlanItems() {
+		return travelPlanItems;
 	}
 
-	public void setAttractions(List<Attraction> attractions) {
-		this.attractions = attractions;
+	public void setTravelPlanItems(List<TravelPlanItem> travelPlanItems) {
+		this.travelPlanItems = travelPlanItems;
 	}
 }

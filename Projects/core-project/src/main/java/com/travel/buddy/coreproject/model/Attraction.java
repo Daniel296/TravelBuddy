@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,10 +40,6 @@ public class Attraction implements Serializable {
 	@JoinColumn(name = "CITY_ID")
 	private City city;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACTIVITY_ID", referencedColumnName = "ACTIVITY_ID", insertable = true, updatable = true)
-	private Activity activity;
-
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "INTEREST_ID", nullable = false)
 	private Interest interest;
@@ -54,25 +49,23 @@ public class Attraction implements Serializable {
 	}
 
 	public Attraction(long attractionId, String attractionName, double coordinateLatitude, double coordinateLongitude,
-			City city, Activity activity, Interest interest) {
+			City city, Interest interest) {
 		super();
 		this.attractionId = attractionId;
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;
 		this.coordinateLongitude = coordinateLongitude;
 		this.city = city;
-		this.activity = activity;
 		this.interest = interest;
 	}
 
 	public Attraction(String attractionName, double coordinateLatitude, double coordinateLongitude, City city,
-			Activity activity, Interest interest) {
+			Interest interest) {
 		super();
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;
 		this.coordinateLongitude = coordinateLongitude;
 		this.city = city;
-		this.activity = activity;
 		this.interest = interest;
 	}
 
@@ -114,14 +107,6 @@ public class Attraction implements Serializable {
 
 	public void setCity(City city) {
 		this.city = city;
-	}
-
-	public Activity getActivity() {
-		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
 	}
 
 	public Interest getInterest() {

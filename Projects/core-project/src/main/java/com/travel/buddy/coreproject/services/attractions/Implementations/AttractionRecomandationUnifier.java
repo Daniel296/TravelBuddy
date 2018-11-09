@@ -1,6 +1,7 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
 import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 
@@ -22,13 +23,21 @@ public class AttractionRecomandationUnifier implements AttractionRecomandationHe
 
     private void unify(){
         for(AttractionRecomandationHelper helper : recomandationHelperList){
-            attractions.addAll(helper.getAttractions());
+            for(TravelPlanItem travelPlanItem: helper.getTravelPlanItems()) {
+            	attractions.add(travelPlanItem.getAttraction());
+            }
         }
         //merge attractions
     }
-
+    
+    @Override
     public List<Attraction> getAttractions(){
         unify();
         return attractions;
     }
+
+	@Override
+	public List<TravelPlanItem> getTravelPlanItems() {
+		return null;
+	}
 }

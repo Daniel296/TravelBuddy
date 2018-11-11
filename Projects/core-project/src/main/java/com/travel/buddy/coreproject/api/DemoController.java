@@ -39,11 +39,11 @@ public class DemoController {
 		return cityRepository.save(city);
 	}
 
-	public CityRepository getActivityRepository() {
+	public CityRepository gettravelplanRepository() {
 		return cityRepository;
 	}
 
-	public void setActivityRepository(CityRepository cityRepository) {
+	public void settravelplanRepository(CityRepository cityRepository) {
 		this.cityRepository = cityRepository;
 	}
 

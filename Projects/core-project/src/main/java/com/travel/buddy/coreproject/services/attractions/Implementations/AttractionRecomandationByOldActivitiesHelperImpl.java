@@ -3,9 +3,9 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.travel.buddy.coreproject.model.TravelPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.travel.buddy.coreproject.model.Activity;
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
@@ -17,7 +17,7 @@ public class AttractionRecomandationByOldActivitiesHelperImpl implements Attract
     @Autowired
     public AttractionRepository attractionRepository;
 
-    private List<Activity> allUserActivities;
+    private List<TravelPlan> allUserActivities;
     UserProfile userProfile;
 
     public AttractionRecomandationByOldActivitiesHelperImpl(UserProfile userProfile){
@@ -27,21 +27,21 @@ public class AttractionRecomandationByOldActivitiesHelperImpl implements Attract
     public List<TravelPlanItem> getTravelPlanItems(){
 
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        //List<Activity> userActivities = new ArrayList<>();
+        //List<TravelPlan> userActivities = new ArrayList<>();
 
         //userActivities.addAll(userProfile.getActivities()); // activitatile userului curent
 
-        for(Activity a : allUserActivities)
+        for(TravelPlan a : allUserActivities)
             travelPlanItems.addAll(a.getTravelPlanItems());
 
         return travelPlanItems;
     }
 
-    public List<Activity> getAllUserActivities() {
+    public List<TravelPlan> getAllUserActivities() {
         return allUserActivities;
     }
 
-    public void setAllUserActivities(List<Activity> allUserActivities) {
+    public void setAllUserActivities(List<TravelPlan> allUserActivities) {
         this.allUserActivities = allUserActivities;
     }
 

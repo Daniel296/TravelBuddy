@@ -56,7 +56,7 @@ public class Test_AttractionRecomandationByUserPreferences {
         userProfile.setInterest(userInterest);
 
         AttractionRecomandationByUserPreferencesHelperImpl helper = new AttractionRecomandationByUserPreferencesHelperImpl(userProfile);
-        helper.setAllAttractions(attractions);
+        //helper.setAllAttractions(attractions);
         List<Attraction> recomandedAttractions = helper.getAttractions();
 
         Assert.assertEquals(recomandedAttractions.size(), 2);

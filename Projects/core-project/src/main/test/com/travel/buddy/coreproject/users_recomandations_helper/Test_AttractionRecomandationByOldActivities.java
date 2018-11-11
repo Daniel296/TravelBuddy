@@ -1,7 +1,7 @@
 package com.travel.buddy.coreproject.users_recomandations_helper;
 
 import com.github.javafaker.Faker;
-import com.travel.buddy.coreproject.model.Activity;
+import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.UserProfile;
@@ -65,18 +65,18 @@ public class Test_AttractionRecomandationByOldActivities {
         attractions2.add(attraction3);
         attractions2.add(attraction4);
 
-        //Activity1
-        Activity userActivity1 = new Activity();
-        userActivity1.setAttractions(attractions);
+        //travelplan1
+        TravelPlan userTravelPlan1 = new TravelPlan();
+        //userTravelPlan1.setAttractions(attractions);
 
-        //Activity2
-        Activity userActivity2 = new Activity();
-        userActivity2.setAttractions(attractions2);
+        //travelplan2
+        TravelPlan userTravelPlan2 = new TravelPlan();
+        //userTravelPlan2.setAttractions(attractions2);
 
         //create old activities list
-        List<Activity> allUserActivities = new ArrayList<>();
-        allUserActivities.add(userActivity1);
-        allUserActivities.add(userActivity2);
+        List<TravelPlan> allUserActivities = new ArrayList<>();
+        allUserActivities.add(userTravelPlan1);
+        allUserActivities.add(userTravelPlan2);
 
         //our user
         String fName = faker.name().firstName();

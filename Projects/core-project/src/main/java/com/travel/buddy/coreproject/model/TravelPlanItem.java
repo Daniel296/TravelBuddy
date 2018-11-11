@@ -39,29 +39,29 @@ public class TravelPlanItem implements Serializable{
 	private Attraction attraction;
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACTIVITY_ID", referencedColumnName = "ACTIVITY_ID", insertable = true, updatable = true)
-	private Activity activity;
+	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "TRAVEL_PLAN_ID", insertable = true, updatable = true)
+	private TravelPlan travelPlan;
 	
 	public TravelPlanItem() {
 		super();
 	}
 
 	public TravelPlanItem(long travelPlanItemId, String startDate, String endDate, Attraction attraction,
-			Activity activity) {
+			TravelPlan travelPlan) {
 		super();
 		this.travelPlanItemId = travelPlanItemId;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.attraction = attraction;
-		this.activity = activity;
+		this.travelPlan = travelPlan;
 	}
 
-	public TravelPlanItem(String startDate, String endDate, Attraction attraction, Activity activity) {
+	public TravelPlanItem(String startDate, String endDate, Attraction attraction, TravelPlan travelPlan) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.attraction = attraction;
-		this.activity = activity;
+		this.travelPlan = travelPlan;
 	}
 
 	public long getTravelPlanItemId() {
@@ -96,11 +96,11 @@ public class TravelPlanItem implements Serializable{
 		this.attraction = attraction;
 	}
 
-	public Activity getActivity() {
-		return activity;
+	public TravelPlan getTravelPlan() {
+		return travelPlan;
 	}
 
-	public void setActivity(Activity activity) {
-		this.activity = activity;
+	public void setTravelPlan(TravelPlan travelPlan) {
+		this.travelPlan = travelPlan;
 	}
 }

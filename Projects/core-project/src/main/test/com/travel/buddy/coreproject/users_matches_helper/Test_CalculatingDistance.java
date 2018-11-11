@@ -41,8 +41,8 @@ public class Test_CalculatingDistance {
 
     @Test
     public void Test_DistanceBetweenTwoAttractions() {
-        Attraction attraction1 = new Attraction(0, null, 48.64703, -122.26324, null, null, null);
-        Attraction attraction2 = new Attraction(0, null, 48.6721, -122.265, null, null, null);
+        Attraction attraction1 = new Attraction(0, null, 48.64703, -122.26324, null, null);
+        Attraction attraction2 = new Attraction(0, null, 48.6721, -122.265, null, null);
 
         double distanceBetweenAttractions = DistanceComputerBetweenAttractions.getDistance("KM", attraction1, attraction2);
 
@@ -53,9 +53,9 @@ public class Test_CalculatingDistance {
     public void Test_DistanceBetweenAListOfAttractions() {
         List<Attraction> attractions = new ArrayList<>();
 
-        Attraction attraction1 = new Attraction(0, null, 48.64703, -122.26324, null, null, null);
-        Attraction attraction2 = new Attraction(0, null, 48.6721, -122.265, null, null, null);
-        Attraction attraction3 = new Attraction(0, null, 48.4234, -122.34, null, null, null);
+        Attraction attraction1 = new Attraction(0, null, 48.64703, -122.26324, null, null);
+        Attraction attraction2 = new Attraction(0, null, 48.6721, -122.265, null, null);
+        Attraction attraction3 = new Attraction(0, null, 48.4234, -122.34, null, null);
 
         attractions.add(attraction1);
         attractions.add(attraction2);

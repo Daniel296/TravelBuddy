@@ -54,7 +54,7 @@ public class UserProfile implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "USER_PROFILE_ID")
-    private List<Activity> activities;
+    private List<TravelPlan> activities;
     
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "INTEREST_ID", nullable = false)
@@ -66,7 +66,7 @@ public class UserProfile implements Serializable {
 
 
 	public UserProfile(long userProfileId, String firstName, String lastName, String phoneNumber, String gender,
-			String genderInterest, UserLogin userLogin, City city, List<Activity> activities, Interest interest) {
+					   String genderInterest, UserLogin userLogin, City city, List<TravelPlan> activities, Interest interest) {
 		super();
 		this.userProfileId = userProfileId;
 		this.firstName = firstName;
@@ -82,7 +82,7 @@ public class UserProfile implements Serializable {
 
 
 	public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
-			UserLogin userLogin, City city, List<Activity> activities, Interest interest) {
+					   UserLogin userLogin, City city, List<TravelPlan> activities, Interest interest) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -176,12 +176,12 @@ public class UserProfile implements Serializable {
 	}
 
 
-	public List<Activity> getActivities() {
+	public List<TravelPlan> getActivities() {
 		return activities;
 	}
 
 
-	public void setActivities(List<Activity> activities) {
+	public void setActivities(List<TravelPlan> activities) {
 		this.activities = activities;
 	}
 

@@ -16,8 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ACTIVITY")
-public class Activity implements Serializable{
+@Table(name = "TRAVEL_PLAN")
+public class TravelPlan implements Serializable{
 
 	/**
 	 * 
@@ -26,8 +26,8 @@ public class Activity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ACTIVITY_ID", unique = true, nullable = false)
-	private long activityId;
+	@Column(name = "TRAVEL_PLAN_ID", unique = true, nullable = false)
+	private long travelPlanId;
 	
 	@Column(name = "START_DATE", unique = false, nullable = false)
 	private String startDate;
@@ -40,24 +40,24 @@ public class Activity implements Serializable{
 	private UserProfile userProfile;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "ACTIVITY_ID")
+	@JoinColumn(name = "TRAVEL_PLAN_ITEM_ID")
 	private List<TravelPlanItem> travelPlanItems;
 	
-	public Activity() {
+	public TravelPlan() {
 		super();
 	}
 
-	public Activity(long activityId, String startDate, String endDate, UserProfile userProfile,
-			List<TravelPlanItem> travelPlanItems) {
+	public TravelPlan(long travelPlanId, String startDate, String endDate, UserProfile userProfile,
+					  List<TravelPlanItem> travelPlanItems) {
 		super();
-		this.activityId = activityId;
+		this.travelPlanId = travelPlanId;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.userProfile = userProfile;
 		this.travelPlanItems = travelPlanItems;
 	}
 
-	public Activity(String startDate, String endDate, UserProfile userProfile, List<TravelPlanItem> travelPlanItems) {
+	public TravelPlan(String startDate, String endDate, UserProfile userProfile, List<TravelPlanItem> travelPlanItems) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -65,12 +65,12 @@ public class Activity implements Serializable{
 		this.travelPlanItems = travelPlanItems;
 	}
 
-	public long getActivityId() {
-		return activityId;
+	public long gettravelPlanId() {
+		return travelPlanId;
 	}
 
-	public void setActivityId(long activityId) {
-		this.activityId = activityId;
+	public void settravelPlanId(long travelPlanId) {
+		this.travelPlanId = travelPlanId;
 	}
 
 	public String getStartDate() {

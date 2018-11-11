@@ -3,11 +3,8 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.travel.buddy.coreproject.model.Activity;
-import com.travel.buddy.coreproject.model.Attraction;
-import com.travel.buddy.coreproject.model.Matches;
-import com.travel.buddy.coreproject.model.TravelPlanItem;
-import com.travel.buddy.coreproject.model.UserProfile;
+import com.travel.buddy.coreproject.model.*;
+import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 
@@ -24,7 +21,7 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
     public List<TravelPlanItem> getTravelPlanItems(){
         List<UserProfile> matchedUsers = new ArrayList<>();
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        List<Activity> activities = new ArrayList<>();
+        List<TravelPlan> activities = new ArrayList<>();
 
         allMatches = matchesRepository.findAll(); //iau toate match-urile user-ului
 
@@ -38,7 +35,7 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
         for(UserProfile profile : matchedUsers)
             activities.addAll(profile.getActivities()); // iau toate activitatile de la persoanele match-uite
 
-        for(Activity a : activities)
+        for(TravelPlan a : activities)
             travelPlanItems.addAll(a.getTravelPlanItems()); 
 
         return travelPlanItems;

@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "COUNTRY")
 public class Country implements Serializable {
@@ -34,6 +36,7 @@ public class Country implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "ID")
+    @JsonManagedReference
     private List<City> cities;
 
     public Country() {
@@ -78,7 +81,8 @@ public class Country implements Serializable {
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-
+	
+//	@JsonIgnore
 	public List<City> getCities() {
 		return cities;
 	}

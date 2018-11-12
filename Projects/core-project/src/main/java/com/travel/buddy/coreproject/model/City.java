@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "CITY")
 public class City implements Serializable {
@@ -37,10 +40,12 @@ public class City implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "ID")
+    @JsonManagedReference
     private List<UserProfile> userProfiles;
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "ID", insertable=true, updatable=true)
+    @JsonBackReference
     private Country country;
 
     public City() {
@@ -87,7 +92,8 @@ public class City implements Serializable {
 	public void setCityCode(String cityCode) {
 		this.cityCode = cityCode;
 	}
-
+	
+//	@JsonIgnore
 	public List<UserProfile> getUserProfiles() {
 		return userProfiles;
 	}

@@ -1,11 +1,19 @@
 package com.travel.buddy.coreproject.repository;
 
-import com.travel.buddy.coreproject.model.Country;
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
+import com.travel.buddy.coreproject.model.Country;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Serializable> {
+	
+	@Query(value = "SELECT c FROM Country c")
+	public List<Country> findAll();
+	
+	public Country findById(Long id);
 }

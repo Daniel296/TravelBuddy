@@ -20,8 +20,8 @@ public class ChatHistory implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CHAT_HISTORY_ID", unique = true, nullable = false)
-	private long chatHistoryId;
+	@Column(name = "ID", unique = true, nullable = false)
+	private long id;
 	
 	@Column(name = "FIRST_USER_ID", unique = false, nullable = false)
 	private long firstUserId;
@@ -42,10 +42,10 @@ public class ChatHistory implements Serializable{
 		super();
 	}
 
-	public ChatHistory(long chatHistoryId, long firstUserId, long secondUserId, String message, String timestamp,
+	public ChatHistory(long id, long firstUserId, long secondUserId, String message, String timestamp,
 			String messageType) {
 		super();
-		this.chatHistoryId = chatHistoryId;
+		this.id = id;
 		this.firstUserId = firstUserId;
 		this.secondUserId = secondUserId;
 		this.message = message;
@@ -62,12 +62,12 @@ public class ChatHistory implements Serializable{
 		this.messageType = messageType;
 	}
 
-	public long getChatHistoryId() {
-		return chatHistoryId;
+	public long getId() {
+		return id;
 	}
 
-	public void setChatHistoryId(long chatHistoryId) {
-		this.chatHistoryId = chatHistoryId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public long getFirstUserId() {

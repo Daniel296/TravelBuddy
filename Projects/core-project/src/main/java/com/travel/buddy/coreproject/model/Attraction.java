@@ -24,8 +24,8 @@ public class Attraction implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ATTRACTION_ID", unique = true, nullable = false)
-	private long attractionId;
+	@Column(name = "ID", unique = true, nullable = false)
+	private long id;
 
 	@Column(name = "ATTRACTION_NAME", unique = true, nullable = false)
 	private String attractionName;
@@ -48,10 +48,10 @@ public class Attraction implements Serializable {
 		super();
 	}
 
-	public Attraction(long attractionId, String attractionName, double coordinateLatitude, double coordinateLongitude,
-			City city, Interest interest) {
+	public Attraction(long id, String attractionName, double coordinateLatitude, double coordinateLongitude, City city,
+			Interest interest) {
 		super();
-		this.attractionId = attractionId;
+		this.id = id;
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;
 		this.coordinateLongitude = coordinateLongitude;
@@ -69,12 +69,12 @@ public class Attraction implements Serializable {
 		this.interest = interest;
 	}
 
-	public long getAttractionId() {
-		return attractionId;
+	public long getId() {
+		return id;
 	}
 
-	public void setAttractionId(long attractionId) {
-		this.attractionId = attractionId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getAttractionName() {

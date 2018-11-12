@@ -24,8 +24,8 @@ public class Matches implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "MATCH_ID", unique = true, nullable = false)
-	private long matchId;
+	@Column(name = "ID", unique = true, nullable = false)
+	private long id;
 	
 	@Column(name = "COMPATIBILITY_SCORE", unique = false, nullable = false)
 	private String compatibilityScore;
@@ -51,10 +51,10 @@ public class Matches implements Serializable{
 		super();
 	}
 
-	public Matches(long matchId, String compatibilityScore, String timestamp, boolean matchAcceptedByFirstUser,
+	public Matches(long id, String compatibilityScore, String timestamp, boolean matchAcceptedByFirstUser,
 			boolean matchAcceptedBySecondUser, UserProfile userProfile1, UserProfile userProfile2) {
 		super();
-		this.matchId = matchId;
+		this.id = id;
 		this.compatibilityScore = compatibilityScore;
 		this.timestamp = timestamp;
 		this.matchAcceptedByFirstUser = matchAcceptedByFirstUser;
@@ -74,12 +74,12 @@ public class Matches implements Serializable{
 		this.userProfile2 = userProfile2;
 	}
 
-	public long getMatchId() {
-		return matchId;
+	public long getId() {
+		return id;
 	}
 
-	public void setMatchId(long matchId) {
-		this.matchId = matchId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getCompatibilityScore() {

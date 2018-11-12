@@ -21,8 +21,8 @@ public class UserLogin implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USER_LOGIN_ID", unique = true, nullable = false)
-    private long userLoginId;
+    @Column(name = "ID", unique = true, nullable = false)
+    private long id;
 
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
@@ -38,65 +38,77 @@ public class UserLogin implements Serializable {
 
     @OneToOne(mappedBy = "userLogin", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
     private UserProfile userProfile;
-
-    public UserLogin(String email, String password, String facebookToken, String googleToken,
-    		UserProfile userProfile) {
-        super();
-        this.email = email;
-        this.password = password;
-        this.facebookToken = facebookToken;
-        this.googleToken = googleToken;
-        this.userProfile = userProfile;
+    
+    
+    public UserLogin() {
+    	super();
     }
+    
+	public UserLogin(long id, String email, String password, String facebookToken, String googleToken,
+			UserProfile userProfile) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.facebookToken = facebookToken;
+		this.googleToken = googleToken;
+		this.userProfile = userProfile;
+	}
 
-    public UserLogin(long userProfileId, String email, String password, String facebookToken, String googleToken,
-        UserProfile userProfile) {
-        super();
-        this.userLoginId = userProfileId;
-        this.email = email;
-        this.password = password;
-        this.facebookToken = facebookToken;
-        this.googleToken = googleToken;
-        this.userProfile = userProfile;
-    }
+	public UserLogin(String email, String password, String facebookToken, String googleToken, UserProfile userProfile) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.facebookToken = facebookToken;
+		this.googleToken = googleToken;
+		this.userProfile = userProfile;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public long getId() {
+		return id;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    public void setFacebookToken(String facebookToken) {
-        this.facebookToken = facebookToken;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setGoogleToken(String googleToken) {
-        this.googleToken = googleToken;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getFacebookToken() {
+		return facebookToken;
+	}
 
-    public String getFacebookToken() {
-        return facebookToken;
-    }
+	public void setFacebookToken(String facebookToken) {
+		this.facebookToken = facebookToken;
+	}
 
-    public String getGoogleToken() {
-        return googleToken;
-    }
+	public String getGoogleToken() {
+		return googleToken;
+	}
 
-    public UserProfile getUserProfile() {
-        return userProfile;
-    }
+	public void setGoogleToken(String googleToken) {
+		this.googleToken = googleToken;
+	}
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}    
 }

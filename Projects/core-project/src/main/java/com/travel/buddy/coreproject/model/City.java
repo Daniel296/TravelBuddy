@@ -26,11 +26,14 @@ public class City implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CITY_ID", unique = true, nullable = false)
-    private long cityId;
+    @Column(name = "ID", unique = true, nullable = false)
+    private long id;
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
+    
+    @Column(name = "CITY_CODE", unique = true, nullable = false)
+    private String cityCode;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "CITY_ID")
@@ -44,27 +47,29 @@ public class City implements Serializable {
     	super();
     }
 
-	public City(long cityId, String name, List<UserProfile> userProfiles, Country country) {
+	public City(long id, String name, String cityCode, List<UserProfile> userProfiles, Country country) {
 		super();
-		this.cityId = cityId;
+		this.id = id;
 		this.name = name;
+		this.cityCode = cityCode;
 		this.userProfiles = userProfiles;
 		this.country = country;
 	}
 
-	public City(String name, List<UserProfile> userProfiles, Country country) {
+	public City(String name, String cityCode, List<UserProfile> userProfiles, Country country) {
 		super();
 		this.name = name;
+		this.cityCode = cityCode;
 		this.userProfiles = userProfiles;
 		this.country = country;
 	}
 
-	public long getCityId() {
-		return cityId;
+	public long getId() {
+		return id;
 	}
 
-	public void setCityId(long cityId) {
-		this.cityId = cityId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -73,6 +78,14 @@ public class City implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCityCode() {
+		return cityCode;
+	}
+
+	public void setCityCode(String cityCode) {
+		this.cityCode = cityCode;
 	}
 
 	public List<UserProfile> getUserProfiles() {

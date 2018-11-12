@@ -26,8 +26,8 @@ public class TravelPlan implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "TRAVEL_PLAN_ID", unique = true, nullable = false)
-	private long travelPlanId;
+	@Column(name = "ID", unique = true, nullable = false)
+	private long id;
 	
 	@Column(name = "START_DATE", unique = false, nullable = false)
 	private String startDate;
@@ -47,10 +47,10 @@ public class TravelPlan implements Serializable{
 		super();
 	}
 
-	public TravelPlan(long travelPlanId, String startDate, String endDate, UserProfile userProfile,
-					  List<TravelPlanItem> travelPlanItems) {
+	public TravelPlan(long id, String startDate, String endDate, UserProfile userProfile,
+			List<TravelPlanItem> travelPlanItems) {
 		super();
-		this.travelPlanId = travelPlanId;
+		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.userProfile = userProfile;
@@ -65,12 +65,12 @@ public class TravelPlan implements Serializable{
 		this.travelPlanItems = travelPlanItems;
 	}
 
-	public long gettravelPlanId() {
-		return travelPlanId;
+	public long getId() {
+		return id;
 	}
 
-	public void settravelPlanId(long travelPlanId) {
-		this.travelPlanId = travelPlanId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getStartDate() {

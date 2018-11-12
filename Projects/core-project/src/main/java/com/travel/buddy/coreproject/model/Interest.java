@@ -19,8 +19,8 @@ public class Interest implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "INTEREST_ID", unique = true, nullable = false)
-    private long interestId;
+    @Column(name = "ID", unique = true, nullable = false)
+    private long id;
 
 
     //activities
@@ -65,7 +65,16 @@ public class Interest implements Serializable {
     boolean areWaterfalls;
     @Column(name = "ARE_CAVES")
     boolean areCaves;
+    
+    
+    public long getId() {
+		return id;
+	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+	
     public boolean isCanSwim() {
         return canSwim;
     }
@@ -161,4 +170,36 @@ public class Interest implements Serializable {
     public void setRaining(boolean raining) {
         isRaining = raining;
     }
+
+	public boolean isAreChurches() {
+		return areChurches;
+	}
+
+	public void setAreChurches(boolean areChurches) {
+		this.areChurches = areChurches;
+	}
+
+	public boolean isAreCastles() {
+		return areCastles;
+	}
+
+	public void setAreCastles(boolean areCastles) {
+		this.areCastles = areCastles;
+	}
+
+	public boolean isAreWaterfalls() {
+		return areWaterfalls;
+	}
+
+	public void setAreWaterfalls(boolean areWaterfalls) {
+		this.areWaterfalls = areWaterfalls;
+	}
+
+	public boolean isAreCaves() {
+		return areCaves;
+	}
+
+	public void setAreCaves(boolean areCaves) {
+		this.areCaves = areCaves;
+	}
 }

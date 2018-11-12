@@ -31,7 +31,7 @@ public class Matches implements Serializable{
 	private String compatibilityScore;
 	
 	@Column(name = "TIMESTAMP", unique = true, nullable = false)
-	private String timestamp;
+	private long timestamp;
 
 	@Column(name = "MATCH_ACCEPTED_BY_FIRST_USER", unique = false, nullable = false)
 	private boolean matchAcceptedByFirstUser;
@@ -51,7 +51,7 @@ public class Matches implements Serializable{
 		super();
 	}
 
-	public Matches(long id, String compatibilityScore, String timestamp, boolean matchAcceptedByFirstUser,
+	public Matches(long id, String compatibilityScore, long timestamp, boolean matchAcceptedByFirstUser,
 			boolean matchAcceptedBySecondUser, UserProfile userProfile1, UserProfile userProfile2) {
 		super();
 		this.id = id;
@@ -63,7 +63,7 @@ public class Matches implements Serializable{
 		this.userProfile2 = userProfile2;
 	}
 
-	public Matches(String compatibilityScore, String timestamp, boolean matchAcceptedByFirstUser,
+	public Matches(String compatibilityScore, long timestamp, boolean matchAcceptedByFirstUser,
 			boolean matchAcceptedBySecondUser, UserProfile userProfile1, UserProfile userProfile2) {
 		super();
 		this.compatibilityScore = compatibilityScore;
@@ -90,11 +90,11 @@ public class Matches implements Serializable{
 		this.compatibilityScore = compatibilityScore;
 	}
 
-	public String getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 

@@ -29,24 +29,24 @@ public class TravelPlanItem implements Serializable{
 	private long id;
 	
 	@Column(name  = "START_DATE", unique = false, nullable = false)
-	private String startDate;
+	private long startDate;
 	
 	@Column(name  = "END_DATE", unique = false, nullable = false)
-	private String endDate;
+	private long endDate;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL)
 	@JoinColumn(name = "ATTRACTION_ID")
 	private Attraction attraction;
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "TRAVEL_PLAN_ID", insertable = true, updatable = true)
+	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "ID", insertable = true, updatable = true)
 	private TravelPlan travelPlan;
 	
 	public TravelPlanItem() {
 		super();
 	}
 
-	public TravelPlanItem(long id, String startDate, String endDate, Attraction attraction, TravelPlan travelPlan) {
+	public TravelPlanItem(long id, long startDate, long endDate, Attraction attraction, TravelPlan travelPlan) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
@@ -55,7 +55,7 @@ public class TravelPlanItem implements Serializable{
 		this.travelPlan = travelPlan;
 	}
 
-	public TravelPlanItem(String startDate, String endDate, Attraction attraction, TravelPlan travelPlan) {
+	public TravelPlanItem(long startDate, long endDate, Attraction attraction, TravelPlan travelPlan) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -71,19 +71,19 @@ public class TravelPlanItem implements Serializable{
 		this.id = id;
 	}
 
-	public String getStartDate() {
+	public long getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(long startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public long getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(long endDate) {
 		this.endDate = endDate;
 	}
 

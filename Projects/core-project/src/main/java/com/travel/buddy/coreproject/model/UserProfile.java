@@ -49,11 +49,11 @@ public class UserProfile implements Serializable {
     private UserLogin userLogin;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "CITY_ID", referencedColumnName = "CITY_ID", insertable=true, updatable=true)
+	@JoinColumn(name = "CITY_ID", referencedColumnName = "ID", insertable=true, updatable=true)
     private City city;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "USER_PROFILE_ID")
+    @JoinColumn(name = "ID")
     private List<TravelPlan> activities;
     
     @OneToOne(fetch = FetchType.LAZY, optional = false)

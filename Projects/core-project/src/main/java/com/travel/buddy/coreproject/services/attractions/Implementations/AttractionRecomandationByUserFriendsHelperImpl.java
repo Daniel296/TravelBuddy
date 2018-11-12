@@ -26,9 +26,9 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
         allMatches = matchesRepository.findAll(); //iau toate match-urile user-ului
 
         for (Matches match : allMatches){
-            if(match.getUserProfile1().getUserProfileId() == userProfile.getUserProfileId())
+            if(match.getUserProfile1().getId() == userProfile.getId())
                 matchedUsers.add(match.getUserProfile2()); //retin userii cu care a fost match-uit
-            if(match.getUserProfile2().getUserProfileId() == userProfile.getUserProfileId())
+            if(match.getUserProfile2().getId() == userProfile.getId())
                 matchedUsers.add(match.getUserProfile1());
         }
 

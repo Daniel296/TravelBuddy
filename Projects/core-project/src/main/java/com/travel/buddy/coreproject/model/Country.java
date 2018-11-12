@@ -33,7 +33,7 @@ public class Country implements Serializable {
     private String countryCode;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "CITY_ID")
+	@JoinColumn(name = "ID")
     private List<City> cities;
 
     public Country() {

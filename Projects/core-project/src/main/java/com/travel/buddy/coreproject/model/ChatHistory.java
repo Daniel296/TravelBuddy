@@ -33,7 +33,7 @@ public class ChatHistory implements Serializable{
 	private String message;
 	
 	@Column(name = "TIMESTAMP", unique = false, nullable = false)
-	private String timestamp;
+	private long timestamp;
 	
 	@Column(name = "MESSAGE_TYPE", unique = false, nullable = false)
 	private String messageType;
@@ -42,7 +42,7 @@ public class ChatHistory implements Serializable{
 		super();
 	}
 
-	public ChatHistory(long id, long firstUserId, long secondUserId, String message, String timestamp,
+	public ChatHistory(long id, long firstUserId, long secondUserId, String message, long timestamp,
 			String messageType) {
 		super();
 		this.id = id;
@@ -53,7 +53,7 @@ public class ChatHistory implements Serializable{
 		this.messageType = messageType;
 	}
 
-	public ChatHistory(long firstUserId, long secondUserId, String message, String timestamp, String messageType) {
+	public ChatHistory(long firstUserId, long secondUserId, String message, long timestamp, String messageType) {
 		super();
 		this.firstUserId = firstUserId;
 		this.secondUserId = secondUserId;
@@ -94,11 +94,11 @@ public class ChatHistory implements Serializable{
 		this.message = message;
 	}
 
-	public String getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
 	}
 

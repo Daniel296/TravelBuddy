@@ -30,24 +30,24 @@ public class TravelPlan implements Serializable{
 	private long id;
 	
 	@Column(name = "START_DATE", unique = false, nullable = false)
-	private String startDate;
+	private long startDate;
 	
 	@Column(name = "END_DATE", unique = false, nullable = false)
-	private String endDate;
+	private long endDate;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_PROFILE_ID", referencedColumnName = "USER_PROFILE_ID", insertable=true, updatable=true)
+	@JoinColumn(name = "USER_PROFILE_ID", referencedColumnName = "ID", insertable=true, updatable=true)
 	private UserProfile userProfile;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "TRAVEL_PLAN_ITEM_ID")
+	@JoinColumn(name = "ID")
 	private List<TravelPlanItem> travelPlanItems;
 	
 	public TravelPlan() {
 		super();
 	}
 
-	public TravelPlan(long id, String startDate, String endDate, UserProfile userProfile,
+	public TravelPlan(long id, long startDate, long endDate, UserProfile userProfile,
 			List<TravelPlanItem> travelPlanItems) {
 		super();
 		this.id = id;
@@ -57,7 +57,7 @@ public class TravelPlan implements Serializable{
 		this.travelPlanItems = travelPlanItems;
 	}
 
-	public TravelPlan(String startDate, String endDate, UserProfile userProfile, List<TravelPlanItem> travelPlanItems) {
+	public TravelPlan(long startDate, long endDate, UserProfile userProfile, List<TravelPlanItem> travelPlanItems) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -73,19 +73,19 @@ public class TravelPlan implements Serializable{
 		this.id = id;
 	}
 
-	public String getStartDate() {
+	public long getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(long startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public long getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(long endDate) {
 		this.endDate = endDate;
 	}
 

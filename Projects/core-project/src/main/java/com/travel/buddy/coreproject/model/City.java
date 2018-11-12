@@ -36,11 +36,11 @@ public class City implements Serializable {
     private String cityCode;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "CITY_ID")
+	@JoinColumn(name = "ID")
     private List<UserProfile> userProfiles;
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "COUNTRY_ID", insertable=true, updatable=true)
+	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "ID", insertable=true, updatable=true)
     private Country country;
 
     public City() {

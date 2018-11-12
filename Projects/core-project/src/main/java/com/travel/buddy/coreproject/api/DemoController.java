@@ -31,7 +31,7 @@ public class DemoController {
 
 	@RequestMapping(value = "/city/{id}", method = RequestMethod.GET)
 	public City getCityById(@PathVariable Long id) {
-		return cityRepository.findByCityId(id);
+		return cityRepository.findById(id);
 	}
 
 	@RequestMapping(value = "/city", consumes = "application/json", method = RequestMethod.POST)

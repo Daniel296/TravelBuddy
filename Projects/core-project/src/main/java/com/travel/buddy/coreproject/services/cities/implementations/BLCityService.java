@@ -23,7 +23,7 @@ public class BLCityService implements BLICityService{
 
 	@Override
 	public City getCityById(Long id) {
-		return cityRepository.findById(id);
+		return cityRepository.findByCityId(id);
 	}
 
 }

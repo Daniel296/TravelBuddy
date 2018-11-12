@@ -1,6 +1,7 @@
 package com.travel.buddy.coreproject.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import com.travel.buddy.coreproject.repository.CityRepository;
 @RestController
 @RequestMapping("/demo-endpoint")
 public class DemoController {
-
+/*
 	@Autowired
 	public CityRepository cityRepository;
 
@@ -30,7 +31,7 @@ public class DemoController {
 	}
 
 	@RequestMapping(value = "/city/{id}", method = RequestMethod.GET)
-	public City getCityById(@PathVariable Long id) {
+	public Optional<City> getCityById(@PathVariable Long id) {
 		return cityRepository.findById(id);
 	}
 
@@ -46,5 +47,5 @@ public class DemoController {
 	public void settravelplanRepository(CityRepository cityRepository) {
 		this.cityRepository = cityRepository;
 	}
-
+*/
 }

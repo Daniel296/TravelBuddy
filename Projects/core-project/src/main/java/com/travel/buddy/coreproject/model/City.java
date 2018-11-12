@@ -29,8 +29,8 @@ public class City implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
-    private long id;
+    @Column(name = "CITY_ID", unique = true, nullable = false)
+    private long cityId;
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
@@ -39,12 +39,12 @@ public class City implements Serializable {
     private String cityCode;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "CITY_ID")
     @JsonManagedReference
     private List<UserProfile> userProfiles;
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "ID", insertable=true, updatable=true)
+	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "COUNTRY_ID", insertable=true, updatable=true)
     @JsonBackReference
     private Country country;
 
@@ -54,7 +54,7 @@ public class City implements Serializable {
 
 	public City(long id, String name, String cityCode, List<UserProfile> userProfiles, Country country) {
 		super();
-		this.id = id;
+		this.cityId = id;
 		this.name = name;
 		this.cityCode = cityCode;
 		this.userProfiles = userProfiles;
@@ -70,11 +70,11 @@ public class City implements Serializable {
 	}
 
 	public long getId() {
-		return id;
+		return cityId;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.cityId = id;
 	}
 
 	public String getName() {

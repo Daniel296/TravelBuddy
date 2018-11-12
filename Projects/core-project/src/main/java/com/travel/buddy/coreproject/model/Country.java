@@ -25,8 +25,8 @@ public class Country implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
-    private long id;
+    @Column(name = "COUNTRY_ID", unique = true, nullable = false)
+    private long countryId;
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
@@ -35,7 +35,7 @@ public class Country implements Serializable {
     private String countryCode;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "COUNTRY_ID")
     @JsonManagedReference
     private List<City> cities;
 
@@ -45,7 +45,7 @@ public class Country implements Serializable {
 
 	public Country(long id, String name, String countryCode, List<City> cities) {
 		super();
-		this.id = id;
+		this.countryId = id;
 		this.name = name;
 		this.countryCode = countryCode;
 		this.cities = cities;
@@ -59,11 +59,11 @@ public class Country implements Serializable {
 	}
 
 	public long getId() {
-		return id;
+		return countryId;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.countryId = id;
 	}
 
 	public String getName() {

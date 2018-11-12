@@ -23,6 +23,6 @@ public class BLCountryService implements BLICountryService{
 
 	@Override
 	public Country getCountryById(Long id) {
-		return countryRepository.findById(id);
+		return countryRepository.findByCountryId(id);
 	}
 }

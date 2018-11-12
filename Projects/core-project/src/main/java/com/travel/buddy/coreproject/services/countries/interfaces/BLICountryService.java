@@ -9,4 +9,6 @@ public interface BLICountryService {
 	public List<Country> getAllCountries();
 	
 	public Country getCountryById(Long id);
+	
+	public void deleteCountry(Long id);
 }

@@ -27,4 +27,9 @@ public class CountryController {
 	public Country getCountryById(@RequestParam("id") Long id) {
 		return countryService.getCountryById(id);
 	}
+	
+	@PostMapping(value = "/delete")
+	public void deleteCountryById(@RequestParam("id") Long id) {
+		countryService.deleteCountry(id);
+	}
 }

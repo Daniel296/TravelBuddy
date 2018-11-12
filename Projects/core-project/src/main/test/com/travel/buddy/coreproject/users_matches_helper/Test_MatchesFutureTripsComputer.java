@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Test_MatchesFutureTripsComputer {
-
+/*
     @Test
     public void Test_CalculatingScore() {
         MatchScoreComputer matchScoreComputer = new MatchesFutureTripsComputerImpl();
@@ -26,8 +26,8 @@ public class Test_MatchesFutureTripsComputer {
         currentUser.setTravelPlans(getTravelPlansForCurrentUser(currentUser));
 
 
-    }
-
+    }*/
+/*
     private List<TravelPlan> getTravelPlansForCurrentUser(UserProfile currentUser) {
         Attraction attraction1 = new Attraction(0, null, 48.64703, -122.26324, null, null);
         Attraction attraction2 = new Attraction(0, null, 48.6721, -122.265, null, null);
@@ -43,4 +43,5 @@ public class Test_MatchesFutureTripsComputer {
 
         return null;
     }
+    */
 }

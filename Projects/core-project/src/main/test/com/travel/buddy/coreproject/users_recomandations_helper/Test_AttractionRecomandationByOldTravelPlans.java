@@ -5,14 +5,14 @@ import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.model.Attraction;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.services.attractions.Implementations.AttractionRecomandationByOldActivitiesHelperImpl;
+import com.travel.buddy.coreproject.services.attractions.Implementations.AttractionRecomandationByOldTravelPlansHelperImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test_AttractionRecomandationByOldActivities {
+public class Test_AttractionRecomandationByOldTravelPlans {
     @Test
     public void TestAttractionRecomandation_GivenUserProfileAndAttractions_ExpectedToReturn_1_Attraction(){
         Faker faker = new Faker();
@@ -73,18 +73,18 @@ public class Test_AttractionRecomandationByOldActivities {
         TravelPlan userTravelPlan2 = new TravelPlan();
         //userTravelPlan2.setAttractions(attractions2);
 
-        //create old activities list
-        List<TravelPlan> allUserActivities = new ArrayList<>();
-        allUserActivities.add(userTravelPlan1);
-        allUserActivities.add(userTravelPlan2);
+        //create old travelPlans list
+        List<TravelPlan> allUserTravelPlans = new ArrayList<>();
+        allUserTravelPlans.add(userTravelPlan1);
+        allUserTravelPlans.add(userTravelPlan2);
 
         //our user
         String fName = faker.name().firstName();
         UserProfile userProfile = new UserProfile(fName, null, null, null, null, null, null, null, null);
         // userProfile.setInterest(userInterest);
 
-        AttractionRecomandationByOldActivitiesHelperImpl helper = new AttractionRecomandationByOldActivitiesHelperImpl(userProfile);
-        helper.setAllUserActivities(allUserActivities);
+        AttractionRecomandationByOldTravelPlansHelperImpl helper = new AttractionRecomandationByOldTravelPlansHelperImpl(userProfile);
+        helper.setAllUserTravelPlans(allUserTravelPlans);
         List<Attraction> recomandedAttractions = helper.getAttractions();
 
         Assert.assertEquals(4, recomandedAttractions.size());

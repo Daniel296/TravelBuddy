@@ -23,7 +23,7 @@ public class Interest implements Serializable {
     private long id;
 
 
-    //activities
+    //travelPlans
     @Column(name = "CAN_SWIM")
     private boolean canSwim;
     @Column(name = "CAN_CYCLE")

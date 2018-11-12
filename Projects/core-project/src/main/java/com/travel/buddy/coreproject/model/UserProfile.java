@@ -54,7 +54,7 @@ public class UserProfile implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ID")
-    private List<TravelPlan> activities;
+    private List<TravelPlan> travelPlans;
     
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "INTEREST_ID", nullable = false)
@@ -66,7 +66,7 @@ public class UserProfile implements Serializable {
     }
 
 	public UserProfile(long id, String firstName, String lastName, String phoneNumber, String gender,
-			String genderInterest, UserLogin userLogin, City city, List<TravelPlan> activities, Interest interest) {
+			String genderInterest, UserLogin userLogin, City city, List<TravelPlan> travelPlans, Interest interest) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -76,12 +76,12 @@ public class UserProfile implements Serializable {
 		this.genderInterest = genderInterest;
 		this.userLogin = userLogin;
 		this.city = city;
-		this.activities = activities;
+		this.travelPlans = travelPlans;
 		this.interest = interest;
 	}
 
 	public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
-			UserLogin userLogin, City city, List<TravelPlan> activities, Interest interest) {
+			UserLogin userLogin, City city, List<TravelPlan> travelPlans, Interest interest) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -90,7 +90,7 @@ public class UserProfile implements Serializable {
 		this.genderInterest = genderInterest;
 		this.userLogin = userLogin;
 		this.city = city;
-		this.activities = activities;
+		this.travelPlans = travelPlans;
 		this.interest = interest;
 	}
 
@@ -158,12 +158,12 @@ public class UserProfile implements Serializable {
 		this.city = city;
 	}
 
-	public List<TravelPlan> getActivities() {
-		return activities;
+	public List<TravelPlan> getTravelPlans() {
+		return travelPlans;
 	}
 
-	public void setActivities(List<TravelPlan> activities) {
-		this.activities = activities;
+	public void setTravelPlans(List<TravelPlan> travelPlans) {
+		this.travelPlans = travelPlans;
 	}
 
 	public Interest getInterest() {

@@ -16,7 +16,7 @@ public class AttractionRecomandationUnifier implements AttractionRecomandationHe
         userProfile = _userProfile;
         attractions = new ArrayList<>();
         recomandationHelperList = new ArrayList<>();
-        recomandationHelperList.add(new AttractionRecomandationByOldActivitiesHelperImpl(userProfile));
+        recomandationHelperList.add(new AttractionRecomandationByOldTravelPlansHelperImpl(userProfile));
         recomandationHelperList.add(new AttractionRecomandationByUserFriendsHelperImpl(userProfile));
         recomandationHelperList.add(new AttractionRecomandationByUserPreferencesHelperImpl(userProfile));
     }

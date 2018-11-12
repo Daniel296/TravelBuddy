@@ -48,7 +48,7 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
         }
 
         for(UserProfile profile : matchedUsers)
-            travelPlan.addAll(profile.getActivities()); // get all the activities from the users("friends")
+            travelPlan.addAll(profile.getTravelPlans()); // get all the travelPlans from the users("friends")
 
         for(TravelPlan t : travelPlan)
             travelPlanItems.addAll(t.getTravelPlanItems());

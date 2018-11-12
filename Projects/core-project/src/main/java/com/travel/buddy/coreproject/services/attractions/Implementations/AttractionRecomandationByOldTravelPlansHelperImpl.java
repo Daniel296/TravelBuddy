@@ -12,37 +12,37 @@ import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 
-public class AttractionRecomandationByOldActivitiesHelperImpl implements AttractionRecomandationHelper {
+public class AttractionRecomandationByOldTravelPlansHelperImpl implements AttractionRecomandationHelper {
 
     @Autowired
     public AttractionRepository attractionRepository;
 
-    private List<TravelPlan> allUserActivities;
+    private List<TravelPlan> allUserTravelPlans;
     UserProfile userProfile;
 
-    public AttractionRecomandationByOldActivitiesHelperImpl(UserProfile userProfile){
+    public AttractionRecomandationByOldTravelPlansHelperImpl(UserProfile userProfile){
         this.userProfile = userProfile;
     }
 
     public List<TravelPlanItem> getTravelPlanItems(){
 
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        //List<TravelPlan> userActivities = new ArrayList<>();
+        //List<TravelPlan> userTravelPlans = new ArrayList<>();
 
-        //userActivities.addAll(userProfile.getActivities()); // activitatile userului curent
+        //userTravelPlans.addAll(userProfile.getTravelPlans()); // activitatile userului curent
 
-        for(TravelPlan a : allUserActivities)
+        for(TravelPlan a : allUserTravelPlans)
             travelPlanItems.addAll(a.getTravelPlanItems());
 
         return travelPlanItems;
     }
 
-    public List<TravelPlan> getAllUserActivities() {
-        return allUserActivities;
+    public List<TravelPlan> getAllUserTravelPlans() {
+        return allUserTravelPlans;
     }
 
-    public void setAllUserActivities(List<TravelPlan> allUserActivities) {
-        this.allUserActivities = allUserActivities;
+    public void setAllUserTravelPlans(List<TravelPlan> allUserTravelPlans) {
+        this.allUserTravelPlans = allUserTravelPlans;
     }
 
 	@Override

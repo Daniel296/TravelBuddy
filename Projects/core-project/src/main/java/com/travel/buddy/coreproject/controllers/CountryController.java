@@ -3,10 +3,7 @@ package com.travel.buddy.coreproject.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.travel.buddy.coreproject.model.Country;
 import com.travel.buddy.coreproject.services.countries.interfaces.BLICountryService;
@@ -18,18 +15,18 @@ public class CountryController {
 	@Autowired
 	private BLICountryService countryService;
 	
-	@PostMapping(value = "/findAll")
+	@GetMapping(value = "/findAll")
 	public List<Country> getAllCountries(){
 		return countryService.getAllCountries();
 	}
 	
-	@PostMapping(value = "/findById")
-	public Country getCountryById(@RequestParam("id") Long id) {
+	@GetMapping(value = "/findById/{id}")
+	public Country getCountryById(@PathVariable("id") Long id) {
 		return countryService.getCountryById(id);
 	}
 	
-	@PostMapping(value = "/delete")
-	public void deleteCountryById(@RequestParam("id") Long id) {
+	@DeleteMapping(value = "/delete/{id}")
+	public void deleteCountryById(@PathVariable("id") Long id) {
 		countryService.deleteCountry(id);
 	}
 }

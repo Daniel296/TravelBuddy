@@ -1,14 +1,9 @@
 package com.travel.buddy.coreproject.users_matches_helper;
 
-import com.travel.buddy.coreproject.model.Attraction;
-import com.travel.buddy.coreproject.services.matches.Implementations.DistanceComputerBetweenAttractions;
 import com.travel.buddy.coreproject.services.matches.Implementations.DistanceComputerBetweenPoints;
 import com.travel.buddy.coreproject.services.matches.Implementations.Point;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Test_CalculatingDistance {
 

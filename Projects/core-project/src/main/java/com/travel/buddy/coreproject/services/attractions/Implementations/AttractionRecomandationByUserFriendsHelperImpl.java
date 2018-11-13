@@ -2,12 +2,11 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 
 import java.util.*;
 
+import com.travel.buddy.coreproject.DTOs.Attraction;
 import com.travel.buddy.coreproject.model.*;
 import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
-
-import javax.validation.constraints.Null;
 
 public class AttractionRecomandationByUserFriendsHelperImpl implements AttractionRecomandationHelper {
 

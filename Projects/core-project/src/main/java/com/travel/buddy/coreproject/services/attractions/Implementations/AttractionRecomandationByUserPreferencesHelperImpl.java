@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
@@ -31,7 +31,8 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
         //allAttractions = attractionRepository.findAll();
         Interest userInterests = userProfile.getInterest();
         for(TravelPlanItem a : allTravelPlanItems){
-            Interest attractionInterests =  a.getAttraction().getInterest();
+            //Interest attractionInterests =  a.getAttraction().getInterest();
+            Interest attractionInterests =  null;
             double score = scoreComputer.getScore(attractionInterests, userInterests);
             if(score>0){ // this shouldn't be hardcoded
                 travelPlanItems.add(a);

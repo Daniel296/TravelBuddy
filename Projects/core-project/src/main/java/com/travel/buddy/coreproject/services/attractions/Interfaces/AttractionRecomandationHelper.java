@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 
 @Service

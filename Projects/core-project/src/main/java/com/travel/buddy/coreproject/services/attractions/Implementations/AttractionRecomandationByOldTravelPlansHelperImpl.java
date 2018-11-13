@@ -6,7 +6,7 @@ import java.util.List;
 import com.travel.buddy.coreproject.model.TravelPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.AttractionRepository;

@@ -1,4 +1,7 @@
-package com.travel.buddy.coreproject.model;
+package com.travel.buddy.coreproject.DTOs;
+
+import com.travel.buddy.coreproject.model.City;
+import com.travel.buddy.coreproject.model.Interest;
 
 import java.io.Serializable;
 
@@ -13,47 +16,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "ATTRACTION")
-public class Attraction implements Serializable {
+public class Attraction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5067486395552229437L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", unique = true, nullable = false)
 	private long id;
 
-	@Column(name = "ATTRACTION_NAME", unique = true, nullable = false)
 	private String attractionName;
 
-	@Column(name = "COORDINATE_LATITUDE", unique = false, nullable = false)
 	private double coordinateLatitude;
 
-	@Column(name = "COORDINATE_LONGITUDE", unique = false, nullable = false)
 	private double coordinateLongitude;
-	
-	@Column(name = "DESCRIPTION", unique = false, nullable = true)
+
 	private String description;
-	
-	@Column(name = "URL", unique = true, nullable = true)
+
 	private String url;
-	
-	@Column(name = "CODE", unique = true, nullable = false)
+
 	private String code;
-	
-	@Column(name = "PHOTO_URL", unique = true, nullable = true)
+
 	private String photoUrl;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL)
-	@JoinColumn(name = "CITY_ID")
 	private City city;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "INTEREST_ID", nullable = false)
 	private Interest interest;
 
 	public Attraction() {

@@ -33,10 +33,9 @@ public class TravelPlanItem implements Serializable{
 	
 	@Column(name  = "END_DATE", unique = false, nullable = false)
 	private long endDate;
-	
-	@OneToOne(fetch = FetchType.LAZY, cascade =  CascadeType.ALL)
-	@JoinColumn(name = "ATTRACTION_ID")
-	private Attraction attraction;
+
+	@Column(name  = "ATTRACTION_CODE", unique = false, nullable = false)
+	private String attractionCode;
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "ID", insertable = true, updatable = true)
@@ -46,20 +45,20 @@ public class TravelPlanItem implements Serializable{
 		super();
 	}
 
-	public TravelPlanItem(long id, long startDate, long endDate, Attraction attraction, TravelPlan travelPlan) {
+	public TravelPlanItem(long id, long startDate, long endDate, String attractionCode, TravelPlan travelPlan) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.attraction = attraction;
+		this.attractionCode = attractionCode;
 		this.travelPlan = travelPlan;
 	}
 
-	public TravelPlanItem(long startDate, long endDate, Attraction attraction, TravelPlan travelPlan) {
+	public TravelPlanItem(long startDate, long endDate, String attractionCode, TravelPlan travelPlan) {
 		super();
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.attraction = attraction;
+		this.attractionCode = attractionCode;
 		this.travelPlan = travelPlan;
 	}
 
@@ -87,12 +86,12 @@ public class TravelPlanItem implements Serializable{
 		this.endDate = endDate;
 	}
 
-	public Attraction getAttraction() {
-		return attraction;
+	public String getAttraction() {
+		return attractionCode;
 	}
 
-	public void setAttraction(Attraction attraction) {
-		this.attraction = attraction;
+	public void setAttraction(String attractionCode) {
+		this.attractionCode = attractionCode;
 	}
 
 	public TravelPlan getTravelPlan() {

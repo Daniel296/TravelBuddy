@@ -1,6 +1,6 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
 import com.travel.buddy.coreproject.model.UserProfile;
 
 import java.util.List;

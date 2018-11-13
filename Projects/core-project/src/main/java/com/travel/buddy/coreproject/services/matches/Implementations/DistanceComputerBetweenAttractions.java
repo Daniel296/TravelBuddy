@@ -1,6 +1,6 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
 
 import java.util.ArrayList;
 import java.util.Arrays;

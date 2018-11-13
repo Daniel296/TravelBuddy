@@ -5,9 +5,10 @@ import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
+import org.springframework.stereotype.Service;
 
-@Repository
-public interface AttractionRepository extends JpaRepository<Attraction, Serializable> {
+@Service
+public interface AttractionRepository {
 
 }

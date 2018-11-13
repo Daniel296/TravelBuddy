@@ -1,6 +1,6 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
-import com.travel.buddy.coreproject.model.Attraction;
+import com.travel.buddy.coreproject.DTOs.Attraction;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
@@ -24,7 +24,8 @@ public class AttractionRecomandationUnifier implements AttractionRecomandationHe
     private void unify(){
         for(AttractionRecomandationHelper helper : recomandationHelperList){
             for(TravelPlanItem travelPlanItem: helper.getTravelPlanItems()) {
-            	attractions.add(travelPlanItem.getAttraction());
+            	//attractions.add(travelPlanItem.getAttraction());
+            	attractions.add(null);
             }
         }
         //merge attractions

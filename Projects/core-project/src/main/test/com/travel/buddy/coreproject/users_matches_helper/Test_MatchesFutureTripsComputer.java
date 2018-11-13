@@ -1,17 +1,5 @@
 package com.travel.buddy.coreproject.users_matches_helper;
 
-import com.travel.buddy.coreproject.model.TravelPlan;
-import com.travel.buddy.coreproject.model.Attraction;
-import com.travel.buddy.coreproject.model.TravelPlanItem;
-import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.services.matches.Implementations.MatchesFutureTripsComputerImpl;
-import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Test_MatchesFutureTripsComputer {
 /*
     @Test

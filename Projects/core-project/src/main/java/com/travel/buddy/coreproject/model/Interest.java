@@ -2,15 +2,22 @@ package com.travel.buddy.coreproject.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "INTEREST")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Interest implements Serializable {
     /**
      *
@@ -21,7 +28,10 @@ public class Interest implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "INTEREST_ID", unique = true, nullable = false)
     private long id;
-
+    
+    @OneToOne(mappedBy = "interest", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
+    @JsonBackReference
+    private UserProfile userProfile;
 
     @Column(name = "ACCOUNTING")
     private boolean accounting;
@@ -292,9 +302,141 @@ public class Interest implements Serializable {
 
     @Column(name = "ZOO")
     private boolean zoo;
+ 
+    
+    public Interest() {
+    	super();
+    }
+    
+    
+    
+    public Interest(long id, UserProfile userProfile, boolean accounting, boolean airport, boolean amusement_park,
+			boolean aquarium, boolean art_gallery, boolean atm, boolean bakery, boolean bank, boolean bar,
+			boolean beauty_salon, boolean bicycle_store, boolean book_store, boolean bowling_alley, boolean bus_station,
+			boolean cafe, boolean campground, boolean car_dealer, boolean car_rental, boolean car_repair,
+			boolean car_wash, boolean casino, boolean cemetery, boolean church, boolean city_hall,
+			boolean clothing_store, boolean convenience_store, boolean courthouse, boolean dentist,
+			boolean department_store, boolean doctor, boolean electrician, boolean electronics_store, boolean embassy,
+			boolean fire_station, boolean florist, boolean funeral_home, boolean furniture_store, boolean gas_station,
+			boolean gym, boolean hair_care, boolean hardware_store, boolean hindu_temple, boolean home_goods_store,
+			boolean hospital, boolean insurance_agency, boolean jewelry_store, boolean laundry, boolean lawyer,
+			boolean library, boolean liquor_store, boolean local_government_office, boolean locksmith, boolean lodging,
+			boolean meal_delivery, boolean meal_takeaway, boolean mosque, boolean movie_rental, boolean movie_theater,
+			boolean moving_company, boolean museum, boolean night_club, boolean painter, boolean park, boolean parking,
+			boolean pet_store, boolean pharmacy, boolean physiotherapist, boolean plumber, boolean police,
+			boolean post_office, boolean real_estate_agency, boolean restaurant, boolean roofing_contractor,
+			boolean rv_park, boolean school, boolean shoe_store, boolean shopping_mall, boolean spa, boolean stadium,
+			boolean storage, boolean store, boolean subway_station, boolean supermarket, boolean synagogue,
+			boolean taxi_stand, boolean train_station, boolean transit_station, boolean travel_agency,
+			boolean veterinary_care, boolean zoo) {
+		super();
+		this.id = id;
+		this.userProfile = userProfile;
+		this.accounting = accounting;
+		this.airport = airport;
+		this.amusement_park = amusement_park;
+		this.aquarium = aquarium;
+		this.art_gallery = art_gallery;
+		this.atm = atm;
+		this.bakery = bakery;
+		this.bank = bank;
+		this.bar = bar;
+		this.beauty_salon = beauty_salon;
+		this.bicycle_store = bicycle_store;
+		this.book_store = book_store;
+		this.bowling_alley = bowling_alley;
+		this.bus_station = bus_station;
+		this.cafe = cafe;
+		this.campground = campground;
+		this.car_dealer = car_dealer;
+		this.car_rental = car_rental;
+		this.car_repair = car_repair;
+		this.car_wash = car_wash;
+		this.casino = casino;
+		this.cemetery = cemetery;
+		this.church = church;
+		this.city_hall = city_hall;
+		this.clothing_store = clothing_store;
+		this.convenience_store = convenience_store;
+		this.courthouse = courthouse;
+		this.dentist = dentist;
+		this.department_store = department_store;
+		this.doctor = doctor;
+		this.electrician = electrician;
+		this.electronics_store = electronics_store;
+		this.embassy = embassy;
+		this.fire_station = fire_station;
+		this.florist = florist;
+		this.funeral_home = funeral_home;
+		this.furniture_store = furniture_store;
+		this.gas_station = gas_station;
+		this.gym = gym;
+		this.hair_care = hair_care;
+		this.hardware_store = hardware_store;
+		this.hindu_temple = hindu_temple;
+		this.home_goods_store = home_goods_store;
+		this.hospital = hospital;
+		this.insurance_agency = insurance_agency;
+		this.jewelry_store = jewelry_store;
+		this.laundry = laundry;
+		this.lawyer = lawyer;
+		this.library = library;
+		this.liquor_store = liquor_store;
+		this.local_government_office = local_government_office;
+		this.locksmith = locksmith;
+		this.lodging = lodging;
+		this.meal_delivery = meal_delivery;
+		this.meal_takeaway = meal_takeaway;
+		this.mosque = mosque;
+		this.movie_rental = movie_rental;
+		this.movie_theater = movie_theater;
+		this.moving_company = moving_company;
+		this.museum = museum;
+		this.night_club = night_club;
+		this.painter = painter;
+		this.park = park;
+		this.parking = parking;
+		this.pet_store = pet_store;
+		this.pharmacy = pharmacy;
+		this.physiotherapist = physiotherapist;
+		this.plumber = plumber;
+		this.police = police;
+		this.post_office = post_office;
+		this.real_estate_agency = real_estate_agency;
+		this.restaurant = restaurant;
+		this.roofing_contractor = roofing_contractor;
+		this.rv_park = rv_park;
+		this.school = school;
+		this.shoe_store = shoe_store;
+		this.shopping_mall = shopping_mall;
+		this.spa = spa;
+		this.stadium = stadium;
+		this.storage = storage;
+		this.store = store;
+		this.subway_station = subway_station;
+		this.supermarket = supermarket;
+		this.synagogue = synagogue;
+		this.taxi_stand = taxi_stand;
+		this.train_station = train_station;
+		this.transit_station = transit_station;
+		this.travel_agency = travel_agency;
+		this.veterinary_care = veterinary_care;
+		this.zoo = zoo;
+	}
 
 
-    public long getId() {
+
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
+
+
+
+	public long getId() {
 		return id;
 	}
 

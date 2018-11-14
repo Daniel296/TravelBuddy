@@ -16,11 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "CITY")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class City implements Serializable {
 
     /**
@@ -41,12 +42,12 @@ public class City implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "CITY_ID")
-//    @JsonManagedReference
+    @JsonBackReference
     private List<UserProfile> userProfiles;
     
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "COUNTRY_ID", referencedColumnName = "COUNTRY_ID", insertable=true, updatable=true)
-    @JsonBackReference
+    @JsonManagedReference
     private Country country;
 
     public City() {
@@ -94,7 +95,7 @@ public class City implements Serializable {
 		this.cityCode = cityCode;
 	}
 	
-	@JsonIgnore
+//	@JsonIgnore
 	public List<UserProfile> getUserProfiles() {
 		return userProfiles;
 	}

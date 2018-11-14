@@ -15,8 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "TRAVEL_PLAN")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class TravelPlan implements Serializable{
 
 	/**
@@ -35,12 +40,14 @@ public class TravelPlan implements Serializable{
 	@Column(name = "END_DATE", unique = false, nullable = false)
 	private long endDate;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_PROFILE_ID", referencedColumnName = "USER_PROFILE_ID", insertable=true, updatable=true)
+	@JsonBackReference
 	private UserProfile userProfile;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "TRAVEL_PLAN_ID")
+	@JsonManagedReference
 	private List<TravelPlanItem> travelPlanItems;
 	
 	public TravelPlan() {

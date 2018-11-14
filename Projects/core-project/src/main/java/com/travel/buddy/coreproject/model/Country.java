@@ -13,10 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "COUNTRY")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Country implements Serializable {
     /**
      *
@@ -36,7 +38,7 @@ public class Country implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "COUNTRY_ID")
-    @JsonManagedReference
+    @JsonBackReference
     private List<City> cities;
 
     public Country() {

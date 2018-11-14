@@ -11,11 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "TRAVEL_PLAN_ITEM")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class TravelPlanItem implements Serializable{
 
 	/**
@@ -37,8 +40,9 @@ public class TravelPlanItem implements Serializable{
 	@Column(name  = "ATTRACTION_CODE", unique = false, nullable = false)
 	private String attractionCode;
 	
-	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "TRAVEL_PLAN_ID", insertable = true, updatable = true)
+	@JsonBackReference
 	private TravelPlan travelPlan;
 	
 	public TravelPlanItem() {

@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -40,7 +41,7 @@ public class City implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "CITY_ID")
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<UserProfile> userProfiles;
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
@@ -93,7 +94,7 @@ public class City implements Serializable {
 		this.cityCode = cityCode;
 	}
 	
-//	@JsonIgnore
+	@JsonIgnore
 	public List<UserProfile> getUserProfiles() {
 		return userProfiles;
 	}

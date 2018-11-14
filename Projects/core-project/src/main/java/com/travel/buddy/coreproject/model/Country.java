@@ -26,7 +26,7 @@ public class Country implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COUNTRY_ID", unique = true, nullable = false)
-    private long countryId;
+    private long id;
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
@@ -45,7 +45,7 @@ public class Country implements Serializable {
 
 	public Country(long id, String name, String countryCode, List<City> cities) {
 		super();
-		this.countryId = id;
+		this.id = id;
 		this.name = name;
 		this.countryCode = countryCode;
 		this.cities = cities;
@@ -59,11 +59,11 @@ public class Country implements Serializable {
 	}
 
 	public long getId() {
-		return countryId;
+		return id;
 	}
 
 	public void setId(long id) {
-		this.countryId = id;
+		this.id = id;
 	}
 
 	public String getName() {

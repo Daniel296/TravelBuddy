@@ -11,7 +11,7 @@ import com.travel.buddy.coreproject.model.City;
 @Repository
 public interface CityRepository extends JpaRepository<City, Serializable> {
 
-	public City findByCityId(Long cityId);
+	public City findById(Long id);
 	
 	public List<City> findAll();
 }

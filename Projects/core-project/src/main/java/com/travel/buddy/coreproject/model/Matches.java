@@ -24,7 +24,7 @@ public class Matches implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", unique = true, nullable = false)
+	@Column(name = "MATCHES_ID", unique = true, nullable = false)
 	private long id;
 	
 	@Column(name = "COMPATIBILITY_SCORE", unique = false, nullable = false)

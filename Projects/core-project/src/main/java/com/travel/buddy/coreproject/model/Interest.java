@@ -19,7 +19,7 @@ public class Interest implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "INTEREST_ID", unique = true, nullable = false)
     private long id;
 
 

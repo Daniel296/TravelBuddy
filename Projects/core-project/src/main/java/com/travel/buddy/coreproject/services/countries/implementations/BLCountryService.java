@@ -23,12 +23,12 @@ public class BLCountryService implements BLICountryService{
 
 	@Override
 	public Country getCountryById(Long id) {
-		return countryRepository.findByCountryId(id);
+		return countryRepository.findById(id);
 	}
 
 	@Override
 	public void deleteCountry(Long id) {
-		Country countryToDelete = countryRepository.findByCountryId(id);
+		Country countryToDelete = countryRepository.findById(id);
 		countryRepository.delete(countryToDelete);
 	}
 }

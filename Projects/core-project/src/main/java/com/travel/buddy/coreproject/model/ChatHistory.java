@@ -20,7 +20,7 @@ public class ChatHistory implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", unique = true, nullable = false)
+	@Column(name = "CHAT_HISTORY_ID", unique = true, nullable = false)
 	private long id;
 	
 	@Column(name = "FIRST_USER_ID", unique = false, nullable = false)

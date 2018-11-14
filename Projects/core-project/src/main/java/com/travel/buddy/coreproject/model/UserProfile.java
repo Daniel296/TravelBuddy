@@ -26,7 +26,7 @@ public class UserProfile implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false)
+    @Column(name = "USER_PROFILE_ID", unique = true, nullable = false)
     private long id;
 
     @Column(name = "FIRST_NAME")
@@ -53,7 +53,7 @@ public class UserProfile implements Serializable {
     private City city;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "USER_PROFILE_ID")
     private List<TravelPlan> travelPlans;
     
     @OneToOne(fetch = FetchType.LAZY, optional = false)

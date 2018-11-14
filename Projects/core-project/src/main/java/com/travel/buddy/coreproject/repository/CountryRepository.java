@@ -15,5 +15,5 @@ public interface CountryRepository extends JpaRepository<Country, Serializable> 
 	@Query(value = "SELECT c FROM Country c")
 	public List<Country> findAll();
 	
-	public Country findByCountryId(Long countryId);
+	public Country findById(Long id);
 }

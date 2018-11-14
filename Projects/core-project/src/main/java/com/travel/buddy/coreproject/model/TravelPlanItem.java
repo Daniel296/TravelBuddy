@@ -25,7 +25,7 @@ public class TravelPlanItem implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", unique = true, nullable = false)
+	@Column(name = "TRAVEL_PLAN_ITEM_ID", unique = true, nullable = false)
 	private long id;
 	
 	@Column(name  = "START_DATE", unique = false, nullable = false)
@@ -38,7 +38,7 @@ public class TravelPlanItem implements Serializable{
 	private String attractionCode;
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "ID", insertable = true, updatable = true)
+	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "TRAVEL_PLAN_ID", insertable = true, updatable = true)
 	private TravelPlan travelPlan;
 	
 	public TravelPlanItem() {

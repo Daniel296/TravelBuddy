@@ -30,7 +30,7 @@ public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CITY_ID", unique = true, nullable = false)
-    private long cityId;
+    private long id;
 
     @Column(name = "NAME", unique = true, nullable = false)
     private String name;
@@ -54,7 +54,7 @@ public class City implements Serializable {
 
 	public City(long id, String name, String cityCode, List<UserProfile> userProfiles, Country country) {
 		super();
-		this.cityId = id;
+		this.id = id;
 		this.name = name;
 		this.cityCode = cityCode;
 		this.userProfiles = userProfiles;
@@ -70,11 +70,11 @@ public class City implements Serializable {
 	}
 
 	public long getId() {
-		return cityId;
+		return id;
 	}
 
 	public void setId(long id) {
-		this.cityId = id;
+		this.id = id;
 	}
 
 	public String getName() {

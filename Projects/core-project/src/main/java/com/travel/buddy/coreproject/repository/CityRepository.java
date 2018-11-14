@@ -13,5 +13,5 @@ public interface CityRepository extends JpaRepository<City, Serializable> {
 
 	public City findById(Long id);
 	
-	public List<City> findAll();
+	List<City> findAll();
 }

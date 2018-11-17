@@ -6,10 +6,9 @@ import java.util.List;
 import com.travel.buddy.coreproject.DTOs.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.travel.buddy.coreproject.DTOs.Attraction;
+import com.travel.buddy.coreproject.DTOs.AttractionDTO;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
-import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.InterestsScoreComputer;
@@ -44,7 +43,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
     }
 
 	@Override
-	public List<Attraction> getAttractions() {
+	public List<AttractionDTO> getAttractionDTOS() {
 		return null;
 	}
 }

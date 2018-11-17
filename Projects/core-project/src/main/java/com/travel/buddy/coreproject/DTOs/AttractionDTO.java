@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-public class Attraction {
+public class AttractionDTO {
 
 	/**
 	 * 
@@ -41,12 +41,12 @@ public class Attraction {
 
 	private Interest interest;
 
-	public Attraction() {
+	public AttractionDTO() {
 		super();
 	}
 
-	public Attraction(long id, String attractionName, double coordinateLatitude, double coordinateLongitude,
-			String description, String url, String code, String photoUrl, City city, Interest interest) {
+	public AttractionDTO(long id, String attractionName, double coordinateLatitude, double coordinateLongitude,
+						 String description, String url, String code, String photoUrl, City city, Interest interest) {
 		super();
 		this.id = id;
 		this.attractionName = attractionName;
@@ -60,8 +60,8 @@ public class Attraction {
 		this.interest = interest;
 	}
 
-	public Attraction(String attractionName, double coordinateLatitude, double coordinateLongitude, String description,
-			String url, String code, String photoUrl, City city, Interest interest) {
+	public AttractionDTO(String attractionName, double coordinateLatitude, double coordinateLongitude, String description,
+						 String url, String code, String photoUrl, City city, Interest interest) {
 		super();
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;

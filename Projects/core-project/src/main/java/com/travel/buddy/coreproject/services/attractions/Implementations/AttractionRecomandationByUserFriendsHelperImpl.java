@@ -2,7 +2,7 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 
 import java.util.*;
 
-import com.travel.buddy.coreproject.DTOs.Attraction;
+import com.travel.buddy.coreproject.DTOs.AttractionDTO;
 import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.model.*;
 import com.travel.buddy.coreproject.model.TravelPlan;
@@ -65,7 +65,7 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
     }
 
 	@Override
-	public List<Attraction> getAttractions() {
+	public List<AttractionDTO> getAttractionDTOS() {
 		return null;
 	}
 }

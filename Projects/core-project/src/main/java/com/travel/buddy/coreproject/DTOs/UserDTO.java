@@ -62,18 +62,9 @@ public class UserDTO {
         this.genderInterest = genderInterest;
     }
 
-    public Interest getInterest() {
-        return interest;
-    }
-
-    public void setInterest(Interest interest) {
-        this.interest = interest;
-    }
-
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String gender;
     private String genderInterest;
-    private Interest interest;
 }

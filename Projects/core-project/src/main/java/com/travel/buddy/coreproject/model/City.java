@@ -16,10 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-<<<<<<< Updated upstream
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-=======
->>>>>>> Stashed changes
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity

@@ -1,18 +1,29 @@
 package com.travel.buddy.coreproject.controllers;
 
-import com.travel.buddy.coreproject.model.*;
-import com.travel.buddy.coreproject.repository.*;
-import com.travel.buddy.coreproject.services.cities.interfaces.BLICityService;
-import com.travel.buddy.coreproject.services.countries.interfaces.BLICountryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.travel.buddy.coreproject.model.City;
+import com.travel.buddy.coreproject.model.Interest;
+import com.travel.buddy.coreproject.model.TravelPlan;
+import com.travel.buddy.coreproject.model.TravelPlanItem;
+import com.travel.buddy.coreproject.model.UserLogin;
+import com.travel.buddy.coreproject.model.UserProfile;
+import com.travel.buddy.coreproject.repository.InterestRepository;
+import com.travel.buddy.coreproject.repository.TravelPlanItemRepository;
+import com.travel.buddy.coreproject.repository.TravelPlanRepository;
+import com.travel.buddy.coreproject.repository.UserLoginRepository;
+import com.travel.buddy.coreproject.repository.UserProfileRepository;
+import com.travel.buddy.coreproject.services.cities.interfaces.BLICityService;
+
 @RestController
-@RequestMapping(value = "/users")
-public class UserController {
+@RequestMapping(value = "/user")
+public class UserProfileController {
 
     @Autowired
     private UserProfileRepository repository;
@@ -21,19 +32,18 @@ public class UserController {
     private BLICityService cityService;
 
     @Autowired
-    InterestRepository interestRepository;
+    private InterestRepository interestRepository;
 
     @Autowired
-    UserLoginRepository userLoginRepository;
+    private UserLoginRepository userLoginRepository;
 
     @Autowired
-    TravelPlanRepository travelPlanRepository;
+    private TravelPlanRepository travelPlanRepository;
 
     @Autowired
-    TravelPlanItemRepository travelPlanItemRepository;
+	private TravelPlanItemRepository travelPlanItemRepository;
 
-
-    @GetMapping(value = "/findAll")
+    @GetMapping
     public List<UserProfile> getAllUsers(){
 
         UserProfile userProfile = new UserProfile("Petrisor", "Romsoft", "112", "Meil","Fimeil",null, null, null, null);
@@ -89,10 +99,6 @@ public class UserController {
 
         //travelPlanRepository.save(travelPlan);
         userProfile.setTravelPlans(travelPlans);
-
-
-
-
 
         Interest interest = new Interest();
         interest.setAirport(true);

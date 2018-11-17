@@ -3,6 +3,7 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.travel.buddy.coreproject.DTOs.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travel.buddy.coreproject.DTOs.Attraction;
@@ -19,25 +20,18 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
     public AttractionRepository attractionRepository;
 
     private List<TravelPlanItem> allTravelPlanItems;
-    private UserProfile userProfile;
+    private UserDTO userDTO;
 
-    public AttractionRecomandationByUserPreferencesHelperImpl(UserProfile userProfile){
-        this.userProfile = userProfile;
+    public AttractionRecomandationByUserPreferencesHelperImpl(UserDTO userDTO){
+        this.userDTO = userDTO;
     }
 
     public List<TravelPlanItem> getTravelPlanItems(){
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
         InterestsScoreComputer scoreComputer  = new InterestScoreComputerImpl();
         //allAttractions = attractionRepository.findAll();
-        Interest userInterests = userProfile.getInterest();
-        for(TravelPlanItem a : allTravelPlanItems){
-            //Interest attractionInterests =  a.getAttraction().getInterest();
-            Interest attractionInterests =  null;
-            double score = scoreComputer.getScore(attractionInterests, userInterests);
-            if(score>0){ // this shouldn't be hardcoded
-                travelPlanItems.add(a);
-            }
-        }
+        Interest userInterests = userDTO.getInterest();
+
         return travelPlanItems;
     }
 

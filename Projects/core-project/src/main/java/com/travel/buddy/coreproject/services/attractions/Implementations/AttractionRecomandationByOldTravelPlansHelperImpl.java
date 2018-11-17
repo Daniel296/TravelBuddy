@@ -3,6 +3,7 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.model.TravelPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,10 +19,10 @@ public class AttractionRecomandationByOldTravelPlansHelperImpl implements Attrac
     public AttractionRepository attractionRepository;
 
     private List<TravelPlan> allUserTravelPlans;
-    UserProfile userProfile;
+    UserDTO userDTO;
 
-    public AttractionRecomandationByOldTravelPlansHelperImpl(UserProfile userProfile){
-        this.userProfile = userProfile;
+    public AttractionRecomandationByOldTravelPlansHelperImpl(UserDTO userDTO){
+        this.userDTO = userDTO;
     }
 
     public List<TravelPlanItem> getTravelPlanItems(){
@@ -29,7 +30,7 @@ public class AttractionRecomandationByOldTravelPlansHelperImpl implements Attrac
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
         //List<TravelPlan> userTravelPlans = new ArrayList<>();
 
-        //userTravelPlans.addAll(userProfile.getTravelPlans()); // activitatile userului curent
+        //userTravelPlans.addAll(userDTO.getTravelPlans()); // activitatile userului curent
 
         for(TravelPlan a : allUserTravelPlans)
             travelPlanItems.addAll(a.getTravelPlanItems());

@@ -1,6 +1,7 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
 import com.travel.buddy.coreproject.DTOs.Attraction;
+import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
@@ -9,16 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttractionRecomandationUnifier implements AttractionRecomandationHelper {
-    private UserProfile userProfile;
+    private UserDTO userDTO;
     private List<Attraction> attractions;
     private List<AttractionRecomandationHelper> recomandationHelperList;
-    public AttractionRecomandationUnifier(UserProfile _userProfile){
-        userProfile = _userProfile;
+    public AttractionRecomandationUnifier(UserDTO _userDTO){
+        userDTO = _userDTO;
         attractions = new ArrayList<>();
         recomandationHelperList = new ArrayList<>();
-        recomandationHelperList.add(new AttractionRecomandationByOldTravelPlansHelperImpl(userProfile));
-        recomandationHelperList.add(new AttractionRecomandationByUserFriendsHelperImpl(userProfile));
-        recomandationHelperList.add(new AttractionRecomandationByUserPreferencesHelperImpl(userProfile));
+        recomandationHelperList.add(new AttractionRecomandationByOldTravelPlansHelperImpl(userDTO));
+        recomandationHelperList.add(new AttractionRecomandationByUserFriendsHelperImpl(userDTO));
+        recomandationHelperList.add(new AttractionRecomandationByUserPreferencesHelperImpl(userDTO));
     }
 
     private void unify(){

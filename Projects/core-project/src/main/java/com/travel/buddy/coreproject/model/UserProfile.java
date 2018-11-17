@@ -34,20 +34,20 @@ public class UserProfile implements Serializable {
     @Column(name = "USER_PROFILE_ID", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "FIRST_NAME")
-    private String firstName;
+	@Column(name = "FIRST_NAME")
+	private String firstName;
 
-    @Column(name = "LAST_NAME")
-    private String lastName;
+	@Column(name = "LAST_NAME")
+	private String lastName;
 
-    @Column(name = "PHONE_NUMBER")
-    private String phoneNumber;
+	@Column(name = "PHONE_NUMBER")
+	private String phoneNumber;
 
-    @Column(name = "GENDER")
-    private String gender;
+	@Column(name = "GENDER")
+	private String gender;
 
-    @Column(name = "GENDER_INTEREST")
-    private String genderInterest;
+	@Column(name = "GENDER_INTEREST")
+	private String genderInterest;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "USER_LOGIN_ID", nullable = false)

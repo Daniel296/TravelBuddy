@@ -4,6 +4,7 @@ import com.travel.buddy.coreproject.model.City;
 import com.travel.buddy.coreproject.model.Interest;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,64 +23,37 @@ public class AttractionDTO {
 	 * 
 	 */
 	private long id;
-
 	private String attractionName;
-
 	private double coordinateLatitude;
-
 	private double coordinateLongitude;
-
-	private String description;
-
-	private String url;
-
-	private String code;
-
-	private String photoUrl;
-
-	private City city;
-
-	private Interest interest;
+	private String placeId;
+	private String address;
+	private List<String> interests;
+	private List<String> photoReferences;
 
 	public AttractionDTO() {
 		super();
 	}
 
-	public AttractionDTO(long id, String attractionName, double coordinateLatitude, double coordinateLongitude,
-						 String description, String url, String code, String photoUrl, City city, Interest interest) {
-		super();
+	public AttractionDTO(long id, String attractionName, double coordinateLatitude, double coordinateLongitude, String placeId, String address, List<String> interests, List<String> photoReferences) {
 		this.id = id;
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;
 		this.coordinateLongitude = coordinateLongitude;
-		this.description = description;
-		this.url = url;
-		this.code = code;
-		this.photoUrl = photoUrl;
-		this.city = city;
-		this.interest = interest;
+		this.placeId = placeId;
+		this.address = address;
+		this.interests = interests;
+		this.photoReferences = photoReferences;
 	}
 
-	public AttractionDTO(String attractionName, double coordinateLatitude, double coordinateLongitude, String description,
-						 String url, String code, String photoUrl, City city, Interest interest) {
-		super();
+	public AttractionDTO(String attractionName, double coordinateLatitude, double coordinateLongitude, String placeId, String address, List<String> interests, List<String> photoReferences) {
 		this.attractionName = attractionName;
 		this.coordinateLatitude = coordinateLatitude;
 		this.coordinateLongitude = coordinateLongitude;
-		this.description = description;
-		this.url = url;
-		this.code = code;
-		this.photoUrl = photoUrl;
-		this.city = city;
-		this.interest = interest;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		this.placeId = placeId;
+		this.address = address;
+		this.interests = interests;
+		this.photoReferences = photoReferences;
 	}
 
 	public String getAttractionName() {
@@ -106,51 +80,35 @@ public class AttractionDTO {
 		this.coordinateLongitude = coordinateLongitude;
 	}
 
-	public City getCity() {
-		return city;
+	public String getPlaceId() {
+		return placeId;
 	}
 
-	public void setCity(City city) {
-		this.city = city;
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
 	}
 
-	public Interest getInterest() {
-		return interest;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setInterest(Interest interest) {
-		this.interest = interest;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getDescription() {
-		return description;
+	public List<String> getInterests() {
+		return interests;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setInterests(List<String> interests) {
+		this.interests = interests;
 	}
 
-	public String getUrl() {
-		return url;
+	public List<String> getPhotoReferences() {
+		return photoReferences;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getPhotoUrl() {
-		return photoUrl;
-	}
-
-	public void setPhotoUrl(String photoUrl) {
-		this.photoUrl = photoUrl;
+	public void setPhotoReferences(List<String> photoReferences) {
+		this.photoReferences = photoReferences;
 	}
 }

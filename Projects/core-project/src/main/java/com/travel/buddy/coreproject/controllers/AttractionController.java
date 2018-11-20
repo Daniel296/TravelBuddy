@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -22,6 +24,8 @@ public class AttractionController {
     public List<AttractionDTO> getAttractions(UserDTO userDTO, String cityName, List<String> interests){
         service = new AttractionRecomandationService();
 
-       return service.getAttractions(userDTO, cityName, interests);
+        List<String> interests1 = new ArrayList<>(Arrays.asList("museum", "church", "restaurants", "pools"));
+
+       return service.getAttractionsByUserPreferences(userDTO, "Paris", interests1);
    }
 }

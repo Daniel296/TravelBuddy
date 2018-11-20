@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttractionRecomandationUnifier implements AttractionRecomandationHelper {
+
     private UserDTO userDTO;
     private List<AttractionDTO> attractionDTOS;
     private List<AttractionRecomandationHelper> recomandationHelperList;
-    public AttractionRecomandationUnifier(UserDTO _userDTO){
-        userDTO = _userDTO;
+
+    public AttractionRecomandationUnifier(UserDTO userDTO){
+        this.userDTO = userDTO;
         attractionDTOS = new ArrayList<>();
         recomandationHelperList = new ArrayList<>();
         recomandationHelperList.add(new AttractionRecomandationByOldTravelPlansHelperImpl(userDTO));

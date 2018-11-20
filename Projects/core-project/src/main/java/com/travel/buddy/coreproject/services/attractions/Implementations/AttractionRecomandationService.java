@@ -2,15 +2,19 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
 import com.travel.buddy.coreproject.DTOs.UserDTO;
+import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 
 import java.util.List;
 
 public class AttractionRecomandationService{
 
-    public List<AttractionDTO> getAttractions(UserDTO userDTO, String cityName, List<String> interests){
-        AttractionRecomandationUnifier unifier = new AttractionRecomandationUnifier(userDTO);
+    public List<AttractionDTO> getAttractionsByUserPreferences(UserDTO userDTO, String cityName, List<String> interests){
+        //AttractionRecomandationUnifier unifier = new AttractionRecomandationUnifier(userDTO);
+        AttractionRecomandationByUserPreferencesHelperImpl recommendationHelper = new AttractionRecomandationByUserPreferencesHelperImpl(userDTO);
+
+        List<AttractionDTO> attractions = recommendationHelper.getAttractionByUserPreferences(cityName, interests);
 
 
-        return unifier.getAttractionDTOS();
+        return attractions;
     }
 }

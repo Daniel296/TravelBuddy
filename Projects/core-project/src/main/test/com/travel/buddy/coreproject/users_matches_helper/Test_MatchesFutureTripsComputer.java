@@ -17,9 +17,9 @@ public class Test_MatchesFutureTripsComputer {
     }*/
 /*
     private List<TravelPlan> getTravelPlansForCurrentUser(UserProfile currentUser) {
-        Attraction attraction1 = new Attraction(0, null, 48.64703, -122.26324, null, null);
-        Attraction attraction2 = new Attraction(0, null, 48.6721, -122.265, null, null);
-        Attraction attraction3 = new Attraction(0, null, 48.4234, -122.34, null, null);
+        AttractionDTO attraction1 = new AttractionDTO(0, null, 48.64703, -122.26324, null, null);
+        AttractionDTO attraction2 = new AttractionDTO(0, null, 48.6721, -122.265, null, null);
+        AttractionDTO attraction3 = new AttractionDTO(0, null, 48.4234, -122.34, null, null);
 
 //        TravelPlanItem travelPlanItem1 = new TravelPlanItem("01-11-2018 14:00:00", "01-11-2018 16:00:00", attraction1, null);
 //        TravelPlanItem travelPlanItem2 = new TravelPlanItem("01-11-2018 16:00:00", "01-11-2018 20:00:00", attraction2, null);

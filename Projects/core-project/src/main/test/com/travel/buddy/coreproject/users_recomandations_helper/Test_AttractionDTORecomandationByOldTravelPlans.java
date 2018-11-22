@@ -2,7 +2,7 @@ package com.travel.buddy.coreproject.users_recomandations_helper;
 
 import org.junit.Test;
 
-public class Test_AttractionRecomandationByOldTravelPlans {
+public class Test_AttractionDTORecomandationByOldTravelPlans {
     @Test
     public void TestAttractionRecomandation_GivenUserProfileAndAttractions_ExpectedToReturn_1_Attraction(){
 //        Faker faker = new Faker();
@@ -27,23 +27,23 @@ public class Test_AttractionRecomandationByOldTravelPlans {
 //        attractionInterest4.setRaining(true);
 //        attractionInterest4.setCanDrive(true);
 //
-//        List<Attraction> attractions = new ArrayList<>();
-//        List<Attraction> attractions2 = new ArrayList<>();
+//        List<AttractionDTO> attractions = new ArrayList<>();
+//        List<AttractionDTO> attractions2 = new ArrayList<>();
 //
 //        //attraction1
-//        Attraction attraction1 = new Attraction();
+//        AttractionDTO attraction1 = new AttractionDTO();
 //        attraction1.setInterest(attractionInterest1);
 //
 //        //attraction2
-//        Attraction attraction2 = new Attraction();
+//        AttractionDTO attraction2 = new AttractionDTO();
 //        attraction2.setInterest(attractionInterest2);
 //
 //        //attraction3
-//        Attraction attraction3 = new Attraction();
+//        AttractionDTO attraction3 = new AttractionDTO();
 //        attraction3.setInterest(attractionInterest3);
 //
 //        //attraction4
-//        Attraction attraction4 = new Attraction();
+//        AttractionDTO attraction4 = new AttractionDTO();
 //        attraction4.setInterest(attractionInterest4);
 //
 //
@@ -75,7 +75,7 @@ public class Test_AttractionRecomandationByOldTravelPlans {
 //
 //        AttractionRecomandationByOldTravelPlansHelperImpl helper = new AttractionRecomandationByOldTravelPlansHelperImpl(userProfile);
 //        helper.setAllUserTravelPlans(allUserTravelPlans);
-//        List<Attraction> recomandedAttractions = helper.getAttractions();
+//        List<AttractionDTO> recomandedAttractions = helper.getAttractionDTOS();
 //
 //        Assert.assertEquals(4, recomandedAttractions.size());
     }

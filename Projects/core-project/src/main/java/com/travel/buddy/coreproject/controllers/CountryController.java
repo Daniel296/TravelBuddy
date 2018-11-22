@@ -15,17 +15,17 @@ public class CountryController {
 	@Autowired
 	private BLICountryService countryService;
 	
-	@GetMapping(value = "/findAll")
+	@GetMapping
 	public List<Country> getAllCountries(){
 		return countryService.getAllCountries();
 	}
 	
-	@GetMapping(value = "/findById/{id}")
+	@GetMapping(value = "/{id}")
 	public Country getCountryById(@PathVariable("id") Long id) {
 		return countryService.getCountryById(id);
 	}
 	
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping(value = "/{id}")
 	public void deleteCountryById(@PathVariable("id") Long id) {
 		countryService.deleteCountry(id);
 	}

@@ -2,7 +2,8 @@ package com.travel.buddy.coreproject.services.attractions.Implementations;
 
 import java.util.*;
 
-import com.travel.buddy.coreproject.DTOs.Attraction;
+import com.travel.buddy.coreproject.DTOs.AttractionDTO;
+import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.model.*;
 import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
@@ -10,12 +11,12 @@ import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRe
 
 public class AttractionRecomandationByUserFriendsHelperImpl implements AttractionRecomandationHelper {
 
-    private UserProfile userProfile;
+    private UserDTO userDTO;
     private MatchesRepository matchesRepository;
     private List<Matches> allMatches;
 
-    public AttractionRecomandationByUserFriendsHelperImpl(UserProfile userProfile){
-        this.userProfile = userProfile;
+    public AttractionRecomandationByUserFriendsHelperImpl(UserDTO userDTO){
+        this.userDTO = userDTO;
     }
 
     public static HashMap<TravelPlanItem, Integer> sortByValue(HashMap<TravelPlanItem, Integer> hm)
@@ -39,10 +40,10 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
         HashMap<TravelPlanItem, Integer> topTravelPlanItems = new HashMap<>();
         allMatches = matchesRepository.findAll(); //get all user matches
 
-        for (Matches match : allMatches){
-            if(match.getUserProfile1().getId() == userProfile.getId())
-                matchedUsers.add(match.getUserProfile2());          //store matched users
-            if(match.getUserProfile2().getId() == userProfile.getId())
+        /*for (Matches match : allMatches){
+            if(match.getUserProfile1().getId() == userDTO.getId())
+                matchedUsers.add(match.getUserProfile2());
+            if(match.getUserProfile2().getId() == userDTO.getId())
                 matchedUsers.add(match.getUserProfile1());
         }
 
@@ -59,12 +60,12 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
         }
         travelPlanItems.clear();
         topTravelPlanItems=sortByValue(topTravelPlanItems); //sort by nr of "friends" desc that visited that attraction
-        travelPlanItems.addAll(topTravelPlanItems.keySet());
+        travelPlanItems.addAll(topTravelPlanItems.keySet());*/
         return travelPlanItems;
     }
 
 	@Override
-	public List<Attraction> getAttractions() {
+	public List<AttractionDTO> getAttractionDTOS() {
 		return null;
 	}
 }

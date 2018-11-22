@@ -4,12 +4,14 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 @Aspect
+@Component
 public class AuditAspect {
     private static Logger logger = LoggerFactory.getLogger(AuditAspect.class);
 
-    @Pointcut(value = "execution(* com.travel.buddy.coreproject.services.*.*.*(..))")
+    @Pointcut("execution(* com.travel.buddy.coreproject.services.*.*.*.*(..))")
     public void serviceMethods(){
         //
     }
@@ -17,8 +19,7 @@ public class AuditAspect {
 
     @Before("serviceMethods()")
     public void beforeMethod() {
-        System.out.println("before method");
-        //logger.info("before method");
+        logger.info("before executing the method");
     }
 
     @Around("serviceMethods()")
@@ -27,7 +28,7 @@ public class AuditAspect {
             long start = System.nanoTime();
             Object result = joinpoint.proceed();
             long end = System.nanoTime();
-            System.out.println(String.format("%s took %d ns", joinpoint.getSignature(), (end - start)));
+            logger.info(String.format("%s took %d ns", joinpoint.getSignature(), (end - start)));
             return result;
         } catch (Throwable e) {
             throw new RuntimeException(e);
@@ -36,7 +37,7 @@ public class AuditAspect {
 
     @After("serviceMethods()")
     public void afterMethod() {
-        System.out.println("after method");
+        logger.info("after executing method");
     }
 
 }

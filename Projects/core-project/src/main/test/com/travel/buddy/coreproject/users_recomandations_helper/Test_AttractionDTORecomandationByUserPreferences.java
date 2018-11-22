@@ -3,7 +3,7 @@ package com.travel.buddy.coreproject.users_recomandations_helper;
 
 import org.junit.Test;
 
-public class Test_AttractionRecomandationByUserPreferences {
+public class Test_AttractionDTORecomandationByUserPreferences {
     @Test
     public void TestAttractionRecomandation_GivenUserProfileAndAttractions_ExpectedToReturn_1_Attraction(){
 //        Faker faker = new Faker();
@@ -24,15 +24,15 @@ public class Test_AttractionRecomandationByUserPreferences {
 //        attractionInterest2.setCanCycle(true);
 //
 //
-//        List<Attraction> attractions = new ArrayList<>();
+//        List<AttractionDTO> attractions = new ArrayList<>();
 //
 //        //attraction1
-//        Attraction attraction1 = new Attraction();
+//        AttractionDTO attraction1 = new AttractionDTO();
 //        attraction1.setInterest(attractionInterest1);
 //
 //
 //        //attraction2
-//        Attraction attraction2 = new Attraction();
+//        AttractionDTO attraction2 = new AttractionDTO();
 //        attraction2.setInterest(attractionInterest2);
 //
 //
@@ -48,7 +48,7 @@ public class Test_AttractionRecomandationByUserPreferences {
 //
 //        AttractionRecomandationByUserPreferencesHelperImpl helper = new AttractionRecomandationByUserPreferencesHelperImpl(userProfile);
 //        //helper.setAllAttractions(attractions);
-//        List<Attraction> recomandedAttractions = helper.getAttractions();
+//        List<AttractionDTO> recomandedAttractions = helper.getAttractionDTOS();
 //
 //        Assert.assertEquals(recomandedAttractions.size(), 2);
     }

@@ -9,4 +9,6 @@ public interface BLICityService {
 	public List<City> getAllCities();
 	
 	public City getCityById(Long id);
+
+	public City save(City city);
 }

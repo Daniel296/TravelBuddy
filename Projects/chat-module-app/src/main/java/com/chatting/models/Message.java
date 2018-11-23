@@ -37,6 +37,9 @@ public class Message implements Serializable{
 	@Column(name = "TIMESTAMP", unique = false, nullable = false)
 	private Double timestamp;
 	
+	@Column(name = "USER_ID", unique = false, nullable = false)
+	private long userId;
+	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ROOM_ID", referencedColumnName = "ROOM_ID", insertable=true, updatable=true)
 //    @JsonManagedReference
@@ -48,55 +51,72 @@ public class Message implements Serializable{
 		super();
 	}
 
-	public Message(long id, String message, Double timestamp, Room room) {
+
+	public Message(long id, String message, Double timestamp, long userId, Room room) {
 		super();
 		this.id = id;
 		this.message = message;
 		this.timestamp = timestamp;
+		this.userId = userId;
 		this.room = room;
 	}
 
-	public Message(String message, Double timestamp, Room room) {
+
+	public Message(String message, Double timestamp, long userId, Room room) {
 		super();
 		this.message = message;
 		this.timestamp = timestamp;
+		this.userId = userId;
 		this.room = room;
 	}
+
 
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 
 	public String getMessage() {
 		return message;
 	}
 
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 
 	public Double getTimestamp() {
 		return timestamp;
 	}
 
+
 	public void setTimestamp(Double timestamp) {
 		this.timestamp = timestamp;
 	}
+
+
+	public long getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
 
 	public Room getRoom() {
 		return room;
 	}
 
+
 	public void setRoom(Room room) {
 		this.room = room;
-	}
-
-	@Override
-	public String toString() {
-		return "Message [id=" + id + ", message=" + message + ", timestamp=" + timestamp + ", room=" + room + "]";
-	}
+	}	
 }

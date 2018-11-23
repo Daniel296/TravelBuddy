@@ -15,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -52,5 +51,58 @@ public class Room implements Serializable{
 	
 	public Room() {
 		super();
+	}
+
+	public Room(long id, User roomPartner, User user, List<Message> roomMessages) {
+		super();
+		this.id = id;
+		this.roomPartner = roomPartner;
+		this.user = user;
+		this.roomMessages = roomMessages;
+	}
+
+	public Room(User roomPartner, User user, List<Message> roomMessages) {
+		super();
+		this.roomPartner = roomPartner;
+		this.user = user;
+		this.roomMessages = roomMessages;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public User getRoomPartner() {
+		return roomPartner;
+	}
+
+	public void setRoomPartner(User roomPartner) {
+		this.roomPartner = roomPartner;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Message> getRoomMessages() {
+		return roomMessages;
+	}
+
+	public void setRoomMessages(List<Message> roomMessages) {
+		this.roomMessages = roomMessages;
+	}
+
+	@Override
+	public String toString() {
+		return "Room [id=" + id + ", roomPartner=" + roomPartner + ", user=" + user + ", roomMessages=" + roomMessages
+				+ "]";
 	}
 }

@@ -20,12 +20,21 @@ public class AttractionController {
 
     AttractionRecomandationService service;
 
-    @PostMapping
+    /*@PostMapping(value = "/getall")
     public List<AttractionDTO> getAttractions(UserDTO userDTO, String cityName, List<String> interests){
         service = new AttractionRecomandationService();
 
         List<String> interests1 = new ArrayList<>(Arrays.asList("museum", "church", "restaurants", "pools"));
 
        return service.getAttractionsByUserPreferences(userDTO, "Paris", interests1);
-   }
+   }*/
+
+    @GetMapping(value = "/getall")
+    public List<AttractionDTO> getAttractions(){
+        service = new AttractionRecomandationService();
+
+        List<String> interests1 = new ArrayList<>(Arrays.asList("museum", "church", "restaurants", "pools"));
+        UserDTO userDTO = new UserDTO();
+        return service.getAttractionsByUserPreferences(userDTO, "Paris", interests1);
+    }
 }

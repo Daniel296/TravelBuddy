@@ -39,6 +39,13 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
     public List<AttractionDTO> getAttractionByUserPreferences(String cityName, List<String> interests) {
         List<AttractionDTO> attractions = new ArrayList<>();
 
+        if(interests == null || interests.size() == 0){
+            // here we need a default list of attractions
+
+
+            //return
+        }
+
         for(String interest : interests) {
             String json = getJSONResponse(cityName, interest);
             if(json == null) {
@@ -73,7 +80,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
             }
         }
 
-        return null;
+        return attractions;
     }
 
     public List<TravelPlanItem> getTravelPlanItems(){

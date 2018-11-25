@@ -15,11 +15,10 @@ public class MergeMatchScores {
         scoreComputers = new ArrayList<>();
         scoreComputers.add(new MatchesFutureTripsComputerImpl());
         scoreComputers.add(new MatchesInterestScoreComputerImpl());
-        scoreComputers.add(new MatchesNearbyUsersComputerImpl());
+        scoreComputers.add(new MatchesPastTripsComputerImpl());
     }
 
-    public static MergeMatchScores getInstance()
-    {
+    public static MergeMatchScores getInstance() {
         if (instance == null)
             instance = new MergeMatchScores();
         return instance;
@@ -29,10 +28,10 @@ public class MergeMatchScores {
 
         /// basic => should be replaced; it's more coupling
 
-        for(MatchScoreComputer matchScore : scoreComputers){
-            return 0.2 * scoreComputers.get(0).getScore(user1, user2) +
-                    0.5 * scoreComputers.get(1).getScore(user1, user2) +
-                    0.3 * scoreComputers.get(2).getScore(user1, user2);
+        for (MatchScoreComputer matchScore : scoreComputers) {
+            return scoreComputers.get(0).getPercent() * scoreComputers.get(0).getScore(user1, user2) +
+                    scoreComputers.get(1).getPercent() * scoreComputers.get(1).getScore(user1, user2) +
+                    scoreComputers.get(2).getPercent() * scoreComputers.get(2).getScore(user1, user2);
         }
         return 0;
     }

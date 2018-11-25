@@ -4,6 +4,7 @@ import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
+import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserPlanItemImpl;
 
 import java.util.ArrayList;
@@ -21,6 +22,11 @@ public class MatchesFutureTripsComputerImpl implements MatchScoreComputer {
         double score = new ScoreComputerByUserPlanItemImpl().getScore(user1AllTravelPlanItems,user2AllTravelPlanItems);
 
         return score;
+    }
+
+    @Override
+    public double getPercent() {
+        return Constants.MATCHES_FUTURE_TRIPS_PERCENT;
     }
 
     public static List<TravelPlanItem> getAllTravelPlanItems(List<TravelPlan> travelPlans, Time time) {

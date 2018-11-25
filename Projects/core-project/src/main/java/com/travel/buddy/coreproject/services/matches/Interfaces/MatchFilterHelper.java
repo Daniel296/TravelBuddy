@@ -2,7 +2,8 @@ package com.travel.buddy.coreproject.services.matches.Interfaces;
 
 import com.travel.buddy.coreproject.model.UserProfile;
 
-public interface MatchScoreComputer {
-    double getScore(UserProfile user1, UserProfile user2);
-    double getPercent();
+import java.util.List;
+
+public interface MatchFilterHelper {
+    List<UserProfile> getUsers(List<UserProfile> users);
 }

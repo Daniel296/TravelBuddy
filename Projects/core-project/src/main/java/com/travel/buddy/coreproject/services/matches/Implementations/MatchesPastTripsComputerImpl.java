@@ -3,6 +3,7 @@ package com.travel.buddy.coreproject.services.matches.Implementations;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
+import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserPlanItemPastImpl;
 
 import java.util.List;
@@ -20,5 +21,10 @@ public class MatchesPastTripsComputerImpl implements MatchScoreComputer {
         double score = new ScoreComputerByUserPlanItemPastImpl().getScore(user1AllTravelPlanItems,user2AllTravelPlanItems);
 
         return score;
+    }
+
+    @Override
+    public double getPercent() {
+        return Constants.MATCHES_PAST_TRIPS_PERCENT;
     }
 }

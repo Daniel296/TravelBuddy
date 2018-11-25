@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.travel.buddy.coreproject.DTOs.UserDTO;
+import com.travel.buddy.coreproject.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
@@ -27,7 +28,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
     @Autowired
     public AttractionRepository attractionRepository;
 
-    private final String API_KEY = "AIzaSyAvEehceQnGa0DWPp6vWvzDOIXOjXEcf1g";
+    private final String API_KEY = Constants.API_KEY;
 
     private List<TravelPlanItem> allTravelPlanItems;
     private UserDTO userDTO;

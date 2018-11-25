@@ -3,6 +3,7 @@ package com.travel.buddy.coreproject.services.attractions.Filters;
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.FilterHelper;
+import com.travel.buddy.coreproject.utils.GetUserInterestsListHelper;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,7 +16,7 @@ public class FilterByUserInterestsImpl implements FilterHelper {
     public List<AttractionDTO> getAttractions(UserProfile user, List<AttractionDTO> attractionDTOS) {
 
         List<AttractionDTO> results = new ArrayList<>();
-        Set<String> userTypes=null; //catalin
+        Set<String> userTypes= GetUserInterestsListHelper.getInterests(user.getInterest());
 
         //for each attraction, compute the intersection between the current attraction types and our user interests types and add it to results if positive size
         for(AttractionDTO attr:attractionDTOS) {

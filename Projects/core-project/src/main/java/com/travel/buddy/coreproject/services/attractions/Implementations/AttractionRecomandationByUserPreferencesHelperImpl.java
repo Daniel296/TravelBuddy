@@ -8,10 +8,10 @@ import java.util.List;
 
 import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.utils.Constants;
+import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
-import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
@@ -86,7 +86,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
 
     public List<TravelPlanItem> getTravelPlanItems(){
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        InterestsScoreComputer scoreComputer  = new InterestScoreComputerImpl();
+        InterestsScoreComputer scoreComputer  = new ScoreComputerByUserInterestsImpl();
         //allAttractions = attractionRepository.findAll();
         //Interest userInterests = userDTO.getInterest();
 

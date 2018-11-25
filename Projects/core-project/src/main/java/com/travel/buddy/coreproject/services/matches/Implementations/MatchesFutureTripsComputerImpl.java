@@ -26,7 +26,10 @@ public class MatchesFutureTripsComputerImpl implements MatchScoreComputer {
         for(TravelPlanItem user1TravelPlanItem : user1AllTravelPlanItems) {
             for(TravelPlanItem user2TravelPlanItem : user2AllTravelPlanItems) {
 
-                boolean datesComparison = user1TravelPlanItem.getEndDate() > user2TravelPlanItem.getStartDate();   // check if items are at the same time
+                boolean datesComparison =
+                        user1TravelPlanItem.getEndDate() > user2TravelPlanItem.getStartDate() &&
+                                user2TravelPlanItem.getEndDate() > user1TravelPlanItem.getStartDate()
+                        ;   // check if items are at the same time
                 //double distance = DistanceComputerBetweenAttractions.getDistance("KM", user1TravelPlanItem.getAttraction(), user2TravelPlanItem.getAttraction());
                 double distance = 0.0;
 

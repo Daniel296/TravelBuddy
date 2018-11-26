@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.travel.buddy.coreproject.DTOs.UserDTO;
+import com.travel.buddy.coreproject.utils.Constants;
+import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
-import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
@@ -27,7 +28,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
     @Autowired
     public AttractionRepository attractionRepository;
 
-    private final String API_KEY = "AIzaSyAvEehceQnGa0DWPp6vWvzDOIXOjXEcf1g";
+    private final String API_KEY = Constants.API_KEY;
 
     private List<TravelPlanItem> allTravelPlanItems;
     private UserDTO userDTO;
@@ -38,6 +39,13 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
 
     public List<AttractionDTO> getAttractionByUserPreferences(String cityName, List<String> interests) {
         List<AttractionDTO> attractions = new ArrayList<>();
+
+        if(interests == null || interests.size() == 0){
+            // here we need a default list of attractions
+
+
+            //return
+        }
 
         for(String interest : interests) {
             String json = getJSONResponse(cityName, interest);
@@ -73,12 +81,12 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
             }
         }
 
-        return null;
+        return attractions;
     }
 
     public List<TravelPlanItem> getTravelPlanItems(){
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        InterestsScoreComputer scoreComputer  = new InterestScoreComputerImpl();
+        InterestsScoreComputer scoreComputer  = new ScoreComputerByUserInterestsImpl();
         //allAttractions = attractionRepository.findAll();
         //Interest userInterests = userDTO.getInterest();
 

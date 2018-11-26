@@ -49,6 +49,12 @@ public class UserProfile implements Serializable {
 	@Column(name = "GENDER_INTEREST")
 	private String genderInterest;
 
+	@Column(name = "LAST_LNG")
+	private double lastLNG;
+
+	@Column(name = "LAST_LAT")
+	private double lastLAT;
+
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "USER_LOGIN_ID", nullable = false)
     @JsonBackReference
@@ -181,5 +187,21 @@ public class UserProfile implements Serializable {
 
 	public void setInterest(Interest interest) {
 		this.interest = interest;
+	}
+
+	public double getLastLNG() {
+		return lastLNG;
+	}
+
+	public void setLastLNG(double lastLNG) {
+		this.lastLNG = lastLNG;
+	}
+
+	public double getLastLAT() {
+		return lastLAT;
+	}
+
+	public void setLastLAT(double lastLAT) {
+		this.lastLAT = lastLAT;
 	}
 }

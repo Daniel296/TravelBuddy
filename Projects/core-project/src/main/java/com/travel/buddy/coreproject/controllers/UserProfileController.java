@@ -101,9 +101,9 @@ public class UserProfileController {
         userProfile.setTravelPlans(travelPlans);
 
         Interest interest = new Interest();
-        interest.setAirport(true);
-        interest.setBank(true);
-        interest.setBicycle_store(true);
+//        interest.setAirport(true);
+//        interest.setBank(true);
+//        interest.setBicycle_store(true);
         interest.setMosque(true);
         interest.setNight_club(true);
 

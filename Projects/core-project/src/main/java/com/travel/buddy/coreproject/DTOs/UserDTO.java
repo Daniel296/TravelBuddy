@@ -3,6 +3,8 @@ package com.travel.buddy.coreproject.DTOs;
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.services.matches.Implementations.Point;
 
+import java.util.List;
+
 public class UserDTO {
     public long getId() {
         return id;
@@ -67,4 +69,5 @@ public class UserDTO {
     private String phoneNumber;
     private String gender;
     private String genderInterest;
+    
 }

@@ -29,7 +29,7 @@ public class AttractionController {
 
     AttractionRecomandationService service;
 
-    /*@PostMapping(value = "/getall")
+    /*@PostMapping(value = "/getAll")
     public List<AttractionDTO> getAttractions(UserDTO userDTO, String cityName, List<String> interests){
         service = new AttractionRecomandationService();
 
@@ -38,7 +38,7 @@ public class AttractionController {
        return service.getAttractionsByUserPreferences(userDTO, "Paris", interests1);
    }*/
 
-    @GetMapping(value = "/getall")
+    @GetMapping(value = "/getAll")
     public List<AttractionDTO> getAttractions(){
         service = new AttractionRecomandationService();
 
@@ -50,20 +50,20 @@ public class AttractionController {
         List<AttractionDTO> attractions =  service.getAttractionsByUserPreferences(userDTO, cityName, interests1);
 
         //UserProfile userProfile = userProfileRepository.findById(userDTO.getId());
-        UserProfile userProfile = new UserProfile(); // userprofile must be get by id
-        FilterReunion filterReunion = new FilterReunion();
-        attractions = filterReunion.getAttractions(userProfile, attractions);
-
-        if (attractions.size() < Constants.RECOMENDED_ATTRACTIONS_MAX ){
-
-            List<String> defaultInterest = Arrays.asList("point+of+interest");
-            AttractionRecomandationByUserPreferencesHelperImpl defaultHelper =
-                    new AttractionRecomandationByUserPreferencesHelperImpl(userDTO);
-            List<AttractionDTO> defaultAttrs = defaultHelper.getAttractionByUserPreferences(cityName, defaultInterest);
-
-            //reunion
-            attractions.addAll(defaultAttrs);
-        }
+//        UserProfile userProfile = new UserProfile(); // userprofile must be get by id
+//        FilterReunion filterReunion = new FilterReunion();
+//        attractions = filterReunion.getAttractions(userProfile, attractions);
+//
+//        if (attractions.size() < Constants.RECOMENDED_ATTRACTIONS_MAX ){
+//
+//            List<String> defaultInterest = Arrays.asList("point+of+interest");
+//            AttractionRecomandationByUserPreferencesHelperImpl defaultHelper =
+//                    new AttractionRecomandationByUserPreferencesHelperImpl(userDTO);
+//            List<AttractionDTO> defaultAttrs = defaultHelper.getAttractionByUserPreferences(cityName, defaultInterest);
+//
+//            //reunion
+//            attractions.addAll(defaultAttrs);
+//        }
 
         return attractions;
     }

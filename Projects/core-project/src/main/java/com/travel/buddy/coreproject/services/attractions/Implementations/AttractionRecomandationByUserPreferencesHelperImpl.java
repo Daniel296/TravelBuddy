@@ -61,23 +61,34 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
             List results = jsonObject.getJsonArray("results");
 
             for (Object result : results) {
-                JsonObject innerJsonObject = (JsonObject) result;
+                String name = null;
+                double latitude = 0.0;
+                double longitude = 0.0;
+                String placeId = null;
+                String address = null;
+                List types = null;
+                List<String> photoReferences = null;
 
-                String name = innerJsonObject.getString("name");
-                double latitude = innerJsonObject.getJsonObject("geometry").getJsonObject("location").getJsonNumber("lat").doubleValue();
-                double longitude = innerJsonObject.getJsonObject("geometry").getJsonObject("location").getJsonNumber("lng").doubleValue();
-                String placeId = innerJsonObject.getString("id");
-                String address = innerJsonObject.getString("formatted_address");
-                List types = innerJsonObject.getJsonArray("types");
-                List<String> photoReferences = new ArrayList<>();
+                try {
+                    JsonObject innerJsonObject = (JsonObject) result;
 
-                List jsonPhotoObjects = innerJsonObject.getJsonArray("photos");
-                for (Object jsonPhotoObject : jsonPhotoObjects) {
-                    photoReferences.add(((JsonObject) jsonPhotoObject).getString("photo_reference"));
-                }
+                    name = innerJsonObject.getString("name");
+                    latitude = innerJsonObject.getJsonObject("geometry").getJsonObject("location").getJsonNumber("lat").doubleValue();
+                    longitude = innerJsonObject.getJsonObject("geometry").getJsonObject("location").getJsonNumber("lng").doubleValue();
+                    placeId = innerJsonObject.getString("id");
+                    address = innerJsonObject.getString("formatted_address");
+                    types = innerJsonObject.getJsonArray("types");
+
+                    photoReferences = new ArrayList<>();
+                    List jsonPhotoObjects = innerJsonObject.getJsonArray("photos");
+                    for (Object jsonPhotoObject : jsonPhotoObjects) {
+                        photoReferences.add(((JsonObject) jsonPhotoObject).getString("photo_reference"));
+                    }
+                } catch (NullPointerException ignored) { }
 
                 //AttractionDTO attractionDTO = new AttractionDTO(name, latitude, longitude, placeId, address, types, photoReferences);
                 attractions.add(new AttractionDTO(name, latitude, longitude, placeId, address, types, photoReferences));
+
             }
         }
 

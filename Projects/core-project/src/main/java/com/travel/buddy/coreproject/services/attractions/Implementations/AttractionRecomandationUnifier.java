@@ -20,7 +20,7 @@ public class AttractionRecomandationUnifier implements AttractionRecomandationHe
         recomandationHelperList = new ArrayList<>();
         recomandationHelperList.add(new AttractionRecomandationByOldTravelPlansHelperImpl(userDTO));
         recomandationHelperList.add(new AttractionRecomandationByUserFriendsHelperImpl(userDTO));
-        recomandationHelperList.add(new AttractionRecomandationByUserPreferencesHelperImpl(userDTO));
+        recomandationHelperList.add(new AttractionRecomandationByUserPreferencesHelperImpl());
     }
 
     private void unify(){

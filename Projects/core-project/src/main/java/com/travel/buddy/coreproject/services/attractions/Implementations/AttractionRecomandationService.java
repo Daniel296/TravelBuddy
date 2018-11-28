@@ -8,9 +8,9 @@ import java.util.List;
 
 public class AttractionRecomandationService{
 
-    public List<AttractionDTO> getAttractionsByUserPreferences(UserDTO userDTO, String cityName, List<String> interests){
+    public List<AttractionDTO> getAttractionsByUserPreferences(String cityName, List<String> interests){
         //AttractionRecomandationUnifier unifier = new AttractionRecomandationUnifier(userDTO);
-        AttractionRecomandationByUserPreferencesHelperImpl recommendationHelper = new AttractionRecomandationByUserPreferencesHelperImpl(userDTO);
+        AttractionRecomandationByUserPreferencesHelperImpl recommendationHelper = new AttractionRecomandationByUserPreferencesHelperImpl();
 
         List<AttractionDTO> attractions = recommendationHelper.getAttractionByUserPreferences(cityName, interests);
 

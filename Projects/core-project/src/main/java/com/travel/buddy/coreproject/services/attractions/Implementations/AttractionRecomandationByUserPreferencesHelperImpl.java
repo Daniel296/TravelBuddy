@@ -1,14 +1,20 @@
 package com.travel.buddy.coreproject.services.attractions.Implementations;
 
-import java.io.*;
+import static java.lang.System.out;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.travel.buddy.coreproject.DTOs.UserDTO;
-import com.travel.buddy.coreproject.utils.Constants;
-import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
@@ -16,12 +22,8 @@ import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.InterestsScoreComputer;
-
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-
-import static java.lang.System.out;
+import com.travel.buddy.coreproject.utils.Constants;
+import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl;
 
 public class AttractionRecomandationByUserPreferencesHelperImpl implements AttractionRecomandationHelper {
 
@@ -31,11 +33,6 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
     private final String API_KEY = Constants.API_KEY;
 
     private List<TravelPlanItem> allTravelPlanItems;
-    private UserDTO userDTO;
-
-    public AttractionRecomandationByUserPreferencesHelperImpl(UserDTO userDTO){
-        this.userDTO = userDTO;
-    }
 
     public List<AttractionDTO> getAttractionByUserPreferences(String cityName, List<String> interests) {
         List<AttractionDTO> attractions = new ArrayList<>();
@@ -142,7 +139,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
                     responseBuilder.append(line).append("\n");
                 }
                 br.close();
-                System.out.println(responseBuilder.toString());
+                //System.out.println(responseBuilder.toString());
             }
 
             return responseBuilder.toString();

@@ -39,8 +39,6 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
 
         if(interests == null || interests.size() == 0){
             // here we need a default list of attractions
-
-
             //return
         }
 
@@ -81,11 +79,10 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
                     for (Object jsonPhotoObject : jsonPhotoObjects) {
                         photoReferences.add(((JsonObject) jsonPhotoObject).getString("photo_reference"));
                     }
-                } catch (NullPointerException ignored) { }
+                } catch (NullPointerException ignored) { System.out.println("PANICA!!!"); }
 
                 //AttractionDTO attractionDTO = new AttractionDTO(name, latitude, longitude, placeId, address, types, photoReferences);
                 attractions.add(new AttractionDTO(name, latitude, longitude, placeId, address, types, photoReferences));
-
             }
         }
 

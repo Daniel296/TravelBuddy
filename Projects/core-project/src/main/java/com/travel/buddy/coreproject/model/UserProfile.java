@@ -34,16 +34,16 @@ public class UserProfile implements Serializable {
     @Column(name = "USER_PROFILE_ID", unique = true, nullable = false)
     private long id;
 
-	@Column(name = "FIRST_NAME")
+	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@Column(name = "LAST_NAME")
+	@Column(name = "LAST_NAME",  nullable = false)
 	private String lastName;
 
-	@Column(name = "PHONE_NUMBER")
+	@Column(name = "PHONE_NUMBER",  nullable = false)
 	private String phoneNumber;
 
-	@Column(name = "GENDER")
+	@Column(name = "GENDER",  nullable = false)
 	private String gender;
 
 	@Column(name = "GENDER_INTEREST")

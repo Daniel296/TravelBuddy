@@ -45,7 +45,8 @@ $(document).ready(function()
 	initHamburger();
 	initParallax();
 	initIsotope();
-	initSearch();
+
+	displayAttractions();
 
 	/* 
 
@@ -204,28 +205,6 @@ $(document).ready(function()
 	                queue: false
 	            }
 	        });
-	        
-	        // Sort based on the value from the sorting_type dropdown
-	        sortingButtons.each(function()
-	        {
-	        	$(this).on('click', function()
-	        	{
-	        		var parent = $(this).parent().parent().find('.sorting_text');
-		        		parent.text($(this).text());
-		        		var option = $(this).attr('data-isotope-option');
-		        		option = JSON.parse( option );
-	    				grid.isotope( option );
-	        	});
-	        });
-
-	        // Filtering
-	        $('.item_filter_btn').on('click', function()
-	        {
-	        	var parent = $(this).parent().parent().find('.sorting_text');
-	        	parent.text($(this).text());
-		        var filterValue = $(this).attr('data-filter');
-				grid.isotope({ filter: filterValue });
-	        });
 
 	        // Change view to Box
 	        if($('.box_view').length)
@@ -265,25 +244,35 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
+	Script snippet for selecting country, state and city from drop-downs in this order
+	 */
+    $(document).ready(function(){
+        $('#city').change(function(){
+            loadCities($(this).find(':selected').val())
+        })
+    })
 
-	6. Init Search
+    function loadCities(){
+        $.ajax({
+            type: "POST",
+            url: "myURL"
+        }).done(function( result ) {
+            $(result).each(function(){
+                $("#city").append($('<option>', {
+                    value: this.id,
+                    text: this.name,
+                }));
+            })
+        });
+    }
+	// init the citites
+    loadCities();
 
-	*/
+	/*
+	Display attractions
+	 */
+	function displayAttractions(){
 
-	function initSearch()
-	{
-		if($('.search').length)
-		{
-			var search = $('.search');
-			search.on('click', function(e)
-			{
-				var target = $(e.target);
-				if(!target.hasClass('ctrl_class'))
-				{
-					$(this).toggleClass('active');
-				}
-			});
-		}
 	}
 });

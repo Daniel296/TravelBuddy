@@ -119,29 +119,6 @@
 	{
 		font-size: 9px;
 	}
-	.find
-	{
-		width: calc(100% - 30px);
-	}
-	.find_item:first-child
-	{
-		width: calc((100% - 8px) / 2);
-		margin-bottom: 30px;
-	}
-	.find_item:nth-child(2)
-	{
-		width: calc((100% - 8px) / 2);
-		margin-bottom: 30px;
-	}
-	.find_item:nth-child(3),
-	.find_item:nth-child(4)
-	{
-		width: calc((100% - 154px) / 2);
-	}
-	.find_button
-	{
-		width: 138px;
-	}
 	.item_text
 	{
 		
@@ -207,26 +184,6 @@
 		width: 100vw;
 		height: 100vh;
 	}
-	.find_item:first-child
-	{
-		width: 100%;
-		margin-bottom: 30px;
-	}
-	.find_item:nth-child(2)
-	{
-		width: 100%;
-		margin-bottom: 30px;
-	}
-	.find_item:nth-child(3),
-	.find_item:nth-child(4)
-	{
-		width: 100%;
-		margin-bottom: 30px;
-	}
-	.find_button
-	{
-		width: 138px;
-	}
 	.item.box
 	{
 		width: 100%;
@@ -254,16 +211,6 @@
 	.sorting_group_2 ul li
 	{
 		margin-right: 20px;
-	}
-	.newsletter_input
-	{
-		width: 100%;
-	}
-	.newsletter_button
-	{
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 15px;
 	}
 }
 
@@ -338,19 +285,6 @@
 		right: -10px;
 		font-size: 18px;
 	}
-	.menu_search_input
-	{
-		height: 40px;
-	}
-	.menu_search_submit
-	{
-		width: 40px;
-		height: 40px;
-	}
-	.menu_search_submit img
-	{
-		max-width: 50%;
-	}
 	.home
 	{
 		height: 372px;
@@ -371,59 +305,6 @@
 	.home_breadcrumb a
 	{
 		font-size: 16px;
-	}
-	.find
-	{
-		width: 100%;
-		margin-top: 0;
-	}
-	.find_title
-	{
-		font-size: 24px;
-	}
-	.find_input
-	{
-		height: 40px;
-		line-height: 36px;
-	}
-	.find_button
-	{
-		height: 40px;
-		line-height: 40px;
-		width: 120px;
-		padding: 0;
-	}
-	.find_input::-webkit-input-placeholder
-	{
-		font-size: 12px !important;
-	}
-	.find_input:-moz-placeholder
-	{
-		font-size: 12px !important;
-	}
-	.find_input::-moz-placeholder
-	{
-		font-size: 12px !important;
-	} 
-	.find_input:-ms-input-placeholder
-	{ 
-		font-size: 12px !important;
-	}
-	.find_input::input-placeholder
-	{
-		font-size: 12px !important;
-	}
-	.dropdown_item_select
-	{
-		font-size: 12px;
-	}
-	.find_item div
-	{
-		font-size: 12px;
-	}
-	.find_button
-	{
-		font-size: 14px;
 	}
 	.section_title div
 	{
@@ -467,42 +348,6 @@
 	.detail_view
 	{
 		margin-left: 0;
-	}
-	.newsletter_title
-	{
-		font-size: 24px;
-	}
-	.newsletter_input
-	{
-		height: 40px;
-		line-height: 36px;
-	}
-	.newsletter_button
-	{
-		height: 40px;
-		line-height: 40px;
-		width: 140px;
-		padding: 0;
-	}
-	.newsletter_input::-webkit-input-placeholder
-	{
-		font-size: 12px !important;
-	}
-	.newsletter_input:-moz-placeholder
-	{
-		font-size: 12px !important;
-	}
-	.newsletter_input::-moz-placeholder
-	{
-		font-size: 12px !important;
-	} 
-	.newsletter_input:-ms-input-placeholder
-	{ 
-		font-size: 12px !important;
-	}
-	.newsletter_input::input-placeholder
-	{
-		font-size: 12px !important;
 	}
 }
 

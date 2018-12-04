@@ -21,7 +21,7 @@ public class AttractionController {
 	private AttractionRecomandationService attractionRecommandationService;
 	
 	@CrossOrigin
-	@PostMapping(value = "/getAll", consumes = "application/json", produces = "application/json")
+	@PostMapping(value = "/getAll", consumes = "application/json; charset=UTF-8", produces = "application/json")
 	public List<AttractionDTO> getAllAttractions(@RequestBody InterestWrapper interestWrapper) {
 		return attractionRecommandationService.getAttractionsByUserPreferences(interestWrapper.getCityName(),
 				interestWrapper.getUserInterests());

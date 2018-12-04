@@ -4,7 +4,7 @@ import java.util.List;
 
 public class InterestWrapper {
 
-	private List<String> interests;
+	private List<String> userInterests;
 
 	private String cityName;
 
@@ -16,12 +16,12 @@ public class InterestWrapper {
 		this.cityName = cityName;
 	}
 
-	public List<String> getInterests() {
-		return interests;
+	public List<String> getUserInterests() {
+		return userInterests;
 	}
 
-	public void setInterests(List<String> interests) {
-		this.interests = interests;
+	public void setUserInterests(List<String> userInterests) {
+		this.userInterests = userInterests;
 	}
 
 }

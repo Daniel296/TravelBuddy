@@ -2,12 +2,15 @@ package com.travel.buddy.coreproject.services.matches.Implementations;
 
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserProfileRepository;
+import com.travel.buddy.coreproject.utils.Constants;
+import com.travel.buddy.coreproject.utils.GetUserFriendsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Tuple;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 // rulat la o anumita perioada de timp si de updatat un tabel cu recomandari
 
@@ -15,18 +18,39 @@ public class MatchesRecomandationsService {
 
     @Autowired
     UserProfileRepository userProfileRepository;
-    private Map userScoresMap =new HashMap();
-    public MatchesRecomandationsService(UserProfile userProfile) {
+
+    private Map userSubstractScoresMap = new HashMap();
+    // build a map having as key an user profile and as value a map like <user, score>
+    //
+
+    private void prepareSubstractScores() {
         List<UserProfile> userProfiles = userProfileRepository.findAll();
-        MergeMatchScores mergeScore =  MergeMatchScores.getInstance();
-        Map scoreMap = new HashMap();
-        for(UserProfile user : userProfiles){
-            if(user.getId() != userProfile.getId())
-            {
-                double score = mergeScore.getScore(userProfile, user);
-                scoreMap.put(user.getId(), score);
-            }
+        for (UserProfile userProfile : userProfiles) {
+            Set<UserProfile> userFriends = GetUserFriendsHelper.getFriends(userProfile);
+            int userFriendsNumber = userFriends.size();
+            double substractScore = userFriendsNumber * Constants.SUBSTRACT_UNIT_PER_USER_FRIEND;
+            userSubstractScoresMap.put(userProfile, substractScore);
         }
-        userScoresMap.put(userProfile.getId(), scoreMap);
+    }
+
+    public MatchesRecomandationsService() {
+        List<UserProfile> userProfiles = userProfileRepository.findAll();
+        MergeMatchScores mergeScore = MergeMatchScores.getInstance();
+        Map scoreMap = new HashMap();
+
+        for(UserProfile userProfile: userProfiles)
+        {
+             //to be added into a table of recommandation (to be created)
+            for(UserProfile anotherUser:userProfiles)
+            {
+                if (anotherUser.getId() != userProfile.getId()) {
+                    double score = mergeScore.getScore(userProfile, anotherUser);
+                    double substractScore = score  - (double)userSubstractScoresMap.get(anotherUser);
+                    scoreMap.put(anotherUser, score-substractScore);
+                }
+            }
+            Map userScoresMap = new HashMap();
+            userScoresMap.put(userProfile, scoreMap);
+        }
     }
 }

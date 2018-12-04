@@ -6,6 +6,7 @@ public final class Constants {
     public static int TRAVELPLANITEM_MAX_DISTANCE = 5;
     public static double TRAVELPLANITEM_CLOSE_DISTANCE = 0.2;
     public static int MAX_NEARBY_USERS = 20;
+    public static double SUBSTRACT_UNIT_PER_USER_FRIEND = 0.5;
     public static String API_KEY = "AIzaSyAvEehceQnGa0DWPp6vWvzDOIXOjXEcf1g";
 
 

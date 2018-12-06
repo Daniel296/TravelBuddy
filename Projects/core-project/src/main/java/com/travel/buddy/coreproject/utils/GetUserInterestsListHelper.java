@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 public class GetUserInterestsListHelper {
-    private static List<String> interestssAsStringList = Arrays.asList(
+    public static List<String> interestssAsStringList = Arrays.asList(
             "amusement_park",
             "aquarium",
             "art_gallery",

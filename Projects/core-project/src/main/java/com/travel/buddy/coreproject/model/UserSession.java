@@ -23,14 +23,14 @@ public class UserSession implements Serializable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "USER_SESSion_ID", unique = true, nullable = false)
+    @Column(name = "USER_SESSION_ID", unique = true, nullable = false)
 	private long id;
 	
-	@Column(name = "USER_LOGIN_ID", unique = true, nullable = false)
+	@Column(name = "USER_LOGIN_ID", unique = false, nullable = false)
 	private long userLoginId;
 	
-	@Column(name = "SESSION_ID", unique = true, nullable = false)
-	private String sessionId;
+	@Column(name = "SESSION_UUID", unique = true, nullable = false)
+	private String sessionUUID;
 	
 	@Column(name = "TIMESTAMP", unique = false, nullable = false)
 	private long timestamp;
@@ -40,11 +40,11 @@ public class UserSession implements Serializable{
 		super();
 	}
 
-	public UserSession(long id, long userLoginId, String sessionId, long timestamp) {
+	public UserSession(long id, long userLoginId, String sessionUUID, long timestamp) {
 		super();
 		this.id = id;
 		this.userLoginId = userLoginId;
-		this.sessionId = sessionId;
+		this.sessionUUID = sessionUUID;
 		this.timestamp = timestamp;
 	}
 
@@ -64,12 +64,12 @@ public class UserSession implements Serializable{
 		this.userLoginId = userLoginId;
 	}
 
-	public String getSessionId() {
-		return sessionId;
+	public String getSessionUUID() {
+		return sessionUUID;
 	}
 
-	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+	public void setSessionUUID(String sessionUUID) {
+		this.sessionUUID = sessionUUID;
 	}
 
 	public long getTimestamp() {
@@ -82,7 +82,7 @@ public class UserSession implements Serializable{
 
 	@Override
 	public String toString() {
-		return "UserSession [id=" + id + ", userLoginId=" + userLoginId + ", sessionId=" + sessionId + ", timestamp="
+		return "UserSession [id=" + id + ", userLoginId=" + userLoginId + ", sessionUUID=" + sessionUUID + ", timestamp="
 				+ timestamp + "]";
 	}
 }

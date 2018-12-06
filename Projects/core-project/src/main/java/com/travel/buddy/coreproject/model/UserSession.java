@@ -47,6 +47,13 @@ public class UserSession implements Serializable{
 		this.sessionUUID = sessionUUID;
 		this.timestamp = timestamp;
 	}
+	
+	public UserSession(long userLoginId, String sessionUUID, long timestamp) {
+		super();
+		this.userLoginId = userLoginId;
+		this.sessionUUID = sessionUUID;
+		this.timestamp = timestamp;
+	}
 
 	public long getId() {
 		return id;

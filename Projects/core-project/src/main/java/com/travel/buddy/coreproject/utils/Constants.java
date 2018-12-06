@@ -1,5 +1,8 @@
 package com.travel.buddy.coreproject.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public final class Constants {
     public static int RECOMENDED_ATTRACTIONS_MIN = 10;
     public static int RECOMENDED_ATTRACTIONS_MAX = 30;
@@ -14,4 +17,7 @@ public final class Constants {
     public static double MATCHES_FUTURE_TRIPS_PERCENT = 0.35;
     public static double MATCHES_PAST_TRIPS_PERCENT = 0.15;
     public static double MATCHES_INTERESTS_PERCENT = 0.5;
+    
+    
+    public static Logger LOGGER = LoggerFactory.getLogger(Constants.class);
 }

@@ -147,7 +147,7 @@
             </div>
         </div>
     </div>
-    <!-- Travel plan items -->
+    <!-- Show travel plan items -->
 
     <div class="travel-plan-items">
         <div class="container">
@@ -172,6 +172,66 @@
             <div class="row">
                 <div class="col">
                     <div class="items item_grid clearfix">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Select desired travel plan items-->
+    <div class="select-items">
+        <div clas="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h2>Personal preferences</h2>
+                        <div>Select the date between you plan to travel</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 datepicker">
+                    <p> Start date:
+                        <br/>
+                        <input type="text" class="start-travel-datepicker">
+                    </p>
+                </div>
+                <div class="col-sm-6 datepicker">
+                    <p> End date:
+                        <br/>
+                        <input type="text" class="end-travel-datepicker">
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <div>... and now select your personal preferences and insert the date between you want to do
+                            this
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="select-each-preference">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label id="select-place-label"> Select place:
+                                    <select class="preference-selector" onclick="setOptionsForSelect(this)" onchange="changeItemOptionEvent(this)">
+                                        <option id="default-value">Please select...</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-sm-4 start-datepicker">
+                            </div>
+                            <div class="col-sm-4 end-datepicker">
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="add-more-items">
+                        <a id="href-add-more-items" href="javascript:addNewDropdown(this)">Add more...</a>
                     </div>
                 </div>
             </div>
@@ -235,7 +295,12 @@
     </footer>
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
@@ -246,6 +311,7 @@
 <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="js/latinize_words.js"></script>
 <script src="js/travel_plan_custom.js"></script>
 </body>
 </html>

@@ -50,10 +50,10 @@ public class UserProfile implements Serializable {
 	private String genderInterest;
 
 	@Column(name = "LAST_LNG")
-	private double lastLNG;
+	private double lastLng;
 
 	@Column(name = "LAST_LAT")
-	private double lastLAT;
+	private double lastLat;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "USER_LOGIN_ID", nullable = false)
@@ -80,8 +80,10 @@ public class UserProfile implements Serializable {
     	super();
     }
 
+
 	public UserProfile(long id, String firstName, String lastName, String phoneNumber, String gender,
-			String genderInterest, UserLogin userLogin, City city, List<TravelPlan> travelPlans, Interest interest) {
+			String genderInterest, double lastLng, double lastLat, UserLogin userLogin, City city,
+			List<TravelPlan> travelPlans, Interest interest) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -89,119 +91,158 @@ public class UserProfile implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.genderInterest = genderInterest;
+		this.lastLng = lastLng;
+		this.lastLat = lastLat;
 		this.userLogin = userLogin;
 		this.city = city;
 		this.travelPlans = travelPlans;
 		this.interest = interest;
 	}
 
+
 	public UserProfile(String firstName, String lastName, String phoneNumber, String gender, String genderInterest,
-			UserLogin userLogin, City city, List<TravelPlan> travelPlans, Interest interest) {
+			double lastLng, double lastLat, UserLogin userLogin, City city, List<TravelPlan> travelPlans,
+			Interest interest) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.gender = gender;
 		this.genderInterest = genderInterest;
+		this.lastLng = lastLng;
+		this.lastLat = lastLat;
 		this.userLogin = userLogin;
 		this.city = city;
 		this.travelPlans = travelPlans;
 		this.interest = interest;
 	}
+
 
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 
 	public String getFirstName() {
 		return firstName;
 	}
 
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 
 	public String getLastName() {
 		return lastName;
 	}
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 
 	public String getGender() {
 		return gender;
 	}
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 
 	public String getGenderInterest() {
 		return genderInterest;
 	}
 
+
 	public void setGenderInterest(String genderInterest) {
 		this.genderInterest = genderInterest;
 	}
+
+
+	public double getLastLng() {
+		return lastLng;
+	}
+
+
+	public void setLastLng(double lastLng) {
+		this.lastLng = lastLng;
+	}
+
+
+	public double getLastLat() {
+		return lastLat;
+	}
+
+
+	public void setLastLat(double lastLat) {
+		this.lastLat = lastLat;
+	}
+
 
 	public UserLogin getUserLogin() {
 		return userLogin;
 	}
 
+
 	public void setUserLogin(UserLogin userLogin) {
 		this.userLogin = userLogin;
 	}
+
 
 	public City getCity() {
 		return city;
 	}
 
+
 	public void setCity(City city) {
 		this.city = city;
 	}
+
 
 	public List<TravelPlan> getTravelPlans() {
 		return travelPlans;
 	}
 
+
 	public void setTravelPlans(List<TravelPlan> travelPlans) {
 		this.travelPlans = travelPlans;
 	}
+
 
 	public Interest getInterest() {
 		return interest;
 	}
 
+
 	public void setInterest(Interest interest) {
 		this.interest = interest;
 	}
 
-	public double getLastLNG() {
-		return lastLNG;
-	}
 
-	public void setLastLNG(double lastLNG) {
-		this.lastLNG = lastLNG;
-	}
-
-	public double getLastLAT() {
-		return lastLAT;
-	}
-
-	public void setLastLAT(double lastLAT) {
-		this.lastLAT = lastLAT;
+	@Override
+	public String toString() {
+		return "UserProfile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+				+ phoneNumber + ", gender=" + gender + ", genderInterest=" + genderInterest + ", lastLng=" + lastLng
+				+ ", lastLat=" + lastLat + ", userLogin=" + userLogin + ", city=" + city + ", travelPlans="
+				+ travelPlans + ", interest=" + interest + "]";
 	}
 }

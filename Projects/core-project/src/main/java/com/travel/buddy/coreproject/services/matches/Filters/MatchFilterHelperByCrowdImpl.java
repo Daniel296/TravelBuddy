@@ -17,8 +17,8 @@ public class MatchFilterHelperByCrowdImpl implements MatchFilterHelper {
             public int compare(UserProfile o1, UserProfile o2) {
                 return (int) DistanceComputerBetweenPoints.getDistance(
                         "KM",
-                        new Point(o1.getLastLAT(), o1.getLastLNG()),
-                        new Point(o2.getLastLAT(), o2.getLastLNG()));
+                        new Point(o1.getLastLat(), o1.getLastLng()),
+                        new Point(o2.getLastLat(), o2.getLastLng()));
             }
 
         });

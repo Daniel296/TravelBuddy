@@ -13,13 +13,13 @@ import java.util.Set;
 public class GetUserFriendsHelper {
 
     @Autowired
-    private static MatchesRepository repository;
-
+    private MatchesRepository matchesRepository;
+    
     public static Set<UserProfile> getFriends(UserProfile user){
 
         Set<UserProfile> friends = new HashSet<UserProfile>();
 
-        List<Matches> matches = repository.findAll();
+/*        List<Matches> matches = repository.findAll();
 
         for(Matches match:matches){
             if (match.getUserProfile1().getId() == user.getId()){
@@ -30,8 +30,7 @@ public class GetUserFriendsHelper {
                     friends.add(match.getUserProfile1());
                 }
             }
-        }
+        }*/
         return friends;
     }
-
 }

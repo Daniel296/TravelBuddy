@@ -290,7 +290,7 @@ Display attractions
 function displayAttractions(city, listOfInterests) {
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/core-project/attraction/getAll",
+        url: "http://localhost:8080/core-project/attraction/getAll/?session=temporary_uuid",
         data: JSON.stringify({cityName: city, userInterests: listOfInterests}),
         contentType: 'application/json; charset=utf-8',
         mimeType: 'application/json',
@@ -467,4 +467,11 @@ function checkIfEndDateForTravelIsCompleted() {
         return true;
     }
     return false;
+}
+
+/*
+
+ */
+function validateAndSubmitData(e){
+
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class AuditAspect {
+public class AuditAspect {/*
     private static Logger logger = LoggerFactory.getLogger(AuditAspect.class);
 
     @Pointcut("execution(* com.travel.buddy.coreproject.services.*.*.*.*(..))")
@@ -39,5 +39,5 @@ public class AuditAspect {
     public void afterMethod() {
         logger.info("after executing method");
     }
-
+*/
 }

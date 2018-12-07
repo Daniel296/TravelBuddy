@@ -50,13 +50,13 @@ public class BLUserSessionService implements BLIUserSessionService {
 	public String createNewUserSessionAndReturnIt(long userLoginId) {
 		UUID uuid = UUID.randomUUID();
 		String sessionUUID = uuid.toString();
-		
+
 		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		long timestamp = Long.parseLong(df.format(currentTimestamp));
-		
+
 		userSessionRepository.save(new UserSession(userLoginId, sessionUUID, timestamp));
-		
+
 		return sessionUUID;
 	}
 

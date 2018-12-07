@@ -35,10 +35,10 @@ public class UserLogin implements Serializable {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "FACEBOOK_TOKEN", nullable = false)
+    @Column(name = "FACEBOOK_TOKEN", nullable = true)
     private String facebookToken;
 
-    @Column(name = "GOOGLE_TOKEN", nullable = false)
+    @Column(name = "GOOGLE_TOKEN", nullable = true)
     private String googleToken;
 
     @OneToOne(mappedBy = "userLogin", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)

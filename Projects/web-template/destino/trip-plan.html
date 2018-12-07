@@ -140,8 +140,9 @@
                             <label>Interest keywords:</label>
                             <input type="text" id="interests" name="interests"
                                    placeholder="Interests (e.g.: museum park sky)" autocomplete="off"/>
+                            <br/>
+                            <button type="submit" class="button find_button" id="search-places-button">Search</button>
                         </div>
-                        <button type="submit" class="button find_button" id="search-places-button">Search</button>
                     </div>
                 </div>
             </div>
@@ -218,7 +219,8 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label id="select-place-label"> Select place:
-                                    <select class="preference-selector" onclick="setOptionsForSelect(this)" onchange="changeItemOptionEvent(this)">
+                                    <select class="preference-selector" onclick="setOptionsForSelect(this)"
+                                            onchange="changeItemOptionEvent(this)">
                                         <option id="default-value">Please select...</option>
                                     </select>
                                 </label>
@@ -233,6 +235,11 @@
                     <div class="add-more-items">
                         <a id="href-add-more-items" href="javascript:addNewDropdown(this)">Add more...</a>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="submit" class="button submit-travel-plan-button" onclick="validateAndSubmitData(this)">Finalize your travel plan!</button>
                 </div>
             </div>
         </div>

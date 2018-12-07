@@ -32,26 +32,18 @@ public class UserLogin implements Serializable {
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "PASSWORD", unique = false, nullable = false)
     private String password;
 
-    @Column(name = "FACEBOOK_TOKEN", nullable = true)
+    @Column(name = "FACEBOOK_TOKEN", unique = true, nullable = true)
     private String facebookToken;
 
-    @Column(name = "GOOGLE_TOKEN", nullable = true)
+    @Column(name = "GOOGLE_TOKEN", unique = true, nullable = true)
     private String googleToken;
 
     @OneToOne(mappedBy = "userLogin", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
     @JsonBackReference
     private UserProfile userProfile;
-    
-    @OneToOne(mappedBy = "userProfile1", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference
-    private Matches matches1;
-    
-    @OneToOne(mappedBy = "userProfile2", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference
-    private Matches matches2;
     
     
     public UserLogin() {
@@ -59,7 +51,7 @@ public class UserLogin implements Serializable {
     }
 
 	public UserLogin(long id, String email, String password, String facebookToken, String googleToken,
-			UserProfile userProfile, Matches matches1, Matches matches2) {
+			UserProfile userProfile) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -67,20 +59,15 @@ public class UserLogin implements Serializable {
 		this.facebookToken = facebookToken;
 		this.googleToken = googleToken;
 		this.userProfile = userProfile;
-		this.matches1 = matches1;
-		this.matches2 = matches2;
 	}
 
-	public UserLogin(String email, String password, String facebookToken, String googleToken, UserProfile userProfile,
-			Matches matches1, Matches matches2) {
+	public UserLogin(String email, String password, String facebookToken, String googleToken, UserProfile userProfile) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.facebookToken = facebookToken;
 		this.googleToken = googleToken;
 		this.userProfile = userProfile;
-		this.matches1 = matches1;
-		this.matches2 = matches2;
 	}
 
 	public long getId() {
@@ -131,19 +118,9 @@ public class UserLogin implements Serializable {
 		this.userProfile = userProfile;
 	}
 
-	public Matches getMatches1() {
-		return matches1;
-	}
-
-	public void setMatches1(Matches matches1) {
-		this.matches1 = matches1;
-	}
-
-	public Matches getMatches2() {
-		return matches2;
-	}
-
-	public void setMatches2(Matches matches2) {
-		this.matches2 = matches2;
+	@Override
+	public String toString() {
+		return "UserLogin [id=" + id + ", email=" + email + ", password=" + password + ", facebookToken="
+				+ facebookToken + ", googleToken=" + googleToken + ", userProfile=" + userProfile + "]";
 	}
 }

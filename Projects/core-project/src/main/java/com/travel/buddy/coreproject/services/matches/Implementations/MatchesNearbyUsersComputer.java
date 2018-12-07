@@ -7,7 +7,7 @@ import java.util.List;
 
 public class MatchesNearbyUsersComputer {
     public List<UserProfile> getNearbyUsers(UserProfile user){
-        Point location = new Point(user.getLastLAT(), user.getLastLNG());
+        Point location = new Point(user.getLastLat(), user.getLastLng());
         List<UserProfile> users = UserProfilesByLocationHelper.GetUsers(location);
         return users;
     }

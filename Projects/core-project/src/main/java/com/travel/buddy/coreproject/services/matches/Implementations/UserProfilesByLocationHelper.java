@@ -16,7 +16,7 @@ public class UserProfilesByLocationHelper {
         List<UserProfile> nearbyUsers = new ArrayList<>();
         List<UserProfile> users = repository.findAll();
         for(UserProfile user: users){
-            Point userLocation = new Point(user.getLastLAT(), user.getLastLNG());
+            Point userLocation = new Point(user.getLastLat(), user.getLastLng());
             if(DistanceComputerBetweenPoints.getDistance("KM", userLocation, point) < Constants.TRAVELPLANITEM_CLOSE_DISTANCE){
                 nearbyUsers.add(user);
             }

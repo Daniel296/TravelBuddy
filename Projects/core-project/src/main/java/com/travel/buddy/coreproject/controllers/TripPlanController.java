@@ -1,5 +1,6 @@
 package com.travel.buddy.coreproject.controllers;
 
+import com.travel.buddy.coreproject.DTOs.TravelPlanWrapper;
 import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.repository.TravelPlanRepository;
@@ -23,15 +24,14 @@ public class TripPlanController {
 
     @CrossOrigin
     @PostMapping(value = "/create")
-    public String createTravelPlan(@RequestParam("session") String sessionUUID,@RequestParam("startDate") String startDate,
-                                       @RequestParam("endDate") String endDate,@RequestParam("tpiList") List<TravelPlanItem> travelPlanItems){
+    public String createTravelPlan(@RequestParam("session") String sessionUUID, @RequestBody TravelPlanWrapper travelPlanWrapper){
         if (userSessionService.checkIfUserSessionUUIDExists(sessionUUID)){
             TravelPlan tp = new TravelPlan();
             long userLoginId= userSessionService.getUserLoginIdBySessionUUID(sessionUUID);
             tp.setUserProfile(userLoginService.getUserProfileByUserLoginId(userLoginId));
-            tp.setEndDate(Long.valueOf(endDate));
-            tp.setStartDate(Long.valueOf(startDate));
-            tp.setTravelPlanItems(travelPlanItems);
+            tp.setEndDate(Long.valueOf(travelPlanWrapper.getEndDate()));
+            tp.setStartDate(Long.valueOf(travelPlanWrapper.getStartDate()));
+            tp.setTravelPlanItems(travelPlanWrapper.getTravelPlanItems());
             travelPlanRepository.save(tp);
             return "OK";
         }

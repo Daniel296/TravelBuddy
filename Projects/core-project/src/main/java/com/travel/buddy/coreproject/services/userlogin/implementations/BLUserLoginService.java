@@ -7,7 +7,9 @@ import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserLoginRepository;
 import com.travel.buddy.coreproject.services.userlogin.interfaces.BLIUserLoginService;
 import com.travel.buddy.coreproject.utils.Constants;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BLUserLoginService implements BLIUserLoginService{
 	@Autowired
 	private UserLoginRepository userLoginRepository;

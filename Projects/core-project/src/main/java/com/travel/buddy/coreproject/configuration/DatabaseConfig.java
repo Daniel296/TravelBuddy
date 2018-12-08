@@ -58,7 +58,7 @@ public class DatabaseConfig {
 		properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 		properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
 		properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
-//		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.default_schema", "travel_buddy_database");
 		return properties;
 	}

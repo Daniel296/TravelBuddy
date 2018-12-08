@@ -12,9 +12,7 @@
 
  ******************************/
 var allTravelItems = [];
-
-$('.start-travel-datepicker').datepicker();
-$('.end-travel-datepicker').datepicker();
+var lastSelectChanged = null;
 
 $(document).ready(function () {
     "use strict";
@@ -373,17 +371,10 @@ function setOptionsForSelect(e) {
 }
 
 /*
-
- */
-// $('.preference-selector').on('click', function(){
-//     setOptionsForSelect();
-// });
-
-/*
 This function add a new dropdown when the link "Add more" is clicked
  */
 function addNewDropdown(e) {
-    var selectedOption = $(e).children('option').filter(':selected');
+    var selectedOption = $(lastSelectChanged).children('option').filter(':selected');
 
     var filteredTravelItems = allTravelItems.filter(function(obj) {
         return (obj.isSelected === false);
@@ -399,18 +390,21 @@ function addNewDropdown(e) {
         innerHtmlText += '<br/>' +
             '<div class="row">' +
             '<div class="col-sm-4"' +
-            '<label> Select place:\n' +
+            '<label class="select-place-label"> Select place:\n' +
             '<select class="preference-selector"  onclick="setOptionsForSelect(this)" onchange="changeItemOptionEvent(this)">\n' +
             '<option id="default-value" selected>Please select...</option>' +
             '</select>\n' +
             '</label>' +
             '</div>' +
             '<div class="col-sm-4 start-datepicker">' +
+            '<p> Pick your start date for visiting this place:<br/>' +
+            '<input type="date" class="start-item-datepicker"></p>'+
             '</div>' +
             '<div class="col-sm-4 end-datepicker">' +
+            '<p> Pick your end date for visiting this place:<br/>' +
+            '<input type="date" class="end-item-datepicker"></p>' +
             '</div>' +
             '</div>';
-
         $('.select-each-preference').append(innerHtmlText);
     }
 }
@@ -419,29 +413,13 @@ function addNewDropdown(e) {
 
  */
 function changeItemOptionEvent(e) {
-    // $(e).children(':selected').prop('selected', true);
+    lastSelectChanged = e;
 
     var foundItemIndex = allTravelItems.findIndex((obj => obj.attractionCode === $(e).children(':selected').attr('id')));
     console.log("Item index: " + foundItemIndex);
     allTravelItems[foundItemIndex].isSelected = true;
 
-    console.log("TEEEEXT: " + $(e).children(':selected').text());
-    console.log("TEEEEXT: " + $(e).text());
-    console.log("TEEEEXT: " + $(e).children(':selected').first().text());
-
     console.log("Selected---id:" + $(e).children(':selected').attr('id') + "-----name:" + $(e).val());
-
-    var innerHtmlText = '';
-    innerHtmlText = '<p> Pick your start date for visiting this place:<br/>'
-        + '<input type="text" class="start-travel-datepicker"></p>';
-    $('.start-datepicker').html(innerHtmlText);
-
-    innerHtmlText = '<p> Pick your end date for visiting this place:<br/>'
-        + '<input type="text" class="end-travel-datepicker"></p>';
-    $('.end-datepicker').html(innerHtmlText);
-
-    $('.start-travel-datepicker').datepicker();
-    $('.end-travel-datepicker').datepicker();
 }
 
 /*
@@ -473,5 +451,48 @@ function checkIfEndDateForTravelIsCompleted() {
 
  */
 function validateAndSubmitData(e){
+    var listOfTravelItems = [];
+    var index = 0;
+    var repeat=0;
+    $("body").find('.select-each-preference').first().find('.row').each(function(){
+        var currentElement = $(this);
+        repeat++;
+        console.log("CURRENT "+repeat+": " + currentElement.attr('class'));
 
+        var currentIdForSelectedOption = $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id');
+        console.log("Current " + repeat + " ID: " + currentIdForSelectedOption);
+
+        var currentStartDateForSelectedOption = $(this).find('.start-datepicker').first().find('input').val();
+        console.log("Current " + repeat + " START DATE: " + currentStartDateForSelectedOption);
+
+        var currentEndDateForSelectedOption = $(this).find('.end-datepicker').first().find('input').val();
+        console.log("Current " + repeat + " END DATE: " + currentEndDateForSelectedOption);
+
+        var travelPlanItem = {
+            startDate: $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id'),
+            endDate: $(this).find('.start-datepicker').first().find('input').val(),
+            attractionCode: $(this).find('.end-datepicker').first().find('input').val()
+        };
+
+        listOfTravelItems[index++] = travelPlanItem;
+    });
+
+    console.log("Final items: " + JSON.stringify(listOfTravelItems));
+
+    var endDatepicker = $('.select-items').find('.datepicker').eq(1).find('.end-travel-datepicker').first().val();
+    var startDatepicker = $('.select-items').find('.datepicker').eq(0).find('.start-travel-datepicker').first().val();
+    console.log("start date: " + startDatepicker);
+    console.log("end date:" + endDatepicker);
+
+    /*$.ajax({
+        type: "POST",
+        url: "http://localhost:8080/core-project/travelPlan/create/?session=temporary_uuid?",
+        data: JSON.stringify({startDate: startDatepicker, endDate: endDatepicker, travelPlanItems: listOfTravelItems}),
+        contentType: 'application/json; charset=utf-8',
+        mimeType: 'application/json',
+        dataType: 'json',
+        async: false
+    }).done(function (result) {
+
+    });*/
 }

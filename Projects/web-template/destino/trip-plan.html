@@ -194,13 +194,13 @@
                 <div class="col-sm-6 datepicker">
                     <p> Start date:
                         <br/>
-                        <input type="text" class="start-travel-datepicker">
+                        <input type="date" class="start-travel-datepicker">
                     </p>
                 </div>
                 <div class="col-sm-6 datepicker">
                     <p> End date:
                         <br/>
-                        <input type="text" class="end-travel-datepicker">
+                        <input type="date" class="end-travel-datepicker">
                     </p>
                 </div>
             </div>
@@ -218,7 +218,7 @@
                     <div class="select-each-preference">
                         <div class="row">
                             <div class="col-sm-4">
-                                <label id="select-place-label"> Select place:
+                                <label class="select-place-label"> Select place:
                                     <select class="preference-selector" onclick="setOptionsForSelect(this)"
                                             onchange="changeItemOptionEvent(this)">
                                         <option id="default-value">Please select...</option>
@@ -226,8 +226,12 @@
                                 </label>
                             </div>
                             <div class="col-sm-4 start-datepicker">
+                                <p> Pick your start date for visiting this place:<br/>
+                                    <input type="date" class="start-item-datepicker"></p>
                             </div>
                             <div class="col-sm-4 end-datepicker">
+                                <p> Pick your end date for visiting this place:<br/>
+                                    <input type="date" class="end-item-datepicker"></p>
                             </div>
                         </div>
                     </div>
@@ -239,7 +243,9 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <button type="submit" class="button submit-travel-plan-button" onclick="validateAndSubmitData(this)">Finalize your travel plan!</button>
+                    <button type="submit" class="button submit-travel-plan-button"
+                            onclick="validateAndSubmitData(this)">Finalize your travel plan!
+                    </button>
                 </div>
             </div>
         </div>

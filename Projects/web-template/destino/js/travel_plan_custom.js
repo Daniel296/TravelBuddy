@@ -469,10 +469,10 @@ function validateAndSubmitData(e){
         console.log("Current " + repeat + " END DATE: " + currentEndDateForSelectedOption);
 
         var travelPlanItem = {
-            startDate: new Date($(this).find('.start-datepicker').first().find('input').val()).getTime().toString(),
-            endDate: new Date($(this).find('.end-datepicker').first().find('input').val()).getTime().toString(),
+            startDate: new Date($(this).find('.start-datepicker').first().find('input').val()).getTime(),
+            endDate: new Date($(this).find('.end-datepicker').first().find('input').val()).getTime(),
             attractionCode: $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id'),
-            travelPlan: []
+            // travelPlan: []
         };
 
         listOfTravelItems[index++] = travelPlanItem;
@@ -491,7 +491,7 @@ function validateAndSubmitData(e){
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/core-project/trip/create/?session=temporary_uuid?",
+        url: "http://localhost:8080/core-project/trip/create/?session=temporary_uuid",
         data: JSON.stringify({startDate: startDateMillis, endDate: endDateMillis, travelPlanItems: listOfTravelItems}),
         contentType: 'application/json',
         mimeType: 'application/json',

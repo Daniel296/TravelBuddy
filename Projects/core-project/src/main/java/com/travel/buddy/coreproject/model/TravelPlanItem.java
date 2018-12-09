@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -42,7 +42,8 @@ public class TravelPlanItem implements Serializable{
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "TRAVEL_PLAN_ID", insertable = true, updatable = true)
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIgnore
 	private TravelPlan travelPlan;
 	
 	public TravelPlanItem() {
@@ -90,11 +91,11 @@ public class TravelPlanItem implements Serializable{
 		this.endDate = endDate;
 	}
 
-	public String getAttraction() {
+	public String getAttractionCode() {
 		return attractionCode;
 	}
 
-	public void setAttraction(String attractionCode) {
+	public void setAttractionCode(String attractionCode) {
 		this.attractionCode = attractionCode;
 	}
 

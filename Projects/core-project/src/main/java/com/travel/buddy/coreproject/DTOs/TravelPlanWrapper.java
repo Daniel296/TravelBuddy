@@ -2,14 +2,32 @@ package com.travel.buddy.coreproject.DTOs;
 
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TravelPlanWrapper {
-    private String startDate;
+public class TravelPlanWrapper implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -557811328686659186L;
+	
+	private String startDate;
     private String endDate;
     private List<TravelPlanItem> travelPlanItems;
+    
+    
+    public TravelPlanWrapper() {
+    	super();
+    }
 
-    public String getStartDate() {
+    public TravelPlanWrapper(String startDate, String endDate, List<TravelPlanItem> travelPlanItems) {
+		super();
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.travelPlanItems = travelPlanItems;
+	}
+
+	public String getStartDate() {
         return startDate;
     }
 

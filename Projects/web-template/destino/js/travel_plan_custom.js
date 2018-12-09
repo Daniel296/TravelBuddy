@@ -469,9 +469,10 @@ function validateAndSubmitData(e){
         console.log("Current " + repeat + " END DATE: " + currentEndDateForSelectedOption);
 
         var travelPlanItem = {
-            startDate: $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id'),
-            endDate: $(this).find('.start-datepicker').first().find('input').val(),
-            attractionCode: $(this).find('.end-datepicker').first().find('input').val()
+            startDate: new Date($(this).find('.start-datepicker').first().find('input').val()).getTime().toString(),
+            endDate: new Date($(this).find('.end-datepicker').first().find('input').val()).getTime().toString(),
+            attractionCode: $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id'),
+            travelPlan: []
         };
 
         listOfTravelItems[index++] = travelPlanItem;
@@ -481,18 +482,23 @@ function validateAndSubmitData(e){
 
     var endDatepicker = $('.select-items').find('.datepicker').eq(1).find('.end-travel-datepicker').first().val();
     var startDatepicker = $('.select-items').find('.datepicker').eq(0).find('.start-travel-datepicker').first().val();
-    console.log("start date: " + startDatepicker);
-    console.log("end date:" + endDatepicker);
 
-    /*$.ajax({
+    var startDateMillis = new Date(startDatepicker).getTime().toString();
+    var endDateMillis = new Date(endDatepicker).getTime().toString();
+
+    console.log("start date: " + startDatepicker + " millis:" + startDateMillis);
+    console.log("end date:" + endDatepicker + " millis:" + endDateMillis);
+
+    $.ajax({
         type: "POST",
-        url: "http://localhost:8080/core-project/travelPlan/create/?session=temporary_uuid?",
-        data: JSON.stringify({startDate: startDatepicker, endDate: endDatepicker, travelPlanItems: listOfTravelItems}),
-        contentType: 'application/json; charset=utf-8',
+        url: "http://localhost:8080/core-project/trip/create/?session=temporary_uuid?",
+        data: JSON.stringify({startDate: startDateMillis, endDate: endDateMillis, travelPlanItems: listOfTravelItems}),
+        contentType: 'application/json',
         mimeType: 'application/json',
         dataType: 'json',
         async: false
     }).done(function (result) {
-
-    });*/
+        console.log("BACK-END RESPONSE:");
+        console.log(result);
+    });
 }

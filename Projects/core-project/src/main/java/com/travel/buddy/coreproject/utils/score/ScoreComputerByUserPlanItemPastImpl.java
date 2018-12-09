@@ -13,7 +13,7 @@ public class ScoreComputerByUserPlanItemPastImpl {
         for(TravelPlanItem user1TravelPlanItem : user1AllTravelPlanItems) {
             for(TravelPlanItem user2TravelPlanItem : user2AllTravelPlanItems) {
 
-                if (user1TravelPlanItem.getAttraction().equals(user2TravelPlanItem.getAttraction())){
+                if (user1TravelPlanItem.getAttractionCode().equals(user2TravelPlanItem.getAttractionCode())) {
                     score += 0.5;
                 }
             }

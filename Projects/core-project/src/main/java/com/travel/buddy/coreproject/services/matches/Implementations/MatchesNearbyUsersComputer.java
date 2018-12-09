@@ -8,7 +8,8 @@ import java.util.List;
 public class MatchesNearbyUsersComputer {
     public List<UserProfile> getNearbyUsers(UserProfile user){
         Point location = new Point(user.getLastLat(), user.getLastLng());
-        List<UserProfile> users = UserProfilesByLocationHelper.GetUsers(location);
+        UserProfilesByLocationHelper userProfilesByLocationHelper = new UserProfilesByLocationHelper();
+        List<UserProfile> users = userProfilesByLocationHelper.GetUsers(location);
         return users;
     }
 }

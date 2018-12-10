@@ -38,8 +38,9 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
         List<AttractionDTO> attractions = new ArrayList<>();
 
         if(interests == null || interests.size() == 0){
-            // here we need a default list of attractions
-            //return
+            // if user doesn't choose any interest then return all type of places
+            interests = new ArrayList<>();
+            interests.add("places");
         }
 
         for(String interest : interests) {
@@ -79,9 +80,8 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
                     for (Object jsonPhotoObject : jsonPhotoObjects) {
                         photoReferences.add(((JsonObject) jsonPhotoObject).getString("photo_reference"));
                     }
-                } catch (NullPointerException ignored) { System.out.println("PANICA!!!"); }
+                } catch (NullPointerException ignored) { /* ignore current attraction because it doesn't contain all details we need */ }
 
-                //AttractionDTO attractionDTO = new AttractionDTO(name, latitude, longitude, placeId, address, types, photoReferences);
                 attractions.add(new AttractionDTO(name, latitude, longitude, placeId, address, types, photoReferences));
             }
         }
@@ -136,7 +136,6 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
                     responseBuilder.append(line).append("\n");
                 }
                 br.close();
-                //System.out.println(responseBuilder.toString());
             }
 
             return responseBuilder.toString();

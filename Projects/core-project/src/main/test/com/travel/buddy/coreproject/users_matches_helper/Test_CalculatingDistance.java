@@ -1,9 +1,14 @@
 package com.travel.buddy.coreproject.users_matches_helper;
 
+import com.travel.buddy.coreproject.DTOs.AttractionDTO;
+import com.travel.buddy.coreproject.services.matches.Implementations.DistanceComputerBetweenAttractions;
 import com.travel.buddy.coreproject.services.matches.Implementations.DistanceComputerBetweenPoints;
 import com.travel.buddy.coreproject.services.matches.Implementations.Point;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Test_CalculatingDistance {
 
@@ -17,7 +22,7 @@ public class Test_CalculatingDistance {
         Assert.assertEquals(2.791, distanceBetweenPoints, 1e-15);
     }
 
-    /*
+
     @Test
     public void Test_DistanceBetweenAListOfPoints() {
         List<Point> points = new ArrayList<>();
@@ -37,8 +42,8 @@ public class Test_CalculatingDistance {
 
     @Test
     public void Test_DistanceBetweenTwoAttractions() {
-        AttractionDTO attraction1 = new AttractionDTO(0, null, 48.64703, -122.26324, null, null);
-        AttractionDTO attraction2 = new AttractionDTO(0, null, 48.6721, -122.265, null, null);
+        AttractionDTO attraction1 = new AttractionDTO(null, 48.64703, -122.26324, null, null, null, null);
+        AttractionDTO attraction2 = new AttractionDTO(null, 48.6721, -122.265, null, null, null, null);
 
         double distanceBetweenAttractions = DistanceComputerBetweenAttractions.getDistance("KM", attraction1, attraction2);
 
@@ -49,9 +54,9 @@ public class Test_CalculatingDistance {
     public void Test_DistanceBetweenAListOfAttractions() {
         List<AttractionDTO> attractions = new ArrayList<>();
 
-        AttractionDTO attraction1 = new AttractionDTO(0, null, 48.64703, -122.26324, null, null);
-        AttractionDTO attraction2 = new AttractionDTO(0, null, 48.6721, -122.265, null, null);
-        AttractionDTO attraction3 = new AttractionDTO(0, null, 48.4234, -122.34, null, null);
+        AttractionDTO attraction1 = new AttractionDTO(null, 48.64703, -122.26324, null, null, null, null);
+        AttractionDTO attraction2 = new AttractionDTO(null, 48.6721, -122.265, null, null, null, null);
+        AttractionDTO attraction3 = new AttractionDTO(null, 48.4234, -122.34, null, null, null, null);
 
         attractions.add(attraction1);
         attractions.add(attraction2);
@@ -62,5 +67,5 @@ public class Test_CalculatingDistance {
         Assert.assertEquals(DistanceComputerBetweenAttractions.getDistance("KM", attraction1, attraction2) + DistanceComputerBetweenAttractions.getDistance("KM", attraction2, attraction3), DistanceComputerBetweenAttractions.getDistance("KM", attractions), distanceBetweenPoints);
 
     }
-    */
+
 }

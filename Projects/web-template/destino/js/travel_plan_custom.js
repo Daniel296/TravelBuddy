@@ -472,7 +472,6 @@ function validateAndSubmitData(e){
             startDate: new Date($(this).find('.start-datepicker').first().find('input').val()).getTime(),
             endDate: new Date($(this).find('.end-datepicker').first().find('input').val()).getTime(),
             attractionCode: $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id'),
-            // travelPlan: []
         };
 
         listOfTravelItems[index++] = travelPlanItem;
@@ -500,5 +499,10 @@ function validateAndSubmitData(e){
     }).done(function (result) {
         console.log("BACK-END RESPONSE:");
         console.log(result);
+        if( result === "OK" ){
+            alert("Congratulations, you successfully created the trip plan!!!");
+        }else{
+            alert("We encountered a problem with server. Sorry for this inconvenient...");
+        }
     });
 }

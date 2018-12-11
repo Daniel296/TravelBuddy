@@ -38,24 +38,24 @@ public class GetUserInterestsListHelper {
             "synagogue",
             "sea",
             "ski",
-            "theatre",
             "tower",
             "tradition",
             "zoo"
             );
     public static Set<String> getInterests(Interest interest){
         Set<String> interests = new HashSet<>();
+        boolean isSet;
         for(String i : interestssAsStringList){
             try {
-                Field f = i.getClass().getDeclaredField(i); //NoSuchFieldException
+                Field f = interest.getClass().getDeclaredField(i); //NoSuchFieldException
                 f.setAccessible(true);
-                boolean isSet = (boolean) f.get(i);
+                isSet =  f.getBoolean(interest);
                 if(isSet){
                     interests.add(i);
                 }
             }
             catch(Exception ex){
-                // i'll treat them later
+                //System.out.println(ex.toString());
             }
         }
         return interests;

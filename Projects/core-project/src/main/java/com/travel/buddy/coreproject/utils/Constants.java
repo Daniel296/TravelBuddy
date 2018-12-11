@@ -14,9 +14,9 @@ public final class Constants {
 
 
     /* SCORE PERCENTAGES */
-    public static double MATCHES_FUTURE_TRIPS_PERCENT = 0.35;
-    public static double MATCHES_PAST_TRIPS_PERCENT = 0.15;
-    public static double MATCHES_INTERESTS_PERCENT = 0.5;
+    public static double MATCHES_FUTURE_TRIPS_PERCENT = 0.00;
+    public static double MATCHES_PAST_TRIPS_PERCENT = 0.00;
+    public static double MATCHES_INTERESTS_PERCENT = 1.0;
     
     
     public static Logger LOGGER = LoggerFactory.getLogger(Constants.class);

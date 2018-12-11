@@ -220,6 +220,12 @@ $(document).ready(function () {
             url: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + this.value
                 + "&types=(cities)&key=AIzaSyAvEehceQnGa0DWPp6vWvzDOIXOjXEcf1g",
             async: false,
+            // headers: {
+            //     'Access-Control-Allow-Origin' :'*',
+            //     'Access-Control-Allow-Headers' :'Origin, X-Requested-With, Content-Type, Accept',
+            //     'Access-Control-Allow-Methods' : 'GET, POST'
+            // },
+            // crossDomain : true,
             dataType: "json"
         }).done(function (result) {
             var htmlInnerText = "";

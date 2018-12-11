@@ -10,7 +10,7 @@ import com.travel.buddy.coreproject.utils.Constants;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BLUserLoginService implements BLIUserLoginService{
+public class BLUserLoginService implements BLIUserLoginService {
 	@Autowired
 	private UserLoginRepository userLoginRepository;
 	
@@ -29,6 +29,36 @@ public class BLUserLoginService implements BLIUserLoginService{
 		}else {
 			return null;
 		}
+	}
+
+	@Override
+	public UserLogin getUserLoginByEmailAndPassword(String email, String password) {
+		UserLogin userLogin = null;
+		try{
+			userLogin = userLoginRepository.findByEmailAndPassword(email, password);
+		}catch(Exception e) {
+			Constants.LOGGER.info("USERLOGIN SERVICE---getUserLoginByEmailAndPassword(String email, String password)---"
+					+ "non-existent userLoginId");
+		}
+
+		if( userLogin != null ) {
+			return userLogin;
+		}else {
+			return null;
+		}
+	}
+
+	@Override
+	public UserLogin getUserLoginByGoogleToken(String googleToken) {
+
+
+
+		return null;
+	}
+
+	@Override
+	public UserLogin getUserLoginByFacebookToken(String facebookToken) {
+		return null;
 	}
 
 }

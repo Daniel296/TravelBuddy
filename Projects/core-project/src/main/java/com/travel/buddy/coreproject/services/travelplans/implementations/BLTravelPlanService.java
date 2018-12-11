@@ -17,8 +17,10 @@ public class BLTravelPlanService implements BLITravelPlanService {
 	
 	@Autowired
 	private BLIUserSessionService userSessionService;
+	
 	@Autowired
 	private TravelPlanRepository travelPlanRepository;
+	
 	@Autowired
 	private BLIUserLoginService userLoginService;
 

@@ -14,8 +14,8 @@ public class ScoreComputerByUserInterestsImpl implements InterestsScoreComputer 
 
         int user2InterestsCount = interest2AsList.size();
         int user1InterestsCount = interest1AsList.size();
-        interest1AsList.retainAll(interest2AsList);
-        int commonInterestsCount = interest1AsList.size();
+        interest2AsList.retainAll(interest1AsList);
+        int commonInterestsCount = interest2AsList.size();
 
         int differenceCount = user2InterestsCount - commonInterestsCount;
         double score = 1.0 * commonInterestsCount / user1InterestsCount;

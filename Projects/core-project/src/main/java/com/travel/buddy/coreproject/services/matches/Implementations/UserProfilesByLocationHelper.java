@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserProfilesByLocationHelper {
+public class  UserProfilesByLocationHelper {
     @Autowired
     private BLIUserProfileService userProfileService;
 
@@ -29,6 +29,17 @@ public class UserProfilesByLocationHelper {
                 nearbyUsers.add(user);
             }
         }
-        return users;
+        return nearbyUsers;
+    }
+
+    public List<UserProfile> GetUsers(Point point, List<UserProfile> users) {
+        List<UserProfile> nearbyUsers = new ArrayList<>();
+        for(UserProfile user: users){
+            Point userLocation = new Point(user.getLastLat(), user.getLastLng());
+            if(DistanceComputerBetweenPoints.getDistance("KM", userLocation, point) < Constants.TRAVELPLANITEM_CLOSE_DISTANCE){
+                nearbyUsers.add(user);
+            }
+        }
+        return nearbyUsers;
     }
 }

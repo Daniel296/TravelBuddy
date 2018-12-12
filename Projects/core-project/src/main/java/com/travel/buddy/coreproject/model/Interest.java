@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -30,7 +30,8 @@ public class Interest implements Serializable {
     private long id;
     
     @OneToOne(mappedBy = "interest", cascade = CascadeType.ALL,fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonIgnore
     private UserProfile userProfile;
 
 

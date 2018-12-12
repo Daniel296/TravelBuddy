@@ -47,7 +47,7 @@ public class TravelPlan implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "TRAVEL_PLAN_ID")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private List<TravelPlanItem> travelPlanItems;
 	
 	public TravelPlan() {

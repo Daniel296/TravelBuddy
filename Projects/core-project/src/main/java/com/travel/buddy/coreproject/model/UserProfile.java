@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -56,13 +56,14 @@ public class UserProfile implements Serializable {
 	private double lastLat;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "USER_LOGIN_ID", nullable = false)
-    @JsonBackReference
+    @JoinColumn(name = "USER_LOGIN_ID", insertable=true, updatable=true)
+//    @JsonBackReference
+    @JsonIgnore
     private UserLogin userLogin;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "CITY_ID", referencedColumnName = "CITY_ID", insertable=true, updatable=true)
-    @JsonManagedReference
+//    @JsonManagedReference
     private City city;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -71,8 +72,8 @@ public class UserProfile implements Serializable {
     private List<TravelPlan> travelPlans;
     
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "INTEREST_ID", nullable = false)
-    @JsonManagedReference
+    @JoinColumn(name = "INTEREST_ID", insertable=true, updatable=true)
+//    @JsonManagedReference
     private Interest interest;
     
     

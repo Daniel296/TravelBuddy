@@ -1,16 +1,3 @@
-/* JS Document */
-
-/******************************
-
- [Table of Contents]
-
- 1. Vars and Inits
- 2. Set Header
- 3. Initialize Hamburger
- 4. Init Parallax
- 5. Init Isotope
-
- ******************************/
 var allTravelItems = [];
 var lastSelectChanged = null;
 

@@ -71,7 +71,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
                     name = innerJsonObject.getString("name");
                     latitude = innerJsonObject.getJsonObject("geometry").getJsonObject("location").getJsonNumber("lat").doubleValue();
                     longitude = innerJsonObject.getJsonObject("geometry").getJsonObject("location").getJsonNumber("lng").doubleValue();
-                    placeId = innerJsonObject.getString("id");
+                    placeId = innerJsonObject.getString("place_id");
                     address = innerJsonObject.getString("formatted_address");
                     types = innerJsonObject.getJsonArray("types");
 

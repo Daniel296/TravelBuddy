@@ -29,9 +29,7 @@ public class MergeMatchScores {
         /// basic => should be replaced; it's more coupling
 
         for (MatchScoreComputer matchScore : scoreComputers) {
-            return scoreComputers.get(0).getPercent() * scoreComputers.get(0).getScore(user1, user2) +
-                    scoreComputers.get(1).getPercent() * scoreComputers.get(1).getScore(user1, user2) +
-                    scoreComputers.get(2).getPercent() * scoreComputers.get(2).getScore(user1, user2);
+            return matchScore.getPercent() * matchScore.getScore(user1, user2);
         }
         return 0;
     }

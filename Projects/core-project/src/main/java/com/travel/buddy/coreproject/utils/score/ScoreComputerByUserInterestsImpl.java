@@ -11,7 +11,15 @@ public class ScoreComputerByUserInterestsImpl implements InterestsScoreComputer 
     public double getScore(Interest interests1, Interest interests2) {
         Set<String> interest1AsList = GetUserInterestsListHelper.getInterests(interests1);
         Set<String> interest2AsList = GetUserInterestsListHelper.getInterests(interests2);
-        interest1AsList.retainAll(interest2AsList);
-        return interest1AsList.size();
+
+        int user2InterestsCount = interest2AsList.size();
+        int user1InterestsCount = interest1AsList.size();
+        interest2AsList.retainAll(interest1AsList);
+        int commonInterestsCount = interest2AsList.size();
+
+        int differenceCount = user2InterestsCount - commonInterestsCount;
+        double score = 1.0 * commonInterestsCount / user1InterestsCount;
+        score -= 1.0 * differenceCount / 33;
+        return score;
     }
 }

@@ -81,15 +81,14 @@ function travelHistory() {
         }
     }
     $('.travel-places-links').html(innerHtmlText);
-    console.log("AICI: " + $('.travel-places-links').first().find('.show-travel-items').first().attr('class'));
 }
 
 $(document).ready(function () {
     $('.show-travel-items').hide();
     $(document).on('click', '.href-select-travel', function (e) {
-        if( $(this).next().next().first().find('.show-travel-items').first().is(":visible") ){
+        if ($(this).next().next().first().find('.show-travel-items').first().is(":visible")) {
             $(this).next().next().first().find('.show-travel-items').first().hide();
-        }else{
+        } else {
             $(this).next().next().first().find('.show-travel-items').first().show();
             console.log("Click " + $(this).attr('id'));
             var id = $(this).attr('id');
@@ -101,9 +100,34 @@ $(document).ready(function () {
                 })[0];
                 console.log("Found place at pos[" + i + "]: " + place);
 
-                innerHtmlText += '<div class="travel-item-address">'
-                    + '<h3>' + place.adr_address + '</h3>'
-                    + '</div>';
+                var tagsHtml = "";
+                for (var j = 0; j < place.types.length; j++) {
+                    tagsHtml += '<li class="tag">#' + place.types[i] + '</li>\n';
+                }
+
+                var photoReference;
+                if (place.photos.length === 0) {
+                    photoReference = "images/No_image_available.png";
+                } else {
+                    photoReference = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + place.photos[0].photo_reference
+                        + "&key=AIzaSyAvEehceQnGa0DWPp6vWvzDOIXOjXEcf1g";
+                }
+                innerHtmlText += '<div class="item clearfix">\n'
+                    + '<div class="item_image">\n'
+                    + '<img src="' + photoReference + '" alt="">\n'
+                    + '</div>\n'
+                    + '<div class="item_content">\n'
+                    + '<div class="item_title">' + place.name + '\n'
+                    + '</div>\n'
+                    + '<div class="item_address">' + place.formatted_address + '\n'
+                    + '</div>\n'
+                    + '<div class="item_address">\n'
+                    + '<div class="item_text">\n'
+                    + '<ul class="tags_content d-flex flex-row flex-wrap align-items-start justify-content-start">\n'
+                    + tagsHtml
+                    + '</div>\n'
+                    + '</div>\n'
+                    + '</div>\n';
             }
             $(this).next().next().first().find('.show-travel-items').first().html(innerHtmlText);
         }

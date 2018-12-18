@@ -1,5 +1,4 @@
 var userProfileData;
-
 var places = [];
 
 $(document).ready(function () {
@@ -31,15 +30,11 @@ $(document).ready(function () {
                     dataType: "json"
                 }).done(function (result) {
                     console.log("RESULTED PLACE: ");
-                    console.log(result);
-                    places[counter++] = result;
+                    console.log(result.result);
+                    places[counter++] = result.result;
                 });
             }
         }
-    }
-
-    for( var i =0 ; i < places.length; i++){
-        console.log('PLACE: ' + places[i]);
     }
     personalProfile();
     travelHistory();
@@ -60,17 +55,60 @@ function personalProfile() {
 }
 
 function travelHistory() {
-    innerHtmlText = '';
+    var innerHtmlText = '';
     if (userProfileData.travelPlans.length === 0) {
         innerHtmlText = '<h1> You don\'t have a travel plan yet...';
     } else {
+        var startDate;
+        var endDate;
         for (var i = 0; i < userProfileData.travelPlans.length; i++) {
+            startDate = new Date(userProfileData.travelPlans[i].startDate).toLocaleDateString();
+            endDate = new Date(userProfileData.travelPlans[i].endDate).toLocaleDateString();
 
+            var items = jQuery.map(userProfileData.travelPlans[i].travelPlanItems, function (a) {
+                return a.attractionCode;
+            });
+            console.log("ITEMS:" + items);
+            innerHtmlText += '<div class="travel-plan">'
+                + '<a class="href-select-travel" id="' + items + '" href="javascript:void(0);">'
+                + 'Travel between ' + startDate + ' - ' + endDate + '</a><br/>'
+                + '<div class = "row">'
+                + '<div class = "col">'
+                + '<div class="show-travel-items"> </div>'
+                + '</div>'
+                + '</div>'
+                + '</div>';
         }
     }
     $('.travel-places-links').html(innerHtmlText);
-
+    console.log("AICI: " + $('.travel-places-links').first().find('.show-travel-items').first().attr('class'));
 }
+
+$(document).ready(function () {
+    $('.show-travel-items').hide();
+    $(document).on('click', '.href-select-travel', function (e) {
+        if( $(this).next().next().first().find('.show-travel-items').first().is(":visible") ){
+            $(this).next().next().first().find('.show-travel-items').first().hide();
+        }else{
+            $(this).next().next().first().find('.show-travel-items').first().show();
+            console.log("Click " + $(this).attr('id'));
+            var id = $(this).attr('id');
+            var items = id.split(',');
+            var innerHtmlText = '';
+            for (var i = 0; i < items.length; i++) {
+                var place = places.filter(function (el) {
+                    return el.place_id === items[i];
+                })[0];
+                console.log("Found place at pos[" + i + "]: " + place);
+
+                innerHtmlText += '<div class="travel-item-address">'
+                    + '<h3>' + place.adr_address + '</h3>'
+                    + '</div>';
+            }
+            $(this).next().next().first().find('.show-travel-items').first().html(innerHtmlText);
+        }
+    });
+});
 
 function userInterests() {
 

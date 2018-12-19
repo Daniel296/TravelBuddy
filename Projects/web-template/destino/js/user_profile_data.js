@@ -2,6 +2,10 @@ var userProfileData;
 var places = [];
 
 $(document).ready(function () {
+    $('.personal-profile').hide();
+    $('.travel-history').hide();
+    $('.user-interests').hide();
+
     // Get user profile data and interests
     $.ajax({
         type: "POST",
@@ -157,4 +161,34 @@ function userInterests() {
     }
     innerHtmlText += '</table>';
     $('.interests-data').html(innerHtmlText);
+}
+
+function showPersonalProfile(){
+    $('.user-interests').hide();
+    $('.travel-history').hide();
+    if( $('.personal-profile').is(":visible") ){
+        $('.personal-profile').hide();
+    }else{
+        $('.personal-profile').show();
+    }
+}
+
+function showTravelHistory(){
+    $('.personal-profile').hide();
+    $('.user-interests').hide();
+    if( $('.travel-history').is(":visible") ){
+        $('.travel-history').hide();
+    }else{
+        $('.travel-history').show();
+    }
+}
+
+function showUserInterests(){
+    $('.personal-profile').hide();
+    $('.travel-history').hide();
+    if( $('.user-interests').is(":visible") ){
+        $('.user-interests').hide();
+    }else{
+        $('.user-interests').show();
+    }
 }

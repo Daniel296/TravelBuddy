@@ -2,6 +2,7 @@ var userProfileData;
 var places = [];
 
 $(document).ready(function () {
+    // Get user profile data and interests
     $.ajax({
         type: "POST",
         url: "http://localhost:8080/core-project/user-profile/getBySessionUuid/?sessionUuid=temporary_uuid",
@@ -16,7 +17,7 @@ $(document).ready(function () {
         userProfileData = result;
     });
 
-    //Get all places fromm TravelPlanItems by place id
+    // Get all places fromm TravelPlanItems by place id
     var counter = 0;
     if (userProfileData.travelPlans.length !== 0) {
         for (var i = 0; i < userProfileData.travelPlans.length; i++) {
@@ -36,6 +37,7 @@ $(document).ready(function () {
             }
         }
     }
+
     personalProfile();
     travelHistory();
     userInterests();
@@ -135,5 +137,24 @@ $(document).ready(function () {
 });
 
 function userInterests() {
+    var innerHtmlText = '';
+    innerHtmlText += '<table>'
+        + '<tr><td> Question </td><td> Answer </td></tr>';
 
+    var dataArray = userProfileData.interest;
+    for (var prop in dataArray) {
+        if (dataArray.hasOwnProperty(prop) && prop !== 'id') {
+            innerHtmlText += '<tr>'
+                + '<td>'
+                + '<div class="interest-question">'
+                + ' <h5>Formulare intrebare</h5>'
+                + '<p>#' + prop + '</p>'
+                + '</div>'
+                + '</td>'
+                + '<td> '+ dataArray[prop] +' </td>'
+                + '</tr>';
+        }
+    }
+    innerHtmlText += '</table>';
+    $('.interests-data').html(innerHtmlText);
 }

@@ -1072,3 +1072,11 @@ section
 {
     background: rgba(254,60,82,0.8);
 }
+
+.input-error-email, .input-error-fname, .input-error-lname, .input-error-number, .input-error-psw{
+    display: none;
+}
+
+.input-error {
+    color: indianred;
+}

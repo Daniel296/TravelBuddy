@@ -1,12 +1,24 @@
 package com.travel.buddy.coreproject.DTOs;
 
-public class UserLoginDTO {
-    private String email;
+import java.io.Serializable;
+
+public class UserLoginDTO implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4005791414088680484L;
+	
+	
+	private String email;
     private String password;
     private String facebookToken;
     private String googleToken;
     private String authorizationMethod;
     private String sessionUUID;
+    
+    public UserLoginDTO() {
+    	super();
+    }
 
     public UserLoginDTO(String email, String password, String facebookToken, String googleToken, String authorizationMethod, String sessionUUID) {
         this.email = email;

@@ -2,12 +2,14 @@ package com.travel.buddy.coreproject.controllers;
 
 import com.travel.buddy.coreproject.DTOs.UserLoginDTO;
 import com.travel.buddy.coreproject.model.UserLogin;
-import com.travel.buddy.coreproject.repository.UserLoginRepository;
-import com.travel.buddy.coreproject.repository.UserProfileRepository;
 import com.travel.buddy.coreproject.services.sessions.interfaces.BLIUserSessionService;
 import com.travel.buddy.coreproject.services.userlogin.interfaces.BLIUserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/login")
@@ -26,13 +28,9 @@ public class LoginController {
 
         if(userLoginDTO.getAuthorizationMethod().equals("Password")) {
             userLogin = userLoginService.getUserLoginByEmailAndPassword(userLoginDTO.getEmail(), userLoginDTO.getPassword());
-        }
-
-        if(userLoginDTO.getAuthorizationMethod().equals("Google")) {
+        } else if(userLoginDTO.getAuthorizationMethod().equals("Google")) {
             userLogin = userLoginService.getUserLoginByGoogleToken(userLoginDTO.getGoogleToken());
-        }
-
-        if(userLoginDTO.getAuthorizationMethod().equals("Facebook")) {
+        } else if(userLoginDTO.getAuthorizationMethod().equals("Facebook")) {
             userLogin = userLoginService.getUserLoginByFacebookToken(userLoginDTO.getFacebookToken());
         }
 

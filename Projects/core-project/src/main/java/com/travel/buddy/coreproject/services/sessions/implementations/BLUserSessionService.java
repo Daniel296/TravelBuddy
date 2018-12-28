@@ -52,8 +52,7 @@ public class BLUserSessionService implements BLIUserSessionService {
 		String sessionUUID = uuid.toString();
 
 		Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-		long timestamp = Long.parseLong(df.format(currentTimestamp));
+		long timestamp = currentTimestamp.getTime();
 
 		userSessionRepository.save(new UserSession(userLoginId, sessionUUID, timestamp));
 

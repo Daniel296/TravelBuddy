@@ -29,7 +29,6 @@ $(document).ready(function () {
         }else{
             sessionUUID = getCookie("sessionUUID");
         }
-        console.log("email: " + email + " password: " + password + " session: " + sessionUUID);
 
         $.ajax({
             type: "POST",
@@ -47,7 +46,6 @@ $(document).ready(function () {
             dataType: 'json',
             async: false
         }).done(function (data) {
-            console.log("Received data: " + data);
             if (data === "NOT OK") {
                 $('.login-error').show();
             } else {

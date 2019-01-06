@@ -1,17 +1,9 @@
-package com.travel.buddy.coreproject.tests;
+package com.travel.buddy.coreproject;
 
 import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 @SuppressWarnings("Duplicates")
 public class ScoreComputerByUserInterestsImplTest {

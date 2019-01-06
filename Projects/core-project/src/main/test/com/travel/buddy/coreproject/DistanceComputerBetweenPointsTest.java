@@ -1,4 +1,4 @@
-package com.travel.buddy.coreproject.tests;
+package com.travel.buddy.coreproject;
 
 import com.travel.buddy.coreproject.services.matches.Implementations.DistanceComputerBetweenPoints;
 import com.travel.buddy.coreproject.services.matches.Implementations.Point;

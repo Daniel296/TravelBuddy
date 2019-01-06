@@ -1,9 +1,7 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
 import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.repository.UserProfileRepository;
 import com.travel.buddy.coreproject.services.userprofile.interfaces.BLIUserProfileService;
-import com.travel.buddy.coreproject.tests.UserProfilesByLocationHelperTest;
 import com.travel.buddy.coreproject.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

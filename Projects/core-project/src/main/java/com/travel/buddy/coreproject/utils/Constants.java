@@ -19,5 +19,5 @@ public final class Constants {
     public static double MATCHES_INTERESTS_PERCENT = 1.0;
     
     
-    public static Logger LOGGER = LoggerFactory.getLogger(Constants.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(Constants.class);
 }

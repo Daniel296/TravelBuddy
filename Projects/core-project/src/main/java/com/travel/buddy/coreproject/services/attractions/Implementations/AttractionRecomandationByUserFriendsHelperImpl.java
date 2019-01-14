@@ -5,7 +5,6 @@ import java.util.*;
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
 import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.model.*;
-import com.travel.buddy.coreproject.model.TravelPlan;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
 
@@ -34,10 +33,10 @@ public class AttractionRecomandationByUserFriendsHelperImpl implements Attractio
     }
 
     public List<TravelPlanItem> getTravelPlanItems(){
-        List<UserProfile> matchedUsers = new ArrayList<>();
+//        List<UserProfile> matchedUsers = new ArrayList<>();
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        List<TravelPlan> travelPlan = new ArrayList<>();
-        HashMap<TravelPlanItem, Integer> topTravelPlanItems = new HashMap<>();
+//        List<TravelPlan> travelPlan = new ArrayList<>();
+//        HashMap<TravelPlanItem, Integer> topTravelPlanItems = new HashMap<>();
         allMatches = matchesRepository.findAll(); //get all user matches
 
         /*for (Matches match : allMatches){

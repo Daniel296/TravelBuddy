@@ -2,8 +2,6 @@ package com.travel.buddy.coreproject.utils.SlopeOne;
 
 import com.travel.buddy.coreproject.model.UserProfile;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;

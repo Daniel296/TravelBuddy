@@ -10,7 +10,6 @@ import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl
 import org.junit.Assert;
 import org.junit.Test;
 
-@SuppressWarnings("Duplicates")
 public class ScoreComputerByUserInterestsImplTest {
 
     @Test

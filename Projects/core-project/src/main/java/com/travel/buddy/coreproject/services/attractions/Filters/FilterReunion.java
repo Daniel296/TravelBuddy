@@ -2,9 +2,7 @@ package com.travel.buddy.coreproject.services.attractions.Filters;
 
 import com.google.common.collect.Lists;
 import com.travel.buddy.coreproject.DTOs.AttractionDTO;
-import com.travel.buddy.coreproject.DTOs.UserDTO;
 import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.services.attractions.Implementations.AttractionRecomandationByUserPreferencesHelperImpl;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.FilterHelper;
 import com.travel.buddy.coreproject.utils.Constants;
 

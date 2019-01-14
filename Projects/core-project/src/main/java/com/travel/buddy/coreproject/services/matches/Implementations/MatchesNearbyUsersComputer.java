@@ -1,7 +1,6 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
 import com.travel.buddy.coreproject.model.UserProfile;
-import com.travel.buddy.coreproject.services.matches.Interfaces.MatchScoreComputer;
 
 import java.util.List;
 

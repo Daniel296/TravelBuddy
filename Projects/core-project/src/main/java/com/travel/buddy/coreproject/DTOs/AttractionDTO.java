@@ -1,21 +1,6 @@
 package com.travel.buddy.coreproject.DTOs;
 
-import com.travel.buddy.coreproject.model.City;
-import com.travel.buddy.coreproject.model.Interest;
-
-import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 public class AttractionDTO {
 
@@ -110,5 +95,13 @@ public class AttractionDTO {
 
 	public void setPhotoReferences(List<String> photoReferences) {
 		this.photoReferences = photoReferences;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

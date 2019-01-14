@@ -1,6 +1,5 @@
 package com.travel.buddy.coreproject.utils.SlopeOne;
 
-import com.travel.buddy.coreproject.model.Interest;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserProfileRepository;
 import com.travel.buddy.coreproject.utils.GetUserInterestsListHelper;

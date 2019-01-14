@@ -3,8 +3,6 @@ package com.travel.buddy.coreproject.utils;
 import com.travel.buddy.coreproject.model.Interest;
 
 import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class GetUserInterestFromStringListHelper {

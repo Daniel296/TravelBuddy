@@ -1,13 +1,10 @@
 package com.travel.buddy.coreproject.utils;
 
-import com.travel.buddy.coreproject.model.Matches;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.MatchesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class GetUserFriendsHelper {

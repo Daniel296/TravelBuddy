@@ -6,7 +6,6 @@ import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.GetUserFriendsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Tuple;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ public class MatchesRecomandationsService {
     @Autowired
     UserProfileRepository userProfileRepository;
 
-    private Map userSubstractScoresMap = new HashMap();
+    private Map<UserProfile, Double> userSubstractScoresMap = new HashMap<UserProfile, Double>();
     // build a map having as key an user profile and as value a map like <user, score>
     //
 
@@ -36,7 +35,7 @@ public class MatchesRecomandationsService {
     public MatchesRecomandationsService() {
         List<UserProfile> userProfiles = userProfileRepository.findAll();
         MergeMatchScores mergeScore = MergeMatchScores.getInstance();
-        Map scoreMap = new HashMap();
+        Map<UserProfile, Object> scoreMap = new HashMap<UserProfile, Object>();
 
         for(UserProfile userProfile: userProfiles)
         {

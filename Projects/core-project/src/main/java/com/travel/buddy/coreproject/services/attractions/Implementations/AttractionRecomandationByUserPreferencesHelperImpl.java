@@ -21,9 +21,7 @@ import com.travel.buddy.coreproject.DTOs.AttractionDTO;
 import com.travel.buddy.coreproject.model.TravelPlanItem;
 import com.travel.buddy.coreproject.repository.AttractionRepository;
 import com.travel.buddy.coreproject.services.attractions.Interfaces.AttractionRecomandationHelper;
-import com.travel.buddy.coreproject.services.attractions.Interfaces.InterestsScoreComputer;
 import com.travel.buddy.coreproject.utils.Constants;
-import com.travel.buddy.coreproject.utils.score.ScoreComputerByUserInterestsImpl;
 
 public class AttractionRecomandationByUserPreferencesHelperImpl implements AttractionRecomandationHelper {
 
@@ -91,7 +89,7 @@ public class AttractionRecomandationByUserPreferencesHelperImpl implements Attra
 
     public List<TravelPlanItem> getTravelPlanItems(){
         List<TravelPlanItem> travelPlanItems = new ArrayList<>();
-        InterestsScoreComputer scoreComputer  = new ScoreComputerByUserInterestsImpl();
+//        InterestsScoreComputer scoreComputer  = new ScoreComputerByUserInterestsImpl();
         //allAttractions = attractionRepository.findAll();
         //Interest userInterests = userDTO.getInterest();
 

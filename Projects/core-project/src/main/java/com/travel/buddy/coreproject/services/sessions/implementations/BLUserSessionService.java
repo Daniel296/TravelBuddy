@@ -1,8 +1,6 @@
 package com.travel.buddy.coreproject.services.sessions.implementations;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;

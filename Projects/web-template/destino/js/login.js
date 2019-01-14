@@ -49,7 +49,7 @@ $(document).ready(function () {
             if (data === "NOT OK") {
                 $('.login-error').show();
             } else {
-                setCookie("sessionUUID", data, 10);
+                setCookie("sessionUUID", data, 15);
                 window.location = "index.html";
             }
         });

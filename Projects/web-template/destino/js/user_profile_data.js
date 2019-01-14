@@ -6,10 +6,12 @@ $(document).ready(function () {
     $('.travel-history').hide();
     $('.user-interests').hide();
 
+    var sessionUUID = getCookie("sessionUUID");
+
     // Get user profile data and interests
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/core-project/user-profile/getBySessionUuid/?sessionUuid=temporary_uuid",
+        url: "http://localhost:8080/core-project/user-profile/getBySessionUuid/?sessionUuid=" + sessionUUID,
         data: JSON.stringify({}),
         contentType: 'application/json',
         mimeType: 'application/json',

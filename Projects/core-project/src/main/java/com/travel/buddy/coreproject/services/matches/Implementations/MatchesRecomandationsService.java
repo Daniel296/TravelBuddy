@@ -1,17 +1,27 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.travel.buddy.coreproject.DTOs.UserMatchDTO;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserProfileRepository;
+import com.travel.buddy.coreproject.services.matches.Interfaces.MatchesRecommandationsServiceInterface;
 import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.GetUserFriendsHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.*;
 
 // rulat la o anumita perioada de timp si de updatat un tabel cu recomandari
 
-public class MatchesRecomandationsService {
+@Service
+public class MatchesRecomandationsService implements MatchesRecommandationsServiceInterface{
 
     @Autowired
     UserProfileRepository userProfileRepository;
@@ -30,7 +40,7 @@ public class MatchesRecomandationsService {
         }
     }
 
-    public void set(UserProfile userProfile) {
+    private void set(UserProfile userProfile) {
         prepareSubstractScores();
         List<UserProfile> userProfiles = userProfileRepository.findAll();
         MergeMatchScores mergeScore = MergeMatchScores.getInstance();

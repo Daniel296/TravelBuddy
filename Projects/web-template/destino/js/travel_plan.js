@@ -205,17 +205,10 @@ $(document).ready(function () {
             url: "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + this.value
                 + "&types=(cities)&key=AIzaSyAvEehceQnGa0DWPp6vWvzDOIXOjXEcf1g",
             async: false,
-            // headers: {
-            //     'Access-Control-Allow-Origin' :'*',
-            //     'Access-Control-Allow-Headers' :'Origin, X-Requested-With, Content-Type, Accept',
-            //     'Access-Control-Allow-Methods' : 'GET, POST'
-            // },
-            // crossDomain : true,
             dataType: "json"
         }).done(function (result) {
             var htmlInnerText = "";
             for (var i = 0; i < result.predictions.length; i++) {
-                // console.log("prediction:" + result.predictions[i].description);
                 htmlInnerText += "<option>" + result.predictions[i].description + "</option>\n";
             }
             $('#cities').html(htmlInnerText);
@@ -227,10 +220,8 @@ $(document).ready(function () {
     Hide div for resulted places if no city is selected
  */
 $(document).ready(function () {
-    // if($('#city').val().length === 0 || $('#interests').val().length === 0 ){
     $('.travel-plan-items').hide();
     $('.select-items').hide();
-    // }
 });
 
 /*
@@ -287,26 +278,35 @@ function displayAttractions(city, listOfInterests) {
         dataType: 'json',
         async: false
     }).done(function (result) {
-        console.log("Result, please work");
-        console.log(result);
 
         var items = undefined;
         items = $();
 
-        for (var i = 0; i < result.length; i++) {
-            items = items.add(createItem(result[i].photoReferences, result[i].attractionName, result[i].interests, result[i].address));
+        $('.items').empty();
 
-            var item = {
-                attractionName: result[i].attractionName,
-                attractionCode: result[i].placeId,
-                isSelected: false
-            };
-            allTravelItems[i] = item;
+        if(result.length === 0 ){
+            $('.places-bad').show();
+            $('.places-good').hide();
+            $('.select-items').hide();
+        }else{
+            $('.places-bad').hide();
+            $('.places-good').show();
+
+            for (var i = 0; i < result.length; i++) {
+                items = items.add(createItem(result[i].photoReferences, result[i].attractionName, result[i].interests, result[i].address));
+
+                var item = {
+                    attractionName: result[i].attractionName,
+                    attractionCode: result[i].placeId,
+                    isSelected: false
+                };
+                allTravelItems[i] = item;
+            }
+
+            $(function () {
+                $('.items').append(items);
+            });
         }
-
-        $(function () {
-            $('.items').append(items);
-        });
     });
 }
 
@@ -316,6 +316,8 @@ function displayAttractions(city, listOfInterests) {
 $(document).ready(function () {
     $('#search-places-button').click(function () {
         $('.travel-plan-items').show();
+        $('.places-bad').hide();
+        $('.places-good').hide();
         $('.select-items').show();
         $('.text-select-preferences').hide();
         $('.dropdown-select-preferences').hide();
@@ -340,20 +342,17 @@ $(document).ready(function () {
 
         city = myFunction(city);
 
-        console.log("City:" + city);
-        console.log("Interests:" + interests);
 
         displayAttractions(city, interests);
 
         $('.start-travel-datepicker').change(function () {
-            if (checkIfStartDateForTravelIsCompleted()) {
+            if (checkIfStartDateForTravelIsCompleted() && checkIfStartDateForTravelIsInTheFuture()) {
                 isStartTravelGood = true;
             } else {
                 isStartTravelGood = false;
             }
             isEndTravelGood = false;
             if (isStartTravelGood && isEndTravelGood) {
-                console.log("Aicisa");
                 $('.text-select-preferences').show();
                 $('.dropdown-select-preferences').show();
             } else {
@@ -370,7 +369,6 @@ $(document).ready(function () {
             }
 
             if (isStartTravelGood && isEndTravelGood) {
-                console.log("Aicisa");
                 $('.text-select-preferences').show();
                 $('.dropdown-select-preferences').show();
             } else {
@@ -385,7 +383,6 @@ $(document).ready(function () {
 
  */
 function setOptionsForSelect(e) {
-    console.log("Valoarea select: " + $(e).children(':selected').text() + '| length:' + $(e).children(':selected').text().length);
     if ($(e).children(':selected').text().length === 0 || $(e).children(':selected').text() === "Please select...") {
         var innerHtmlText = '';
         innerHtmlText = '<option id="default-value" selected>Please select...</option>\n';
@@ -411,8 +408,6 @@ function addNewDropdown(e) {
     if (selectedOption.text() !== "Please select..." && filteredTravelItems.length > 1) {
         var foundItemIndex = allTravelItems.findIndex((obj => obj.attractionCode === selectedOption.attr('id')));
         allTravelItems[foundItemIndex].isSelected = true;
-
-        console.log("Selected---id:" + selectedOption.attr('id') + "-----name:" + selectedOption.text());
 
         var innerHtmlText = '';
         innerHtmlText += '<br/>' +
@@ -444,17 +439,26 @@ function changeItemOptionEvent(e) {
     lastSelectChanged = e;
 
     var foundItemIndex = allTravelItems.findIndex((obj => obj.attractionCode === $(e).children(':selected').attr('id')));
-    console.log("Item index: " + foundItemIndex);
     allTravelItems[foundItemIndex].isSelected = true;
-
-    console.log("Selected---id:" + $(e).children(':selected').attr('id') + "-----name:" + $(e).val());
 }
 
 /*
  */
+function checkIfStartDateForTravelIsInTheFuture() {
+    var startDatepicker = $('.select-items').find('.datepicker').eq(0).find('.start-travel-datepicker').first();
+
+    if (new Date($(startDatepicker).val()).getTime() >= new Date().getTime()) {
+        return true;
+    }
+    alert("Selected time is in the past. Choose a date in the future.");
+    return false;
+}
+
+/*
+
+ */
 function checkIfStartDateForTravelIsCompleted() {
     var startDatepicker = $('.select-items').find('.datepicker').eq(0).find('.start-travel-datepicker').first();
-    console.log('startDatepicker: ' + $(startDatepicker).attr('class') + " text: " + $(startDatepicker).val());
 
     if ($(startDatepicker).val() !== "") {
         return true;
@@ -467,7 +471,6 @@ function checkIfStartDateForTravelIsCompleted() {
  */
 function checkIfEndDateForTravelIsCompleted() {
     var endDatepicker = $('.select-items').find('.datepicker').eq(1).find('.end-travel-datepicker').first();
-    console.log('endDatepicker: ' + $(endDatepicker).attr('class') + " text: " + $(endDatepicker).val());
 
     if ($(endDatepicker).val() !== "") {
         return true;
@@ -482,6 +485,7 @@ function checkIdStartDateIsSmallerThanEndDate() {
     if (new Date($(startDatepicker).val()).getTime() <= new Date($(endDatepicker).val()).getTime()) {
         return true;
     }
+    alert("End date must be bigger the start date in you plan.");
     return false;
 }
 
@@ -495,16 +499,12 @@ function validateAndSubmitData(e) {
     $("body").find('.select-each-preference').first().find('.row').each(function () {
         var currentElement = $(this);
         repeat++;
-        console.log("CURRENT " + repeat + ": " + currentElement.attr('class'));
 
         var currentIdForSelectedOption = $(this).find('.preference-selector').first().children('option').filter(':selected').attr('id');
-        console.log("Current " + repeat + " ID: " + currentIdForSelectedOption);
 
         var currentStartDateForSelectedOption = $(this).find('.start-datepicker').first().find('input').val();
-        console.log("Current " + repeat + " START DATE: " + currentStartDateForSelectedOption);
 
         var currentEndDateForSelectedOption = $(this).find('.end-datepicker').first().find('input').val();
-        console.log("Current " + repeat + " END DATE: " + currentEndDateForSelectedOption);
 
         var travelPlanItem = {
             startDate: new Date(currentStartDateForSelectedOption).getTime(),
@@ -515,36 +515,34 @@ function validateAndSubmitData(e) {
         listOfTravelItems[index++] = travelPlanItem;
     });
 
-    console.log("Final items: " + JSON.stringify(listOfTravelItems));
+    if( listOfTravelItems.length === 1 && listOfTravelItems[0].attractionCode === 'default-value'){
+        alert("You have to select al least one place to visit in order to finalize your travel plan...");
+    }else{
 
-    var endDatepicker = $('.select-items').find('.datepicker').eq(1).find('.end-travel-datepicker').first().val();
-    var startDatepicker = $('.select-items').find('.datepicker').eq(0).find('.start-travel-datepicker').first().val();
+        var endDatepicker = $('.select-items').find('.datepicker').eq(1).find('.end-travel-datepicker').first().val();
+        var startDatepicker = $('.select-items').find('.datepicker').eq(0).find('.start-travel-datepicker').first().val();
 
-    var startDateMillis = new Date(startDatepicker).getTime().toString();
-    var endDateMillis = new Date(endDatepicker).getTime().toString();
+        var startDateMillis = new Date(startDatepicker).getTime().toString();
+        var endDateMillis = new Date(endDatepicker).getTime().toString();
 
-    console.log("start date: " + startDatepicker + " millis:" + startDateMillis);
-    console.log("end date:" + endDatepicker + " millis:" + endDateMillis);
+        var sessionUUID = getCookie("sessionUUID");
 
-    var sessionUUID = getCookie("sessionUUID");
-
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:8080/core-project/trip/create/?session=" + sessionUUID,
-        data: JSON.stringify({startDate: startDateMillis, endDate: endDateMillis, travelPlanItems: listOfTravelItems}),
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        dataType: 'json',
-        async: false
-    }).done(function (result) {
-        console.log("BACK-END RESPONSE:");
-        console.log(result);
-        if (result === "OK") {
-            alert("Congratulations, you successfully created the trip plan!!!");
-            window.location = "index.html";
-        } else {
-            alert("We encountered a problem with server. Sorry for this inconvenient...");
-            window.location = "travel-plan.html";
-        }
-    });
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/core-project/trip/create/?session=" + sessionUUID,
+            data: JSON.stringify({startDate: startDateMillis, endDate: endDateMillis, travelPlanItems: listOfTravelItems}),
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            dataType: 'json',
+            async: false
+        }).done(function (result) {
+            if (result === "OK") {
+                alert("Congratulations, you successfully created the trip plan!!!");
+                window.location = "index.html";
+            } else {
+                alert("We encountered a problem with server. Sorry for this inconvenient...");
+                window.location = "index.html";
+            }
+        });
+    }
 }

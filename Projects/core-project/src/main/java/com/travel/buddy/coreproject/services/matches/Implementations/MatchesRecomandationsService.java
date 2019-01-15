@@ -1,15 +1,13 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
+import com.travel.buddy.coreproject.DTOs.UserMatchDTO;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserProfileRepository;
 import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.GetUserFriendsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 // rulat la o anumita perioada de timp si de updatat un tabel cu recomandari
 
@@ -17,8 +15,8 @@ public class MatchesRecomandationsService {
 
     @Autowired
     UserProfileRepository userProfileRepository;
-
-    private Map<UserProfile, Double> userSubstractScoresMap = new HashMap<UserProfile, Double>();
+    private Map<UserProfile, Double> userSubstractScoresMap = new HashMap<>();
+    private  List<UserMatchDTO> usersRecomandationsList = new ArrayList<>();
     // build a map having as key an user profile and as value a map like <user, score>
     //
 
@@ -32,24 +30,68 @@ public class MatchesRecomandationsService {
         }
     }
 
-    public MatchesRecomandationsService() {
+    public void set(UserProfile userProfile) {
+        prepareSubstractScores();
         List<UserProfile> userProfiles = userProfileRepository.findAll();
         MergeMatchScores mergeScore = MergeMatchScores.getInstance();
-        Map<UserProfile, Object> scoreMap = new HashMap<UserProfile, Object>();
+        Map<UserProfile, Double> scoreMap = new HashMap<>();
 
-        for(UserProfile userProfile: userProfiles)
-        {
-             //to be added into a table of recommandation (to be created)
-            for(UserProfile anotherUser:userProfiles)
-            {
-                if (anotherUser.getId() != userProfile.getId()) {
-                    double score = mergeScore.getScore(userProfile, anotherUser);
-                    double substractScore = score  - (double)userSubstractScoresMap.get(anotherUser);
-                    scoreMap.put(anotherUser, score-substractScore);
-                }
+        //to be added into a table of recommandation (to be created)
+        for (UserProfile anotherUser : userProfiles) {
+            if (anotherUser.getId() != userProfile.getId()) {
+                double score = mergeScore.getScore(userProfile, anotherUser);
+                double substractScore = (double) userSubstractScoresMap.get(anotherUser);
+                scoreMap.put(anotherUser, score - substractScore);
             }
-            Map userScoresMap = new HashMap();
-            userScoresMap.put(userProfile, scoreMap);
         }
+        ValueComparator bvc = new ValueComparator(scoreMap);
+        TreeMap<UserProfile, Double> sorted_map = new TreeMap<>(bvc);
+        int usersToAdd = Math.min(sorted_map.keySet().size(), 5);
+        int count = 0;
+        for (UserProfile user : sorted_map.keySet()) {
+            if(count == usersToAdd)
+                break;
+            UserMatchDTO userMatchDTO = new UserMatchDTO();
+            userMatchDTO.setCity(user.getCity().getName());
+            userMatchDTO.setFirstName(user.getFirstName());
+            userMatchDTO.setLastName(user.getLastName());
+            usersRecomandationsList.add(userMatchDTO);
+            count++;
+        }
+    }
+
+    public MatchesRecomandationsService() {
+
+    }
+
+    public List<UserMatchDTO> getUsersRecomandations(UserProfile userProfile){
+        //List<UserProfile> userProfiles = userProfileRepository.findAll();
+        /*for(UserProfile userProfile : userProfiles){
+            UserMatchDTO userMatchDTO = new UserMatchDTO();
+            userMatchDTO.setCity(userProfile.getCity().getName());
+            userMatchDTO.setFirstName(userProfile.getFirstName());
+            userMatchDTO.setLastName(userProfile.getLastName());
+            usersRecomandationsList.add(userMatchDTO);
+        }*/
+        set(userProfile);
+        return usersRecomandationsList;
+    }
+}
+
+class ValueComparator implements Comparator<UserProfile> {
+    Map<UserProfile, Double> base;
+
+    public ValueComparator(Map<UserProfile, Double> base) {
+        this.base = base;
+    }
+
+    // Note: this comparator imposes orderings that are inconsistent with
+    // equals.
+    public int compare(UserProfile a, UserProfile b) {
+        if (base.get(a) >= base.get(b)) {
+            return -1;
+        } else {
+            return 1;
+        } // returning 0 would merge keys
     }
 }

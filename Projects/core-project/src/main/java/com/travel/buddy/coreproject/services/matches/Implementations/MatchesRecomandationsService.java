@@ -1,27 +1,17 @@
 package com.travel.buddy.coreproject.services.matches.Implementations;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.travel.buddy.coreproject.DTOs.UserMatchDTO;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserProfileRepository;
-import com.travel.buddy.coreproject.services.matches.Interfaces.MatchesRecommandationsServiceInterface;
 import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.GetUserFriendsHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.*;
 
 // rulat la o anumita perioada de timp si de updatat un tabel cu recomandari
 
-@Service
-public class MatchesRecomandationsService implements MatchesRecommandationsServiceInterface{
+public class MatchesRecomandationsService {
 
     @Autowired
     UserProfileRepository userProfileRepository;
@@ -40,7 +30,7 @@ public class MatchesRecomandationsService implements MatchesRecommandationsServi
         }
     }
 
-    private void set(UserProfile userProfile) {
+    public void set(UserProfile userProfile) {
         prepareSubstractScores();
         List<UserProfile> userProfiles = userProfileRepository.findAll();
         MergeMatchScores mergeScore = MergeMatchScores.getInstance();
@@ -75,13 +65,26 @@ public class MatchesRecomandationsService implements MatchesRecommandationsServi
     }
 
     public List<UserMatchDTO> getUsersRecomandations(UserProfile userProfile){
+        usersRecomandationsList.clear();
+        MergeMatchScores mergeScore = MergeMatchScores.getInstance();
         List<UserProfile> userProfiles = userProfileRepository.findAll();
         for(UserProfile u : userProfiles){
-            UserMatchDTO userMatchDTO = new UserMatchDTO();
-            userMatchDTO.setCity(u.getCity().getName());
-            userMatchDTO.setFirstName(u.getFirstName());
-            userMatchDTO.setLastName(u.getLastName());
-            usersRecomandationsList.add(userMatchDTO);
+            if(userProfile.getId()!=u.getId()) {
+                if(mergeScore.getScore(userProfile, u) > 0.5) {
+                    UserMatchDTO userMatchDTO = new UserMatchDTO();
+                    userMatchDTO.setCity(u.getCity().getName());
+                    userMatchDTO.setFirstName(u.getFirstName());
+                    userMatchDTO.setLastName(u.getLastName());
+                    usersRecomandationsList.add(userMatchDTO);
+                }
+                else{
+                    UserMatchDTO userMatchDTO = new UserMatchDTO();
+                    userMatchDTO.setCity(u.getCity().getName());
+                    userMatchDTO.setFirstName(u.getFirstName());
+                    userMatchDTO.setLastName(String.valueOf(mergeScore.getScore(userProfile, u)));
+                    usersRecomandationsList.add(userMatchDTO);
+                }
+            }
         }
         //set(userProfile);
         return usersRecomandationsList;

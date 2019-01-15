@@ -75,15 +75,15 @@ public class MatchesRecomandationsService implements MatchesRecommandationsServi
     }
 
     public List<UserMatchDTO> getUsersRecomandations(UserProfile userProfile){
-        //List<UserProfile> userProfiles = userProfileRepository.findAll();
-        /*for(UserProfile userProfile : userProfiles){
+        List<UserProfile> userProfiles = userProfileRepository.findAll();
+        for(UserProfile u : userProfiles){
             UserMatchDTO userMatchDTO = new UserMatchDTO();
-            userMatchDTO.setCity(userProfile.getCity().getName());
-            userMatchDTO.setFirstName(userProfile.getFirstName());
-            userMatchDTO.setLastName(userProfile.getLastName());
+            userMatchDTO.setCity(u.getCity().getName());
+            userMatchDTO.setFirstName(u.getFirstName());
+            userMatchDTO.setLastName(u.getLastName());
             usersRecomandationsList.add(userMatchDTO);
-        }*/
-        set(userProfile);
+        }
+        //set(userProfile);
         return usersRecomandationsList;
     }
 }

@@ -71,7 +71,7 @@ public class UserProfile implements Serializable {
     @JsonManagedReference
     private List<TravelPlan> travelPlans;
     
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "INTEREST_ID", insertable=true, updatable=true)
 //    @JsonManagedReference
     private Interest interest;

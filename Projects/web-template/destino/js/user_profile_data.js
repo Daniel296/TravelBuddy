@@ -43,6 +43,7 @@ $(document).ready(function () {
     personalProfile();
     travelHistory();
     userInterests();
+    incarca();
 });
 
 function personalProfile() {
@@ -86,7 +87,7 @@ function travelHistory() {
     $('.travel-places-links').html(innerHtmlText);
 }
 
-$(document).ready(function () {
+function incarca() {
     $('.show-travel-items').hide();
     $(document).on('click', '.href-select-travel', function (e) {
         if ($(this).next().next().first().find('.show-travel-items').first().is(":visible")) {
@@ -96,10 +97,18 @@ $(document).ready(function () {
             var id = $(this).attr('id');
             var items = id.split(',');
             var innerHtmlText = '';
+
             for (var i = 0; i < items.length; i++) {
-                var place = places.filter(function (el) {
-                    return el.place_id === items[i];
-                })[0];
+                var temp =[];
+                var index = 0;
+                for( var j= 0 ; j < places.length; j++){
+                    if( places[j] != null){
+                        if(places[j].place_id === items[i]){
+                            temp[index++] = places[j];
+                        }
+                    }
+                }
+                var place = temp[0];
 
                 var tagsHtml = "";
                 for (var j = 0; j < place.types.length; j++) {
@@ -133,7 +142,7 @@ $(document).ready(function () {
             $(this).next().next().first().find('.show-travel-items').first().html(innerHtmlText);
         }
     });
-});
+};
 
 function formatInterest(interest){
     return '<i>'+ interest.replace('_' , ' ') + '</i>';

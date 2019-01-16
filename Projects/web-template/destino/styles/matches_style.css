@@ -969,11 +969,3 @@ section
 {
     background: rgba(254,60,82,0.8);
 }
-
-.preference-selector:first-child {
-    height: 40px;
-    width: 400px;
-    position: relative;
-    background-color: #F2F2F2;
-    border: 1px solid #E4E4E4;
-}

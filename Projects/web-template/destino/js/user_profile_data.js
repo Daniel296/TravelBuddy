@@ -18,8 +18,6 @@ $(document).ready(function () {
         dataType: 'json',
         async: false
     }).done(function (result) {
-        console.log("BACK-END RESPONSE:");
-        console.log(result);
         userProfileData = result;
     });
 
@@ -36,8 +34,6 @@ $(document).ready(function () {
                     async: false,
                     dataType: "json"
                 }).done(function (result) {
-                    console.log("RESULTED PLACE: ");
-                    console.log(result.result);
                     places[counter++] = result.result;
                 });
             }
@@ -47,6 +43,7 @@ $(document).ready(function () {
     personalProfile();
     travelHistory();
     userInterests();
+    incarca();
 });
 
 function personalProfile() {
@@ -76,7 +73,6 @@ function travelHistory() {
             var items = jQuery.map(userProfileData.travelPlans[i].travelPlanItems, function (a) {
                 return a.attractionCode;
             });
-            console.log("ITEMS:" + items);
             innerHtmlText += '<div class="travel-plan">'
                 + '<a class="href-select-travel" id="' + items + '" href="javascript:void(0);">'
                 + 'Travel between ' + startDate + ' - ' + endDate + '</a><br/>'
@@ -91,22 +87,28 @@ function travelHistory() {
     $('.travel-places-links').html(innerHtmlText);
 }
 
-$(document).ready(function () {
+function incarca() {
     $('.show-travel-items').hide();
     $(document).on('click', '.href-select-travel', function (e) {
         if ($(this).next().next().first().find('.show-travel-items').first().is(":visible")) {
             $(this).next().next().first().find('.show-travel-items').first().hide();
         } else {
             $(this).next().next().first().find('.show-travel-items').first().show();
-            console.log("Click " + $(this).attr('id'));
             var id = $(this).attr('id');
             var items = id.split(',');
             var innerHtmlText = '';
+
             for (var i = 0; i < items.length; i++) {
-                var place = places.filter(function (el) {
-                    return el.place_id === items[i];
-                })[0];
-                console.log("Found place at pos[" + i + "]: " + place);
+                var temp =[];
+                var index = 0;
+                for( var j= 0 ; j < places.length; j++){
+                    if( places[j] != null){
+                        if(places[j].place_id === items[i]){
+                            temp[index++] = places[j];
+                        }
+                    }
+                }
+                var place = temp[0];
 
                 var tagsHtml = "";
                 for (var j = 0; j < place.types.length; j++) {
@@ -140,12 +142,26 @@ $(document).ready(function () {
             $(this).next().next().first().find('.show-travel-items').first().html(innerHtmlText);
         }
     });
-});
+};
+
+function formatInterest(interest){
+    return '<i>'+ interest.replace('_' , ' ') + '</i>';
+}
+
+function randomQuestionsGenerator(interest){
+    var textArray = [
+        'Are you interested in ' + formatInterest(interest) + '?',
+        'Is ' + formatInterest(interest) + ' important to you?',
+        'Does ' + formatInterest(interest)  + ' sound attractive?'
+    ];
+    return textArray[Math.floor(Math.random()*textArray.length)];
+}
 
 function userInterests() {
     var innerHtmlText = '';
-    innerHtmlText += '<table>'
+    innerHtmlText += '<table class="interest-question-table">'
         + '<tr><td> Question </td><td> Answer </td></tr>';
+
 
     var dataArray = userProfileData.interest;
     for (var prop in dataArray) {
@@ -153,8 +169,8 @@ function userInterests() {
             innerHtmlText += '<tr>'
                 + '<td>'
                 + '<div class="interest-question">'
-                + ' <h5>Formulare intrebare</h5>'
-                + '<p>#' + prop + '</p>'
+                + ' <h5>' + randomQuestionsGenerator(prop) + '</h5>'
+                // + '<p>#' + prop + '</p>'
                 + '</div>'
                 + '</td>'
                 + '<td> '+ dataArray[prop] +' </td>'

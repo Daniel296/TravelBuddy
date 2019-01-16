@@ -84,7 +84,7 @@ public class MatchesRecomandationsService implements MatchesRecommandationsServi
                     UserMatchDTO userMatchDTO = new UserMatchDTO();
                     userMatchDTO.setCity(u.getCity().getName());
                     userMatchDTO.setFirstName(u.getFirstName());
-                    userMatchDTO.setLastName(String.valueOf(mergeScore.getScore(userProfile, u)));
+                    userMatchDTO.setLastName(u.getLastName());
                     usersRecomandationsList.add(userMatchDTO);
                 }
             }

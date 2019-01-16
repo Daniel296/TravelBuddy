@@ -3,15 +3,18 @@ package com.travel.buddy.coreproject.services.matches.Implementations;
 import com.travel.buddy.coreproject.DTOs.UserMatchDTO;
 import com.travel.buddy.coreproject.model.UserProfile;
 import com.travel.buddy.coreproject.repository.UserProfileRepository;
+import com.travel.buddy.coreproject.services.matches.Interfaces.MatchesRecommandationsServiceInterface;
 import com.travel.buddy.coreproject.utils.Constants;
 import com.travel.buddy.coreproject.utils.GetUserFriendsHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 // rulat la o anumita perioada de timp si de updatat un tabel cu recomandari
 
-public class MatchesRecomandationsService {
+@Service
+public class MatchesRecomandationsService implements MatchesRecommandationsServiceInterface{
 
     @Autowired
     UserProfileRepository userProfileRepository;
